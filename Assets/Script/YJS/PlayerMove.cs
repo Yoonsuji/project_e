@@ -2,16 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
     Vector3 mousePosition;
     private Vector3 initialPosition;
     public GameObject nowBox;
+    public int playerPower;
+    public Text powerText;
 
     public void Move()
     {
-        print("move!!");
+        this.transform.position = nowBox.transform.position;
+    }
+    private void Update()
+    {
+        powerText.text = playerPower.ToString();
     }
 
 
