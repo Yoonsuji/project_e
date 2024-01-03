@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
 
-            if (hit.collider != null && hit.collider.gameObject.tag == "Ring")
+            if (hit.collider != null && hit.collider.gameObject.CompareTag("Ring"))
             {
                 ring = hit.collider.gameObject.GetComponent<Ring>();
                 ring.able= true;
