@@ -7,12 +7,19 @@ using System;
 public class TowerManager : MonoBehaviour
 {
     public TowerBox towerBox;
-    public TextAsset excel;
+    public List<TextAsset> excel = new List<TextAsset>();
     private float spacing = 1f;
     private int lineSize, rowSize;
     private int count = 0;
     string[,] dataTable;
     private void Start()
+    {
+        for(int i = 0; i < excel.Count; i++)
+        {
+            DataTable(excel[i], i);
+        }
+    }
+    private void DataTable(TextAsset excel, int towerNumber)
     {
         string DataTable = excel.text.Substring(0, excel.text.Length - 1);
         string[] line = DataTable.Split('\n');
@@ -27,10 +34,9 @@ public class TowerManager : MonoBehaviour
                 dataTable[i, j] = row[j];
             }
         }
-        print(lineSize);
-        SpawnTowerBox();
+        SpawnTowerBox(towerNumber);
     }
-    void SpawnTowerBox()
+    void SpawnTowerBox(int towerNumber)
     {
         for (int i = 0; i < int.Parse(dataTable[lineSize - 1, 0]); i++)
         {
@@ -43,7 +49,7 @@ public class TowerManager : MonoBehaviour
                 }
             }
             spawnedTower.transform.parent = transform;
-            spawnedTower.transform.Translate(new Vector3(0f, 2.2f*(float)i, 0f));
+            spawnedTower.transform.Translate(new Vector3(2.7f*(float)towerNumber, 2.2f*(float)i, 0f));
         }
     }
 }
