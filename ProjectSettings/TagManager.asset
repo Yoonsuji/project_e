@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Ring
   - Wall
-  - Item
   layers:
   - Default
   - TransparentFX
