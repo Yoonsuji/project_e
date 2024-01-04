@@ -9,8 +9,9 @@ public class TowerBox : MonoBehaviour
     public GameObject EnemySample;
     public Sprite enemySprite_1;
     public Sprite enemySprite_2;
-    public PlayerMove player;
+    public PlayerScript player;
     public int enemyCount;
+    public bool isSpawnPoint;
     private Vector3 initialPosition;
     private Renderer objectRenderer;
     private Color originalColor;
@@ -20,7 +21,14 @@ public class TowerBox : MonoBehaviour
 
     void Start()
     {
-        player = PlayerMove.FindObjectOfType<PlayerMove>();
+        player = PlayerScript.FindObjectOfType<PlayerScript>();
+        if (isSpawnPoint == true)
+        {
+            player.nowBox = this;
+            player.Move(this);
+            new WaitForSeconds(0.1f);
+            player.canMove = false;
+        }
     }
     private void Update()
     {
@@ -63,22 +71,25 @@ public class TowerBox : MonoBehaviour
 
     public void Attacked()
     {
-        int i = EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower;
-        EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower -= player.playerPower;
-        player.playerPower += i;
+        if (enemyCount > 0)
+        {
+            if (player.playerPower <= EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower)
+            {
+                player.PlayerDie();
+                print("실패!!");
+            }
+            else
+            {
+                int i = EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower;
+                EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower -= player.playerPower;
+                player.playerPower += i;
+            }
+        }
+
     }
 
     private void OnMouseDown()
     {
-        player.GetComponent<PlayerMove>().nowBox = this.gameObject;
-        player.Move();
-        if(player.playerPower> EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower)
-        {
-            Attacked();
-        }
-        else
-        {
-            print("실패!!");
-        }
+        player.Move(this);
     }
 }

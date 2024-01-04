@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class PlayerSpawn : MonoBehaviour
 {
-    public PlayerMove player;
+    public TowerBox StartBox;
     private void Start()
     {
-        player = FindObjectOfType<PlayerMove>();
-        PlayerMove playerMoveComponent = player.GetComponent<PlayerMove>();
-        playerMoveComponent.nowBox = this.gameObject;
-        player.Move();
+        TowerBox spawnedTower = Instantiate(StartBox, this.transform.position, Quaternion.identity);
     }
 }
