@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public float speed;
     public Vector2 dir;
+    public bool die;
 
     Rigidbody2D rigid;
     SpriteRenderer renderer;
@@ -35,6 +36,19 @@ public class Enemy : MonoBehaviour
         {
             speed = -speed;
             renderer.flipX = renderer.flipX ? false : true;
+        }
+
+        else if(collision.gameObject.CompareTag("Metaball_liquid"))
+        {
+            die= true;
+            gameObject.SetActive(false);
+
+            GameObject[] water;
+            water = GameObject.FindGameObjectsWithTag("Metaball_liquid");
+            for (int i = 0; i < water.Length; i++)
+            {
+                water[i].SetActive(false);
+            }
         }
     }
 }
