@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -8,10 +9,12 @@ public class Enemy : MonoBehaviour
     public Vector2 dir;
 
     Rigidbody2D rigid;
+    SpriteRenderer renderer;
     // Start is called before the first frame update
     void Start()
     {
         rigid= GetComponent<Rigidbody2D>();
+        renderer= GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.CompareTag("Wall"))
         {
             speed = -speed;
+            renderer.flipX = renderer.flipX ? false : true;
         }
     }
 }
