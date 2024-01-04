@@ -1,23 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Item_test : MonoBehaviour
+public class Item_test : MonoBehaviour, IPointerClickHandler
 {
     public Transform targetTransform;
-    // Update is called once per frame
-    void Update()
+    public float moveSpeed = 2.0f;
+    public bool isMoving = false;
+    public Button button1;
+    public Button button2;
+
+    public void OnPointerClick(PointerEventData eventData)
     {
-        if(Input.GetMouseButtonDown(0))
+        StartCoroutine(MoveToTarget());
+    }
+
+    IEnumerator MoveToTarget()
+    {
+        if(isMoving)
+            yield break;
+        
+        isMoving = true;
+
+        float elapsedTime = 0f;
+        Vector3 startingPos = transform.position;
+
+        while (elapsedTime<1f)
         {
-            Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
-            if(hit.collider != null)
-            {
-                GameObject click_obj = hit.transform.gameObject;
-                targetTransform.position = new Vector3(0, 0, 0);
-                Debug.Log(click_obj.name);
-            }
+            transform.position = Vector3.Lerp(startingPos, targetTransform.position, elapsedTime);
+            elapsedTime += Time.deltaTime * moveSpeed;
+
+            yield return null;
         }
+
+        transform.position = targetTransform.position;
+        isMoving = false;
+
+        button1.interactable = true;
+        button2.interactable = true;
     }
 }

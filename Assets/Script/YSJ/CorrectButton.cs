@@ -51,6 +51,5 @@ public class CorrectButton : MonoBehaviour
         }
 
         Background.transform.position = targetPosition;
-
     }
 }
