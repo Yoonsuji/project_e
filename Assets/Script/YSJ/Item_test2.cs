@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Item_test : MonoBehaviour, IPointerClickHandler
+public class Item_test2 : MonoBehaviour, IPointerClickHandler
 {
     public Transform targetTransform;
     public float moveSpeed = 2.0f;
@@ -38,6 +38,6 @@ public class Item_test : MonoBehaviour, IPointerClickHandler
         transform.position = targetTransform.position;
         isMoving = false;
 
-        button1.interactable = true;
+        button2.interactable = true;
     }
 }
