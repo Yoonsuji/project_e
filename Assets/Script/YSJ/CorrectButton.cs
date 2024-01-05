@@ -7,10 +7,16 @@ using static UnityEditor.Progress;
 public class CorrectButton : MonoBehaviour
 {
     public GameObject Background;
-    public float Distance = 1.0f; 
+    public float Distance = 1.0f;
     public float speed = 3.0f;
+    public float HandMoveSpeed = 1.0f;
     public float smoothTime = 0.5f;
     public GameObject Check;
+    public GameObject Hand;
+    public Transform HandTransform;
+
+    public HandController handController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +26,12 @@ public class CorrectButton : MonoBehaviour
             button.onClick.AddListener(CorrectClick);
         }
     }
-        // Update is called once per frame
     public void CorrectClick()
     {
         Check.SetActive(true);
         if (Background != null)
         {
-            StartCoroutine(MoveBackground());
+            //StartCoroutine(MoveBackground());
 
             Button button = GetComponent<Button>();
             
@@ -36,8 +41,12 @@ public class CorrectButton : MonoBehaviour
             }
 
         }
-    }
+        if (handController != null)
+        {
+            handController.StartHandMove();
+        }
 
+    }
     IEnumerator MoveBackground()
     {
 
