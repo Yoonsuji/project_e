@@ -24,7 +24,7 @@ public class Boss : Enemy
     private void Move()
     {
         //transform.Translate(Vector3.right * speed * Time.deltaTime);
-        if (!die) rigid.velocity = new Vector2(speed, 0);
+        if (!isDie) rigid.velocity = new Vector2(speed, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

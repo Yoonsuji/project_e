@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public float speed;
     public Vector2 dir;
-    public bool die;
+    public bool isDie;
 
     GameObject[] water;
 
@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Metaball_liquid"))
         {
-            die= true;
+            isDie= true;
             rigid.velocity = new Vector2(0, 0);
             capsule.isTrigger = true;
             rigid.bodyType = RigidbodyType2D.Kinematic;
