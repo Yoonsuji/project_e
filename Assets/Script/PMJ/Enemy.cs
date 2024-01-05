@@ -11,30 +11,28 @@ public class Enemy : MonoBehaviour
 
     GameObject[] water;
 
-    Rigidbody2D rigid;
-    CapsuleCollider2D capsule;
-    SpriteRenderer renderer;
+    protected Rigidbody2D rigid;
+    protected CapsuleCollider2D capsule;
+    protected SpriteRenderer renderer;
     // Start is called before the first frame update
+    protected virtual void Awake()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+        capsule = GetComponent<CapsuleCollider2D>();
+        renderer = GetComponent<SpriteRenderer>();
+    }
     void Start()
     {
-        rigid= GetComponent<Rigidbody2D>();
-        capsule= GetComponent<CapsuleCollider2D>();
-        renderer= GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+
     }
 
-    private void Move()
-    {
-        //transform.Translate(Vector3.right * speed * Time.deltaTime);
-        if(!die) rigid.velocity = new Vector2(speed, 0);
-    }
-
-    IEnumerator Fadeout()
+    protected IEnumerator Fadeout()
     {
         float fadeCount = 1.0f;
         while(fadeCount > 0f)
@@ -53,17 +51,12 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Wall"))
-        {
-            speed = -speed;
-            renderer.flipX = renderer.flipX ? false : true;
-        }
-
-        else if(collision.gameObject.CompareTag("Metaball_liquid"))
+        if(collision.gameObject.CompareTag("Metaball_liquid"))
         {
             die= true;
+            rigid.velocity = new Vector2(0, 0);
             capsule.isTrigger = true;
             rigid.bodyType = RigidbodyType2D.Kinematic;
             water = GameObject.FindGameObjectsWithTag("Metaball_liquid");
