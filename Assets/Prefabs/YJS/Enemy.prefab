@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.0600214, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -69,10 +69,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 100
+    m_FontSize: 75
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 7
     m_MaxSize: 120
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 4539520378647860119}
-  offset: {x: 0, y: 0.5, z: 0}
+  offset: {x: 0, y: 0.7, z: 0}
 --- !u!1 &4539520378647860113
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +194,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPower: 0
+  type: 0
   enemyPowerText: {fileID: 1125909793959502551}
+  selectedType: 0
 --- !u!1 &4573210646786954765
 GameObject:
   m_ObjectHideFlags: 0

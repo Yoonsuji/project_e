@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3448947403567138915}
   - component: {fileID: 3448947403567138914}
   m_Layer: 0
-  m_Name: Square
+  m_Name: TowerPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,17 +187,22 @@ MonoBehaviour:
   EnemySample: {fileID: 4539520378647860113, guid: 80d8fda01b43bba41b625663baa3c23e, type: 3}
   cameraMove: {fileID: 0}
   nolmalEnemySprite:
-  - {fileID: 21300000, guid: c3e5a701120cfe44b882fc2688eaaf2a, type: 3}
+  - {fileID: 21300000, guid: 99db14fae3546044e986e70056945f51, type: 3}
   - {fileID: 21300000, guid: 0b065edb67763f548b3c0feec85dec93, type: 3}
   multiplicationEnemyEnemySprite:
   - {fileID: 21300000, guid: 449c1600fc15b9a49a7abf138d68382d, type: 3}
   - {fileID: 21300000, guid: 48dfbb5630058104c90ac28bf11ab78f, type: 3}
   BossEnemySprite:
   - {fileID: 21300000, guid: 8137fa03071db114582dbfde31fd8955, type: 3}
+  ItemSprite:
+  - {fileID: 21300000, guid: 250022e9c32f04d409f879b5777a3c6e, type: 3}
+  - {fileID: 21300000, guid: e2a9f98890971f04fb0db544bcb3c120, type: 3}
   player: {fileID: 0}
   enemyCount: 0
   isSpawnPoint: 0
+  BackObject: {fileID: 3448947403567138940}
   towerNumber: 0
+  isBossBox: 0
 --- !u!61 &3448947403947657519
 BoxCollider2D:
   m_ObjectHideFlags: 0

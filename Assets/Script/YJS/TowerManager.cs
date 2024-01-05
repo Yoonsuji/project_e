@@ -14,6 +14,8 @@ public class TowerManager : MonoBehaviour
     private float spacing = 1f;
     private int lineSize, rowSize;
     private int count = 0;
+    private TowerBox BossTower;
+    public bool isBossTurn = false;
     string[,] dataTable;
     private void Start()
     {
@@ -41,8 +43,6 @@ public class TowerManager : MonoBehaviour
                 dataTable[i, j] = row[j];
             }
         }
-        print(dataTable[5, 1]);
-        print(dataTable[5, 2]);
         SpawnTowerBox(towerNumber);
     }
     void SpawnTowerBox(int towerNumber)
@@ -55,6 +55,10 @@ public class TowerManager : MonoBehaviour
                 if (int.Parse(dataTable[j, 0]) == i + 1)
                 {
                     spawnedTower.GetComponent<TowerBox>().SpawnEnemy(float.Parse(dataTable[j, 1]), int.Parse(dataTable[j, 2]));
+                    if (float.Parse(dataTable[j, 1]) == 0)
+                    {
+                        spawnedTower.isBossBox = true;
+                    }
                     enemyCountList[towerNumber]++;
                 }
             }
@@ -67,7 +71,19 @@ public class TowerManager : MonoBehaviour
     {
         if (enemyCountList[player.nowTowerNumber] == 0)
         {
-            cameraMove.NextTower();
+            if (player.nowBox.towerNumber == excel.Count - 1)
+            {
+                print("Å¬¸®¾î!!");
+            }
+            else
+            {
+                if (enemyCountList[player.nowTowerNumber + 1] == 1)
+                {
+                    BossTower = FindObjectOfType<TowerBox>();
+                    BossTower.isBossTurn();
+                }
+                cameraMove.NextTower();
+            }
         }
     }
 }
