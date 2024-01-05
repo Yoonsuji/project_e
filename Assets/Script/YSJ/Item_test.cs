@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using static UnityEditor.Progress;
 
 public class Item_test : MonoBehaviour, IPointerClickHandler
 {
+    public static Item_test Instance;
     public Transform targetTransform;
     public float moveSpeed = 2.0f;
     public bool isMoving = false;
@@ -17,7 +19,7 @@ public class Item_test : MonoBehaviour, IPointerClickHandler
         StartCoroutine(MoveToTarget());
     }
 
-    IEnumerator MoveToTarget()
+    public IEnumerator MoveToTarget()
     {
         if(isMoving)
             yield break;

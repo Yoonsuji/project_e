@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class CorrectButton : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class CorrectButton : MonoBehaviour
     public float Distance = 1.0f; 
     public float speed = 3.0f;
     public float smoothTime = 0.5f;
+    public GameObject Check;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +21,9 @@ public class CorrectButton : MonoBehaviour
         }
     }
         // Update is called once per frame
-    void CorrectClick()
+    public void CorrectClick()
     {
+        Check.SetActive(true);
         if (Background != null)
         {
             StartCoroutine(MoveBackground());
@@ -31,6 +34,7 @@ public class CorrectButton : MonoBehaviour
             {
                 button.onClick.RemoveAllListeners();
             }
+
         }
     }
 
