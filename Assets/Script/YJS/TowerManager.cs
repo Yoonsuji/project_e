@@ -7,14 +7,21 @@ using System;
 public class TowerManager : MonoBehaviour
 {
     public TowerBox towerBox;
+    public PlayerScript player;
+    public CameraMove cameraMove;
     public List<TextAsset> excel = new List<TextAsset>();
+    public List<int> enemyCountList = new List<int>();
     private float spacing = 1f;
     private int lineSize, rowSize;
     private int count = 0;
     string[,] dataTable;
     private void Start()
     {
-        for(int i = 0; i < excel.Count; i++)
+        for (int i = 0; i < excel.Count; i++)
+        {
+            enemyCountList.Add(0);
+        }
+        for (int i = 0; i < excel.Count; i++)
         {
             DataTable(excel[i], i);
         }
@@ -46,10 +53,19 @@ public class TowerManager : MonoBehaviour
                 if (int.Parse(dataTable[j, 0]) == i + 1)
                 {
                     spawnedTower.GetComponent<TowerBox>().SpawnEnemy(int.Parse(dataTable[j, 1]), int.Parse(dataTable[j, 2]));
+                    enemyCountList[towerNumber]++;
                 }
             }
+            spawnedTower.towerNumber = towerNumber;
             spawnedTower.transform.parent = transform;
             spawnedTower.transform.Translate(new Vector3(2.7f*(float)towerNumber, 2.2f*(float)i, 0f));
+        }
+    }
+    public void EnemyCheck()
+    {
+        if (enemyCountList[player.nowTowerNumber] == 0)
+        {
+            cameraMove.NextTower();
         }
     }
 }

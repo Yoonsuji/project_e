@@ -6,21 +6,38 @@ using UnityEngine.UI;
 public class EnemyPower : MonoBehaviour
 {
     public int enemyPower;
+    public int enemyType;
+    public bool type;
     public Text enemyPowerText;
     private SpriteRenderer spriteRenderer;
     void Start()
     {
+        if (enemyPower > 0)
+        {
+            type = false;
+        }
+        else
+        {
+            type = true;
+        }
     }
 
     void Update()
     {
         enemyPowerText.text = enemyPower.ToString();
-        if (enemyPower <= 0)
+        if (type == false)
         {
-            EnemyDie();
+            if (enemyPower <= 0)
+            {
+                EnemyDie();
+            }
+        }
+        else
+        {
+            
         }
     }
-    void EnemyDie()
+    public void EnemyDie()
     {
         Destroy(this.gameObject);
     }

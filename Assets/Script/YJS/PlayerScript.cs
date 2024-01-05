@@ -9,6 +9,8 @@ public class PlayerScript : MonoBehaviour
     Vector3 mousePosition;
     private Vector3 initialPosition;
     public TowerBox nowBox;
+    public int nowTowerNumber;
+    public CameraMove cameraMove;
     public int playerPower;
     public Text powerText;
     public bool canMove;
@@ -33,32 +35,18 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
         powerText.text = playerPower.ToString();
+        if (cameraMove.isActive == true)
+        {
+            canMove = false;
+        }
+        else
+        {
+            canMove = true;
+        }
+        nowTowerNumber = nowBox.towerNumber;
     }
     public void PlayerDie()
     {
         //플레이어 사망
     }
-
-
-
-    /*private Vector3 GetMousePos()
-    {
-        return Camera.main.WorldToScreenPoint(transform.position);
-    }
-    private void OnMouseDown()
-    {
-        mousePosition = Input.mousePosition - GetMousePos();
-    }
-    private void OnMouseDrag()
-    {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
-    }
-    private void OnMouseUp()
-    {
-        if (!EventSystem.current.IsPointerOverGameObject())
-        {
-            transform.position = initialPosition;
-        }
-    }
-    */
 }

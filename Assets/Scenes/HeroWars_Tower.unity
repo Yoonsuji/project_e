@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &25306129 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2515403834368720432, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
+  m_PrefabInstance: {fileID: 1221074871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75de10b480498ff42a4fd76d8a9a9d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &160347296
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,9 +232,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerBox: {fileID: 3448947403947657512, guid: 68be686683d59f14c8454014b5c789e3, type: 3}
+  player: {fileID: 25306129}
+  cameraMove: {fileID: 251072050}
   excel:
   - {fileID: 4900000, guid: 991e4c23190c76c429a4ae805a74db8c, type: 3}
   - {fileID: 4900000, guid: 57c3f9fa06bff5e439234928c63cf8dc, type: 3}
+  - {fileID: 4900000, guid: 57c3f9fa06bff5e439234928c63cf8dc, type: 3}
+  enemyCountList: 
 --- !u!4 &205328821
 Transform:
   m_ObjectHideFlags: 0
@@ -337,10 +352,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {fileID: 1373252389}
-  smoothTime: 1.5
+  smoothTime: 1
   towerManager: {fileID: 205328820}
-  Point: {fileID: 1373252388}
   isActive: 0
+  isFirst: 1
+  i: 1
 --- !u!1 &264482533
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,6 +747,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2515403834368720432, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
+      propertyPath: cameraMove
+      value: 
+      objectReference: {fileID: 251072050}
     - target: {fileID: 2515403834368720432, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
       propertyPath: playerPower
       value: 10
