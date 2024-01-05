@@ -10,7 +10,6 @@ public class Ring : MonoBehaviour
     public bool able;
     public float speed;
 
-
     private void Update()
     {
         if(able)
@@ -24,6 +23,12 @@ public class Ring : MonoBehaviour
             {
                 transform.Translate(Vector3.left * speed * Time.deltaTime); 
             }
+
+            Invoke("Hide", 5f);
         }
+    }
+    private void Hide()
+    {
+        gameObject.SetActive(false);
     }
 }

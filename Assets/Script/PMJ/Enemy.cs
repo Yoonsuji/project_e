@@ -9,12 +9,16 @@ public class Enemy : MonoBehaviour
     public Vector2 dir;
     public bool die;
 
+    GameObject[] water;
+
     Rigidbody2D rigid;
+    CapsuleCollider2D capsule;
     SpriteRenderer renderer;
     // Start is called before the first frame update
     void Start()
     {
         rigid= GetComponent<Rigidbody2D>();
+        capsule= GetComponent<CapsuleCollider2D>();
         renderer= GetComponent<SpriteRenderer>();
     }
 
@@ -27,7 +31,26 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         //transform.Translate(Vector3.right * speed * Time.deltaTime);
-        rigid.velocity = new Vector2(speed, 0);
+        if(!die) rigid.velocity = new Vector2(speed, 0);
+    }
+
+    IEnumerator Fadeout()
+    {
+        float fadeCount = 1.0f;
+        while(fadeCount > 0f)
+        {
+            fadeCount -= 0.01f;
+            yield return new WaitForSeconds(0.01f);
+            for(int i = 0; i < water.Length; i++)
+            {
+                SpriteRenderer renderer = water[i].GetComponent<SpriteRenderer>();
+                //Color color= renderer.color;
+                // color.a = fadeCount;
+                renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, fadeCount);
+            }
+        }
+
+        gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -41,14 +64,11 @@ public class Enemy : MonoBehaviour
         else if(collision.gameObject.CompareTag("Metaball_liquid"))
         {
             die= true;
-            gameObject.SetActive(false);
-
-            GameObject[] water;
+            capsule.isTrigger = true;
+            rigid.bodyType = RigidbodyType2D.Kinematic;
             water = GameObject.FindGameObjectsWithTag("Metaball_liquid");
-            for (int i = 0; i < water.Length; i++)
-            {
-                water[i].SetActive(false);
-            }
+            StartCoroutine(Fadeout());
+            //gameObject.SetActive(false);
         }
     }
 }

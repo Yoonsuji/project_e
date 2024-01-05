@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject[] fruits;
+    public Transform fruit;
+    public int fCount;
     Ring ring;
     // Start is called before the first frame update
     void Start()
     {
-
+        for(int i = 0; i < fCount; i++)
+        {
+            for(int j = 0; j < fruits.Length; j++)
+            {
+                Instantiate(fruits[j], fruit);
+            }
+        }
     }
 
     // Update is called once per frame
