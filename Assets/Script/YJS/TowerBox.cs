@@ -15,6 +15,7 @@ public class TowerBox : MonoBehaviour
     public PlayerScript player;
     public int enemyCount;
     public bool isSpawnPoint;
+    public GameObject BackObject;
     private Vector3 initialPosition;
     public int towerNumber;
     private Renderer objectRenderer;
@@ -23,7 +24,7 @@ public class TowerBox : MonoBehaviour
     private float spacing = 0.8f;
     private TowerManager towerManager;
     private Camera mainCamera;
-    private bool isBossBox = false;
+    public bool isBossBox = false;
     string[,] dataTable;
 
     void Start()
@@ -38,9 +39,15 @@ public class TowerBox : MonoBehaviour
             player.Move(this);
             new WaitForSeconds(0.1f);
         }
-        if (enemyCount == 1)
+        if (isBossBox == true)
         {
-            isBossBox = true;
+            Renderer renderer = BackObject.GetComponent<Renderer>();
+            foreach (Material material in renderer.materials)
+            {
+                Color color = material.color;
+                color.a = 0f;
+                material.color = color;
+            }
         }
     }
     private void Update()
@@ -62,10 +69,11 @@ public class TowerBox : MonoBehaviour
                 towerManager.EnemyCheck();
             }
         }
-        if (isBossBox == true && towerManager.player.nowBox.towerNumber == towerNumber - 1)
-        {
-            print("보스전!!");//수정해야함
-        }
+    }
+    public void isBossTurn()
+    {
+        player.nowBox = this;
+        player.BossTurnMove();
     }
     public void SpawnEnemy(float enemyType, int enemyPower)
     {
@@ -107,6 +115,18 @@ public class TowerBox : MonoBehaviour
         EnemyList.Add(spawnedEnemy);
         enemyCount++;
         spacing += -0.5f;
+    }
+    public void LastBossAttack()
+    {
+        if (EnemyList[0].GetComponent<EnemyPower>().enemyPower >= player.playerPower)
+        {
+            print("보스가 이김");
+            player.PlayerDie();
+        }
+        else
+        {
+            print("플레이어가 이김");
+        }
     }
     private void OnMouseEnter()
     {

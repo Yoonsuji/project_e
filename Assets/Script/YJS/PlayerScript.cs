@@ -49,6 +49,14 @@ public class PlayerScript : MonoBehaviour
         }
         nowTowerNumber = nowBox.towerNumber;
     }
+    public void BossTurnMove()
+    {
+        Invoke("LastAttack", 3f);
+    }
+    private void LastAttack()
+    {
+        nowBox.LastBossAttack();
+    }
     public void PlayerDie()
     {
         print("플레이어 사망");

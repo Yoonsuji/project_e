@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3448947403567138915}
   - component: {fileID: 3448947403567138914}
   m_Layer: 0
-  m_Name: Square
+  m_Name: TowerPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +200,9 @@ MonoBehaviour:
   player: {fileID: 0}
   enemyCount: 0
   isSpawnPoint: 0
+  BackObject: {fileID: 3448947403567138940}
   towerNumber: 0
+  isBossBox: 0
 --- !u!61 &3448947403947657519
 BoxCollider2D:
   m_ObjectHideFlags: 0
