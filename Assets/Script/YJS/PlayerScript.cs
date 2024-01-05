@@ -24,11 +24,15 @@ public class PlayerScript : MonoBehaviour
     {
         if (canMove == true)
         {
-            //this.gameObject.SetActive(false);
-            //yield return new WaitForSeconds(0.3f);
             nowBox = towerBox;
-            this.transform.position = nowBox.transform.position;
-            //this.gameObject.SetActive(true);
+            if (nowBox.enemyCount == 0)
+            {
+                this.transform.position = nowBox.transform.position;
+            }
+            else
+            {
+                this.transform.position = nowBox.EnemyList[nowBox.enemyCount - 1].transform.position + Vector3.left * 0.3f;
+            }
             nowBox.Attacked();
         }
     }

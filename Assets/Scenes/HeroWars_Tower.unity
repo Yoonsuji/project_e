@@ -236,6 +236,8 @@ MonoBehaviour:
   cameraMove: {fileID: 251072050}
   excel:
   - {fileID: 4900000, guid: 991e4c23190c76c429a4ae805a74db8c, type: 3}
+  - {fileID: 4900000, guid: 57c3f9fa06bff5e439234928c63cf8dc, type: 3}
+  - {fileID: 4900000, guid: 949a60a6110058b4f92ed828c4ebeaf7, type: 3}
   enemyCountList: 
 --- !u!4 &205328821
 Transform:
@@ -751,7 +753,7 @@ PrefabInstance:
       objectReference: {fileID: 251072050}
     - target: {fileID: 2515403834368720432, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
       propertyPath: playerPower
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2515403834368720433, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
       propertyPath: m_Offset.y
@@ -804,6 +806,38 @@ PrefabInstance:
     - target: {fileID: 2515403834368720439, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515403834438942233, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515403834438942233, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515403834438942233, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515403834438942233, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515403834438942234, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c8e9771535fd724ab81fab5357f6323, type: 3}
+    - target: {fileID: 2515403834438942234, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515403834438942234, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515403834438942234, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}

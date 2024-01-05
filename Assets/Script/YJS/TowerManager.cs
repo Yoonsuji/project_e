@@ -41,8 +41,6 @@ public class TowerManager : MonoBehaviour
                 dataTable[i, j] = row[j];
             }
         }
-        print(dataTable[5, 1]);
-        print(dataTable[5, 2]);
         SpawnTowerBox(towerNumber);
     }
     void SpawnTowerBox(int towerNumber)
@@ -67,7 +65,14 @@ public class TowerManager : MonoBehaviour
     {
         if (enemyCountList[player.nowTowerNumber] == 0)
         {
-            cameraMove.NextTower();
+            if (player.nowBox.towerNumber == excel.Count - 1)
+            {
+                print("Å¬¸®¾î!!");
+            }
+            else
+            {
+                cameraMove.NextTower();
+            }
         }
     }
 }
