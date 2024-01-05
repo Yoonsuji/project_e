@@ -47,6 +47,6 @@ public class PlayerScript : MonoBehaviour
     }
     public void PlayerDie()
     {
-        //플레이어 사망
+        print("플레이어 사망");
     }
 }

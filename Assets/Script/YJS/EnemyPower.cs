@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class EnemyPower : MonoBehaviour
 {
     public int enemyPower;
-    public int enemyType;
     public bool type;
     public Text enemyPowerText;
     private SpriteRenderer spriteRenderer;
+    public enum enemyType
+    {
+        nolmalEnemy, BossEnemy, item, multiplicationEnemy, squareEnemy
+    }
+    public enemyType selectedType;
     void Start()
     {
         if (enemyPower > 0)
