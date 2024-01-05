@@ -236,8 +236,6 @@ MonoBehaviour:
   cameraMove: {fileID: 251072050}
   excel:
   - {fileID: 4900000, guid: 991e4c23190c76c429a4ae805a74db8c, type: 3}
-  - {fileID: 4900000, guid: 57c3f9fa06bff5e439234928c63cf8dc, type: 3}
-  - {fileID: 4900000, guid: 57c3f9fa06bff5e439234928c63cf8dc, type: 3}
   enemyCountList: 
 --- !u!4 &205328821
 Transform:
@@ -753,7 +751,7 @@ PrefabInstance:
       objectReference: {fileID: 251072050}
     - target: {fileID: 2515403834368720432, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
       propertyPath: playerPower
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2515403834368720433, guid: e8009ef1fbce0fc44a11d6870d0e4fd1, type: 3}
       propertyPath: m_Offset.y

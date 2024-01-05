@@ -41,6 +41,8 @@ public class TowerManager : MonoBehaviour
                 dataTable[i, j] = row[j];
             }
         }
+        print(dataTable[5, 1]);
+        print(dataTable[5, 2]);
         SpawnTowerBox(towerNumber);
     }
     void SpawnTowerBox(int towerNumber)
@@ -52,7 +54,7 @@ public class TowerManager : MonoBehaviour
             {
                 if (int.Parse(dataTable[j, 0]) == i + 1)
                 {
-                    spawnedTower.GetComponent<TowerBox>().SpawnEnemy(int.Parse(dataTable[j, 1]), int.Parse(dataTable[j, 2]));
+                    spawnedTower.GetComponent<TowerBox>().SpawnEnemy(float.Parse(dataTable[j, 1]), int.Parse(dataTable[j, 2]));
                     enemyCountList[towerNumber]++;
                 }
             }
