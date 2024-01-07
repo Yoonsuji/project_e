@@ -46,3 +46,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Oven In
+    uniqueID: 2598930467
+    locked: 0
+  - name: Fruits
+    uniqueID: 4254267853
+    locked: 0
+  - name: Oven
+    uniqueID: 1964499585
+    locked: 0
+  - name: Ring
+    uniqueID: 3732024137
+    locked: 0
