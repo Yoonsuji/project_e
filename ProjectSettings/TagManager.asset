@@ -10,6 +10,7 @@ TagManager:
   - Metaball_liquid
   - Enemy
   - Fruit
+  - Metaball_liquid2
   layers:
   - Default
   - TransparentFX

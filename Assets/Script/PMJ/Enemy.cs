@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
     {
 
     }
-
+    /*
     protected IEnumerator Fadeout()
     {
         float fadeCount = 1.0f;
@@ -50,17 +50,21 @@ public class Enemy : MonoBehaviour
 
         gameObject.SetActive(false);
     }
-
+    */
     protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Metaball_liquid"))
+        if(collision.gameObject.CompareTag("Metaball_liquid") || collision.gameObject.CompareTag("Metaball_liquid2"))
         {
             isDie= true;
             rigid.velocity = new Vector2(0, 0);
             capsule.isTrigger = true;
             rigid.bodyType = RigidbodyType2D.Kinematic;
-            water = GameObject.FindGameObjectsWithTag("Metaball_liquid");
-            StartCoroutine(Fadeout());
+
+            //water = GameObject.FindGameObjectsWithTag("Metaball_liquid");
+            //GameManager.instance.StartCoroutine(Fadeout(gameObject, collision));
+            //GameManager.instance.FadeOut(gameObject, collision);
+            string collisionTag = collision.gameObject.tag;
+            GameManager.instance.StartCoroutine(GameManager.instance.FadeOut(gameObject, collisionTag));
             //gameObject.SetActive(false);
         }
     }
