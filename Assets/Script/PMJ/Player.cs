@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
 
     public bool isDie;
     public float speed;
+    public float clearCount;
+    public float rayDistance;
+    public GameObject clearPanel;
 
     // Start is called before the first frame update
     private void Awake()
@@ -25,13 +28,29 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        //Move();
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.forward * rayDistance, Color.red);
+    
+        if (Physics.Raycast(transform.position, transform.forward, out hit, rayDistance))
+        {
+            if (hit.collider.CompareTag("Fruit"))
+            {
+                StartCoroutine(Clear());
+                Debug.Log("플레이어가 과일과 충돌했습니다!");
+            }
+        }
     }
 
     private void Move()
     {
         anim.SetBool("isWalk", true);
         if (!isDie) rigid.velocity = new Vector2(speed, 0);
+    }
+    IEnumerator Clear()
+    {
+        yield return new WaitForSeconds(clearCount);
+        clearPanel.SetActive(true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -40,6 +59,14 @@ public class Player : MonoBehaviour
         {
             speed = -speed;
             renderer.flipX = renderer.flipX ? false : true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Fruit"))
+        {
+            StartCoroutine(Clear());
         }
     }
 }
