@@ -7,6 +7,7 @@ public class TowerBox : MonoBehaviour
 {
     public List<GameObject> EnemyList = new List<GameObject>();
     public GameObject EnemySample;
+    public Sprite topBoxSprite;
     public CameraMove cameraMove;
     public List<Sprite> nolmalEnemySprite = new List<Sprite>();
     public List<Sprite> multiplicationEnemyEnemySprite = new List<Sprite>();
@@ -19,11 +20,13 @@ public class TowerBox : MonoBehaviour
     private Vector3 initialPosition;
     public int towerNumber;
     private Renderer objectRenderer;
+    private SpriteRenderer spriteRenderer;
     private Color originalColor;
     private int lineSize, rowSize;
     private float spacing = 0.8f;
     private TowerManager towerManager;
     private Camera mainCamera;
+    public bool isTopBox = false;
     public bool isBossBox = false;
     string[,] dataTable;
 
@@ -47,6 +50,14 @@ public class TowerBox : MonoBehaviour
                 Color color = material.color;
                 color.a = 0f;
                 material.color = color;
+            }
+        }
+        else
+        {
+            if (isTopBox == true)
+            {
+                BackObject.GetComponent<SpriteRenderer>().sprite = topBoxSprite;
+                BackObject.transform.Translate(new Vector3(0f, 0.28f, 0f));
             }
         }
     }

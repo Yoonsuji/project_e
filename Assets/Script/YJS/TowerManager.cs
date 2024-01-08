@@ -19,10 +19,10 @@ public class TowerManager : MonoBehaviour
     string[,] dataTable;
     private void Start()
     {
-        for (int i = 0; i < excel.Count; i++)
+        /*for (int i = 0; i < excel.Count; i++)
         {
             enemyCountList.Add(0);
-        }
+        }*/
         for (int i = 0; i < excel.Count; i++)
         {
             DataTable(excel[i], i);
@@ -59,12 +59,16 @@ public class TowerManager : MonoBehaviour
                     {
                         spawnedTower.isBossBox = true;
                     }
+                    if (j == lineSize-1)
+                    {
+                        spawnedTower.isTopBox = true;
+                    }
                     enemyCountList[towerNumber]++;
                 }
             }
             spawnedTower.towerNumber = towerNumber;
             spawnedTower.transform.parent = transform;
-            spawnedTower.transform.Translate(new Vector3(2.7f*(float)towerNumber, 2.2f*(float)i, 0f));
+            spawnedTower.transform.Translate(new Vector3(2.7f*(float)towerNumber, 1.77f*(float)i, 0f));
         }
     }
     public void EnemyCheck()
