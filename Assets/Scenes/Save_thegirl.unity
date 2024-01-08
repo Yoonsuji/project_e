@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 180381826}
   - component: {fileID: 180381828}
   - component: {fileID: 180381827}
+  - component: {fileID: 180381829}
   m_Layer: 5
   m_Name: Check (1)
   m_TagString: Untagged
@@ -311,6 +312,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180381825}
   m_CullTransparentMesh: 1
+--- !u!95 &180381829
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180381825}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 345976de78a65bf43907b01465a2e22a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &202548427
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,6 +344,8 @@ GameObject:
   - component: {fileID: 202548428}
   - component: {fileID: 202548430}
   - component: {fileID: 202548429}
+  - component: {fileID: 202548432}
+  - component: {fileID: 202548431}
   m_Layer: 5
   m_Name: Check
   m_TagString: Untagged
@@ -387,6 +411,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202548427}
   m_CullTransparentMesh: 1
+--- !u!114 &202548431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202548427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70a04c8694fe66408e98cc46bc11699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  check: {fileID: 202548427}
+--- !u!95 &202548432
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202548427}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 345976de78a65bf43907b01465a2e22a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &204450479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,18 +1208,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680059039}
-  m_LocalRotation: {x: 0, y: 0, z: 0.45608857, w: 0.8899344}
+  m_LocalRotation: {x: -0, y: 0, z: -0.90959907, w: -0.41548723}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 719005146}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 54.27}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -229.1}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 452, y: 790}
-  m_SizeDelta: {x: 495.899, y: 100}
+  m_AnchoredPosition: {x: 400, y: 666}
+  m_SizeDelta: {x: 238.9878, y: 549.748}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &680059041
 MonoBehaviour:
@@ -1175,9 +1233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fc6579636925144ad71d36362dec7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HandTarget: {fileID: 138106426}
-  HandTarget2: {fileID: 1519211902}
-  Speed: 0.2
+  HandTarget: {fileID: 1519211902}
+  HandTarget2: {fileID: 138106426}
+  Speed: 1
   isMoving: 0
 --- !u!114 &680059042
 MonoBehaviour:
@@ -1199,7 +1257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ade6c0d8f0d9a41469012c6fde3ea87e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1997,8 +2055,12 @@ MonoBehaviour:
   Background: {fileID: 1661053767}
   Distance: 5
   speed: 3
+  HandMoveSpeed: 1
   smoothTime: 0.5
   Check: {fileID: 202548427}
+  Hand: {fileID: 680059039}
+  HandTransform: {fileID: 1519211902}
+  handController: {fileID: 680059041}
 --- !u!1 &1337032689
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,7 +2279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 452, y: 768}
+  m_AnchoredPosition: {x: 641, y: 955}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1661053767
