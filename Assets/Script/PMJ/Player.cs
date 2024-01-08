@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     public float speed;
     public float clearCount;
     public float rayDistance;
-    public GameObject clearPanel;
 
     // Start is called before the first frame update
     private void Awake()
@@ -50,7 +49,7 @@ public class Player : MonoBehaviour
     IEnumerator Clear()
     {
         yield return new WaitForSeconds(clearCount);
-        clearPanel.SetActive(true);
+        GameManager.instance.clearPanel.SetActive(true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     public GameObject[] fruits;
+    public GameObject[] stagePanel;
     public GameObject tutorialPanel;
+    public GameObject clearPanel;
     public Transform fruit;
     public int fCount;
+    public int stage;
     Ring ring;
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if (instance == null) { instance = this; }
+    }
+
     void Start()
     {
+
         /*
         for (int i = 0; i < fCount; i++)
         {
@@ -38,5 +49,12 @@ public class GameManager : MonoBehaviour
             }
 
         }
+    }
+    public void Next()
+    {
+        clearPanel.SetActive(false);
+        stagePanel[stage].SetActive(false);
+        stage++;
+        stagePanel[stage].SetActive(true);
     }
 }
