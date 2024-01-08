@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
+using TreeEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -15,10 +16,11 @@ public class Player : MonoBehaviour
     public bool isDie;
     public bool isRingOut;
     public bool isClear;
-    public bool isGround;
+    public bool istransform;
+
     public float speed;
     public float clearCount;
-    public float rayDistance;
+    public float moveSpeed = 5f;
 
     public Transform targetPosition;
     // Start is called before the first frame update
@@ -38,19 +40,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGround = IsGrounded();
+        //isGround = IsGrounded();
         Move();
-        RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.forward * rayDistance, Color.red);
-    
-        if (Physics.Raycast(transform.position, transform.forward, out hit, rayDistance))
-        {
-            if (hit.collider.CompareTag("Fruit"))
-            {
-                StartCoroutine(Clear());
-                Debug.Log("플레이어가 과일과 충돌했습니다!");
-            }
-        }
     }
 
     private void Move()
@@ -69,7 +60,35 @@ public class Player : MonoBehaviour
                 rigid.velocity = new Vector2(speed, 0);
             }
         }*/
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, moveSpeed * Time.deltaTime);
+        if (isRingOut && !istransform)
+        {
+            anim.SetBool("isWalk", true);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, speed * Time.deltaTime);
+
+        }
+        /*
+         * if (!hasArrived && isRingOut)
+        {
+            // 현재 위치와 목표 위치 간의 거리 계산
+            float distance = Vector3.Distance(transform.position, targetPosition.position);
+
+            // 목표 지점에 도착하지 않았다면 계속 이동
+            if (distance > arrivalDistance)
+            {
+                // 타겟 위치 방향으로 플레이어를 부드럽게 이동
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, moveSpeed * Time.deltaTime);
+                anim.SetBool("isWalk", true); // 이동 중 애니메이션 실행
+            }
+            else
+            {
+                hasArrived = true;
+                anim.SetBool("isWalk", false); // 이동 중 애니메이션 멈춤
+                // 목표 지점에 도착했을 때 움직임 멈춤
+                // Optional: 여기에 움직임을 멈추도록 추가 코드를 작성할 수 있습니다.
+                // 예를 들어, 애니메이션을 멈추거나 다른 동작을 추가할 수 있습니다.
+            }
+        }
+        */
     }
     IEnumerator Clear()
     {
@@ -103,6 +122,12 @@ public class Player : MonoBehaviour
         {
             isClear = true;
             StartCoroutine(Clear());
+        }
+
+        else if(collision.gameObject.CompareTag("Transform"))
+        {
+            istransform = true;
+            anim.SetBool("isWalk", false);
         }
     }
 
