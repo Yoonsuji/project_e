@@ -11,6 +11,7 @@ public class TowerManager : MonoBehaviour
     public CameraMove cameraMove;
     public List<TextAsset> excel = new List<TextAsset>();
     public List<int> enemyCountList = new List<int>();
+    public GameObject ClearPanel;
     private float spacing = 1f;
     private int lineSize, rowSize;
     private int count = 0;
@@ -19,10 +20,10 @@ public class TowerManager : MonoBehaviour
     string[,] dataTable;
     private void Start()
     {
-        /*for (int i = 0; i < excel.Count; i++)
-        {
-            enemyCountList.Add(0);
-        }*/
+        
+    }
+    public void LoadStart()
+    {
         for (int i = 0; i < excel.Count; i++)
         {
             DataTable(excel[i], i);
@@ -78,6 +79,7 @@ public class TowerManager : MonoBehaviour
             if (player.nowBox.towerNumber == excel.Count - 1)
             {
                 print("Å¬¸®¾î!!");
+                Win();
             }
             else
             {
@@ -89,5 +91,9 @@ public class TowerManager : MonoBehaviour
                 cameraMove.NextTower();
             }
         }
+    }
+    public void Win()
+    {
+        ClearPanel.SetActive(true);
     }
 }

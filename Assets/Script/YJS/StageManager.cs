@@ -7,20 +7,17 @@ public class StageManager : MonoBehaviour
     public TowerManager towerManager;
     public int num;
     public List<StageData> stageData = new List<StageData>();
-    // Start is called before the first frame update
+    private CameraMove cameraMove;
     void Start()
     {
+        cameraMove = FindObjectOfType<CameraMove>();
         StageStatic.nowStageNum = num;
         for (int i = 0; i < stageData[StageStatic.nowStageNum-1].excel.Count ;i++)
         {
             towerManager.enemyCountList.Add(0);
         }
         towerManager.excel = stageData[StageStatic.nowStageNum - 1].excel;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        cameraMove.LoadStart();
+        towerManager.LoadStart();
     }
 }

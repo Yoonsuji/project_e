@@ -194,7 +194,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 449c1600fc15b9a49a7abf138d68382d, type: 3}
   - {fileID: 21300000, guid: 48dfbb5630058104c90ac28bf11ab78f, type: 3}
   BossEnemySprite:
-  - {fileID: 21300000, guid: 8137fa03071db114582dbfde31fd8955, type: 3}
+  - {fileID: 21300000, guid: 74d581395d290464eac255d2b993ee96, type: 3}
   ItemSprite:
   - {fileID: 21300000, guid: 250022e9c32f04d409f879b5777a3c6e, type: 3}
   - {fileID: 21300000, guid: e2a9f98890971f04fb0db544bcb3c120, type: 3}

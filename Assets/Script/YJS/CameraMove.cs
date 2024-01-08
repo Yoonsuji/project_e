@@ -14,7 +14,7 @@ public class CameraMove : MonoBehaviour
     public int i = 1;
 
 
-    private void Start()
+    public void LoadStart()
     {
         isActive = true;
         targetPosition.transform.Translate(new Vector3(2.7f * ((float)towerManager.excel.Count - 1f)+0.4f, 0f, -10f));

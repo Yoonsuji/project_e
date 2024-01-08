@@ -137,6 +137,7 @@ public class TowerBox : MonoBehaviour
         else
         {
             print("플레이어가 이김");
+            towerManager.Win();
         }
     }
     private void OnMouseEnter()
