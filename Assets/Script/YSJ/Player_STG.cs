@@ -3,38 +3,51 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class Player_STG : MonoBehaviour
 {
-    public GameObject Item1;
-    private bool isFadeIn = false;
-    // Start is called before the first frame update
+    Animator animator;
+
+    public float moveSpeed = 1.0f;
+    public float lerpTime = 0.5f;
+
+    public Button button1;
+    public Transform PlayerTarget;
+    public Canvas ClearCanvas;
+    public Canvas GameCanvas;
     void Start()
     {
-
+        button1.onClick.AddListener(OnButtonClick);
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnButtonClick()
     {
-        if (Item_test.Instance != null && Item_test.Instance.button1)
-        {
-            StartCoroutine(FadeInStart());
-            isFadeIn = true;    
-        }
+        StartCoroutine(Move());
     }
-
-    public IEnumerator FadeInStart()
+    private IEnumerator Move()
     {
-        Item1.SetActive(true);
-        for(float f = 1.0f; f > 0; f -= 0.02f)
+        animator.SetBool("isWalk", true);
+        yield return new WaitForSeconds(2f);
+
+        while (Vector2.Distance(transform.position, PlayerTarget.position) > 0.1f)
         {
-            Color c = Item1.GetComponent<Image>().color;
-            c.a = f;
-            Item1.GetComponent<Image>().color = c;
-            isFadeIn = false;
+            transform.position = Vector2.Lerp(transform.position, PlayerTarget.position, lerpTime * Time.deltaTime);
             yield return null;
         }
-        yield return new WaitForSeconds(1);
     }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.CompareTag("Wall"))
+        {
+            Debug.Log("Wall");
+            ClearCanvas.enabled = true;
+            GameCanvas.enabled = false;
+        }
+    }
+    
+    
 }
+

@@ -6,24 +6,59 @@ using UnityEngine.UI;
 public class SliderTimer : MonoBehaviour
 {
     Slider slTimer;
+    public Slider timeSlider;
+    private bool isTimePaused = false;
     float fSliderBarTime;
     public GameObject GameOvercanvas;
+
     // Start is called before the first frame update
     void Start()
     {
         slTimer = GetComponent<Slider>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(slTimer.value > 0.0f)
+        if (!isTimePaused)
         {
-            slTimer.value -= Time.deltaTime;
+            if (slTimer.value > 0.0f)
+            {
+                slTimer.value -= Time.deltaTime;
+            }
+            else
+            {
+                GameOvercanvas.SetActive(true);
+            }
+        }
+    }
+    public void ToggleSliderPause()
+    {
+        isTimePaused = !isTimePaused;
+        if (isTimePaused)
+        {
+            Time.timeScale = 0f;
         }
         else
         {
-            GameOvercanvas.SetActive(true);
+            Time.timeScale = 1f;
         }
+    }
+    public void OnTimeSliderValueChanged()
+    {
+        float normalizedTime = timeSlider.value;
+        Time.timeScale = normalizedTime;
+        timeSlider.interactable = true;
+    }
+
+    public void PauseGame()
+    {
+        timeSlider.interactable = false;
+    }
+
+    public void ResumeGame()
+    {
+        timeSlider.interactable = true;
     }
 }

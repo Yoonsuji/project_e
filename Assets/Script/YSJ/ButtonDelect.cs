@@ -9,12 +9,12 @@ public class ButtonDelect : MonoBehaviour
     public GameObject Item1;
     public GameObject Item2;
 
-    private bool isPressed = false;
+    public bool isPressed = false;
 
     void Start()
     {
-        button1.interactable = true;
-        button2.interactable = true;
+        button1.interactable = false;
+        button2.interactable = false;
 
         button1.onClick.AddListener(() => OnButtonClick(button1, Item1));
         button2.onClick.AddListener(() => OnButtonClick(button2, Item2));
@@ -45,13 +45,13 @@ public class ButtonDelect : MonoBehaviour
 
         item.SetActive(true);
 
-        for (float f = 0.0f; f <= 1.0f; f += 0.02f)
+        /*for (float f = 0.0f; f <= 1.0f; f += 0.02f)
         {
             Color c = item.GetComponent<Image>().color;
             c.a = f;
             item.GetComponent<Image>().color = c;
             yield return null;
-        }
+        }*/
 
         isPressed = false;
     }

@@ -13,6 +13,7 @@ public class CorrectButton : MonoBehaviour
     public float smoothTime = 0.5f;
     public GameObject Check;
     public GameObject Hand;
+    public Slider timeSlider;
     public Transform HandTransform;
 
     public HandController handController;
@@ -34,7 +35,7 @@ public class CorrectButton : MonoBehaviour
             //StartCoroutine(MoveBackground());
 
             Button button = GetComponent<Button>();
-            
+
             if (button != null)
             {
                 button.onClick.RemoveAllListeners();
