@@ -8,6 +8,7 @@
 
 #if UNITY_EDITOR
     using UnityEditor;
+    using Unity.VisualScripting;
 #endif
 
 
@@ -584,6 +585,8 @@
         private void OnDisable()
         {
             EditorApplication.update -= OnEditorUpdate;
+            SpawnersManager.DeleteSpawnerValues(instance);
+            DestroyImmediate(instance._parent);
         }
 
         float auxTime;
@@ -1224,13 +1227,16 @@
                 for (int i = 0; i < WaterDropsObjects.Length; i++)
                 {
 
-                    MetaballParticleClass MetaBall = WaterDropsObjects[i].GetComponent<MetaballParticleClass>();
+                    var a = WaterDropsObjects[i];
+                    if(a == null) continue;
+                    MetaballParticleClass MetaBall = a.GetComponent<MetaballParticleClass>();
 
-                  
+
+
 
                     //CHANGE COLOR
-                   
-                        _lastFillColor = FillColor;
+
+                    _lastFillColor = FillColor;
                         if (MetaBall.Active == false)
                             MetaBall.gameObject.GetComponent<SpriteRenderer>().color = FillColor;
 
@@ -1378,7 +1384,7 @@
             DestroyImmediate(instance._parent);
             //StartCoroutine(_destroyItself());
         }
-        
+       
     }
 
 }

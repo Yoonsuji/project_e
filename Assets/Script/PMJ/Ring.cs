@@ -10,12 +10,12 @@ public class Ring : MonoBehaviour
     public bool able;
     public bool ringOut;
     public float speed;
-
+    public Player player;
     private void Update()
     {
         if(able)
         {
-            if(ringOut) Player.instance.isRingOut = true;
+            if(ringOut&&player!=null) player.isRingOut = true;
 
             if(right)
             {
