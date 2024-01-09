@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,20 +14,34 @@ public class GameManager : MonoBehaviour
 
     public GameObject tutorialPanel;
     public GameObject clearPanel;
+    public GameObject diePanel;
     public Transform fruit;
     public int fCount;
-    public int stage;
+    public static int stage;
     public bool isCoroutine;
     Ring ring;
 
     private void Awake()
     {
-        if (instance == null) { instance = this; }
+        //DontDestroyOnLoad(gameObject);
     }
 
     void Start()
     {
+        if (instance == null) { instance = this; }
+        switch (stage)
+        {
+            case 0:
+                break;
 
+            case 1:
+
+            case 2:
+                tutorialPanel.SetActive(false);
+                stagePanel[0].SetActive(false);
+                stagePanel[stage].SetActive(true);
+                break;
+        }
         /*
         for (int i = 0; i < fCount; i++)
         {
@@ -56,11 +71,26 @@ public class GameManager : MonoBehaviour
     }
     public void Next()
     {
+        syrup = GameObject.FindGameObjectsWithTag("Metaball_liquid");
+        syrup = GameObject.FindGameObjectsWithTag("Metaball_liquid2");
+        foreach (GameObject syrupObj in syrup)
+        {
+            if (syrupObj != null)
+            {
+                Destroy(syrupObj);
+            }
+        }
         clearPanel.SetActive(false);
         stagePanel[stage].SetActive(false);
         stage++;
         stagePanel[stage].SetActive(true);
     }
+
+    public void OnRtry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 
     public IEnumerator FadeOut(GameObject gameObject, string collisionTag)
     {
@@ -95,7 +125,6 @@ public class GameManager : MonoBehaviour
                     Destroy(syrupObj);
                 }
             }
-
 
             syrup = null;
 

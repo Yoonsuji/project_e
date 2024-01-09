@@ -114,6 +114,12 @@ public class Player : MonoBehaviour
             string collisionTag = collision.gameObject.tag;
             GameManager.instance.StartCoroutine(GameManager.instance.FadeOut(gameObject, collisionTag));
         }
+
+        else if(collision.gameObject.CompareTag("Enemy"))
+        {
+            gameObject.SetActive(false);
+            GameManager.instance.diePanel.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
