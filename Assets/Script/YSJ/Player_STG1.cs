@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
-public class Player_STG : MonoBehaviour
+public class Player_STG1 : MonoBehaviour
 {
     Animator animator;
 
@@ -14,7 +14,7 @@ public class Player_STG : MonoBehaviour
 
     public Button button1;
     public Transform PlayerTarget;
-    public Canvas ClearCanvas;
+    public Canvas ClearCanvas2;
     public Canvas GameCanvas;
     void Start()
     {
@@ -27,7 +27,7 @@ public class Player_STG : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Wall");
-            ClearCanvas.gameObject.SetActive(true);
+            ClearCanvas2.gameObject.SetActive(true);
             GameCanvas.gameObject.SetActive(false);
         }
     }
