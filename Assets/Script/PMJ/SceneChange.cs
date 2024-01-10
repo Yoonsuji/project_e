@@ -25,4 +25,9 @@ public class SceneChange : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    public void TowerGame()
+    {
+        StageStatic.nowStageNum = 1;
+        SceneManager.LoadScene("HeroWars_Tower");
+    }
 }

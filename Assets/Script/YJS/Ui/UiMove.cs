@@ -5,6 +5,7 @@ using UnityEngine;
 public class UiMove : MonoBehaviour
 {
     public Transform targetObject;
+    public Camera camera;
     public Vector3 offset = new Vector3(0f, 0.5f, 0f);
 
     void Update()
