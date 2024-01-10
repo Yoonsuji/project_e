@@ -7,14 +7,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     public GameObject menuSet;
-    public List<GameObject> menu = new List<GameObject>();
-    void Start()
-    {
-        for (int i = 0; i < menu.Count; i++)
-        {
-            menu[i].SetActive(true);
-        }
-    }
+    public GameObject menuBtn;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -30,6 +23,7 @@ public class MenuManager : MonoBehaviour
         }
         if (menuSet.activeSelf)
         {
+            menuBtn.SetActive(false);
             //게임정지
         }
     }
@@ -40,6 +34,7 @@ public class MenuManager : MonoBehaviour
 
     public void Resume()
     {
+        menuBtn.SetActive(true);
         menuSet.SetActive(false);
     }
     public void GoHome()
