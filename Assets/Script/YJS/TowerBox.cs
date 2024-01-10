@@ -175,12 +175,14 @@ public class TowerBox : MonoBehaviour
             else
             {
                 EnemyList[enemyCount - 1].GetComponent<EnemyPower>().ChangeAttackAnime();
+                player.canMove = false;
                 Invoke("AnimeLoad", 3f);
             }
         }
     }
     private void AnimeLoad()
     {
+        player.canMove = true;
         if (EnemyList[enemyCount - 1].GetComponent<EnemyPower>().selectedType == EnemyPower.enemyType.nolmalEnemy)
         {
             if (player.playerPower <= EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower)
@@ -208,6 +210,7 @@ public class TowerBox : MonoBehaviour
             }
             EnemyDieLoad();
         }
+
     }
     private void EnemyDieLoad()
     {
@@ -219,7 +222,10 @@ public class TowerBox : MonoBehaviour
         //타워터치
         if (MenuStatic.isMenuOpen == false)
         {
-            player.Move(this);
+            if (player.canMove == true)
+            {
+                player.Move(this);
+            }
         }
     }
 }

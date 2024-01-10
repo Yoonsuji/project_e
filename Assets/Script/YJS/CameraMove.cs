@@ -6,6 +6,7 @@ using System.Diagnostics;
 public class CameraMove : MonoBehaviour
 {
     public Transform targetPosition;
+    public PlayerScript player;
     public float smoothTime = 0.3f;
     public TowerManager towerManager;
     private Vector3 velocity = Vector3.zero;
@@ -18,6 +19,7 @@ public class CameraMove : MonoBehaviour
     {
         isActive = true;
         targetPosition.transform.Translate(new Vector3(2.7f * ((float)towerManager.excel.Count - 1f)+0.4f, 0f, -10f));
+        player.canMove = false;
     }
 
     private void Update()
@@ -30,6 +32,10 @@ public class CameraMove : MonoBehaviour
             {
                 isActive = false;
                 this.transform.position = new Vector3(targetPosition.position.x, 0f, -10f);
+                if (isFirst != true)
+                {
+                    player.canMove = true;
+                }
             }
         }
         float ccc = Mathf.Abs(this.transform.position.x - targetPosition.transform.position.x);
@@ -42,6 +48,7 @@ public class CameraMove : MonoBehaviour
     }
     public void NextTower()
     {
+        player.canMove = false;
         targetPosition.transform.position = new Vector3(2.7f*i, 0f, -10f);
         isActive = true;
         i++;

@@ -39,14 +39,6 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
         powerText.text = playerPower.ToString();
-        if (cameraMove.isActive == true)
-        {
-            canMove = false;
-        }
-        else
-        {
-            canMove = true;
-        }
     }
     public void BossTurnMove()
     {

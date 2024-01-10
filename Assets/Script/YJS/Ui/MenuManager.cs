@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
 
     public void ReStart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("HeroWars_Tower");
     }
 
     public void Resume()

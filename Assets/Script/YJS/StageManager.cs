@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class StageManager : MonoBehaviour
     void Start()
     {
         cameraMove = FindObjectOfType<CameraMove>();
-        StageStatic.nowStageNum = num;
+        //StageStatic.nowStageNum = num;
         for (int i = 0; i < stageData[StageStatic.nowStageNum-1].excel.Count ;i++)
         {
             towerManager.enemyCountList.Add(0);
@@ -19,5 +20,10 @@ public class StageManager : MonoBehaviour
         towerManager.excel = stageData[StageStatic.nowStageNum - 1].excel;
         cameraMove.LoadStart();
         towerManager.LoadStart();
+    }
+    public void NextStage()
+    {
+        StageStatic.nowStageNum++;
+        SceneManager.LoadScene("HeroWars_Tower");
     }
 }
