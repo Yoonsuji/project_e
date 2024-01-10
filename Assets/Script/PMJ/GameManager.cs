@@ -91,6 +91,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void Stop()
+    {
+        Time.timeScale = 0f;
+    }
+
 
     public IEnumerator FadeOut(GameObject gameObject, string collisionTag)
     {
