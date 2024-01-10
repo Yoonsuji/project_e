@@ -15,13 +15,13 @@ public class CorrectButton : MonoBehaviour
     public GameObject Hand;
     public Slider timeSlider;
     public Transform HandTransform;
-
     public HandController handController;
 
     // Start is called before the first frame update
     void Start()
     {
         Button[] buttons = GetComponentsInChildren<Button>();
+
         foreach (Button button in buttons)
         {
             button.onClick.AddListener(CorrectClick);
