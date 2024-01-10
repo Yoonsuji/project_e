@@ -11,10 +11,15 @@ public class Ring : MonoBehaviour
     public bool ringOut;
     public float speed;
     public Player player;
+    public GameObject click;
     private void Update()
     {
         if(able)
         {
+            if (GameManager.stage == 0 && click != null)
+            {
+                click.SetActive(false);
+            }
             if(ringOut&&player!=null) player.isRingOut = true;
 
             if(right)

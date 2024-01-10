@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,10 +13,14 @@ public class GameManager : MonoBehaviour
     public GameObject[] fruits;
     public GameObject[] stagePanel;
     public GameObject[] syrup;
+    public GameObject click;
+    public TextMeshProUGUI stageTxt;
 
     public GameObject tutorialPanel;
     public GameObject clearPanel;
     public GameObject diePanel;
+    public GameObject menuPanel;
+
     public Transform fruit;
     public int fCount;
     public static int stage;
@@ -56,11 +62,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        stageTxt.text = "STAGE:"+ (stage+1).ToString();
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
-            if(tutorialPanel.activeSelf) tutorialPanel.SetActive(false);
+            if (tutorialPanel.activeSelf)
+            {
+                click.SetActive(true);
+                tutorialPanel.SetActive(false);
+            }
             if (hit.collider != null && hit.collider.gameObject.CompareTag("Ring"))
             {
                 ring = hit.collider.gameObject.GetComponent<Ring>();
@@ -94,8 +105,19 @@ public class GameManager : MonoBehaviour
     public void Stop()
     {
         Time.timeScale = 0f;
+        menuPanel.SetActive(true);
     }
 
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+        menuPanel.SetActive(false);
+    }
+    public void Home()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(2);
+    }
 
     public IEnumerator FadeOut(GameObject gameObject, string collisionTag)
     {
