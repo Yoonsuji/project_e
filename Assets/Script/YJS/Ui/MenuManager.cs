@@ -21,9 +21,10 @@ public class MenuManager : MonoBehaviour
                 MenuOpen();
             }
         }
-        if (menuSet.activeSelf)
+        if (menuSet.activeSelf == true)
         {
             menuBtn.SetActive(false);
+            MenuStatic.isMenuOpen = true;
             //게임정지
         }
     }
@@ -36,6 +37,7 @@ public class MenuManager : MonoBehaviour
     {
         menuBtn.SetActive(true);
         menuSet.SetActive(false);
+        MenuStatic.isMenuOpen = false;
     }
     public void GoHome()
     {

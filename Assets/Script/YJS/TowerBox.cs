@@ -88,7 +88,6 @@ public class TowerBox : MonoBehaviour
     }
     public void SpawnEnemy(float enemyType, int enemyPower)
     {
-        print("1");
         GameObject spawnedEnemy = Instantiate(EnemySample, this.transform.position, Quaternion.identity);
         if (Mathf.Approximately(enemyType, Mathf.Floor(enemyType)))
         {
@@ -196,6 +195,10 @@ public class TowerBox : MonoBehaviour
 
     private void OnMouseDown()
     {
-        player.Move(this);
+        //타워터치
+        if (MenuStatic.isMenuOpen == false)
+        {
+            player.Move(this);
+        }
     }
 }
