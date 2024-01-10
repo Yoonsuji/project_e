@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class PlayerScript : MonoBehaviour
     public int nowTowerNumber;
     public CameraMove cameraMove;
     public int playerPower;
-    public Text powerText;
+    public TMP_Text powerText;
     public bool canMove;
 
     private void Start()

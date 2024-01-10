@@ -12,6 +12,7 @@ public class TowerManager : MonoBehaviour
     public List<TextAsset> excel = new List<TextAsset>();
     public List<int> enemyCountList = new List<int>();
     public GameObject ClearPanel;
+    public GameObject towerShadow;
     private float spacing = 1f;
     private int lineSize, rowSize;
     private int count = 0;
@@ -71,6 +72,9 @@ public class TowerManager : MonoBehaviour
             spawnedTower.transform.parent = transform;
             spawnedTower.transform.Translate(new Vector3(2.7f*(float)towerNumber, 1.77f*(float)i, 0f));
         }
+        GameObject towershadow = Instantiate(towerShadow, this.transform.position, Quaternion.identity);
+        towershadow.transform.parent = transform;
+        towershadow.transform.Translate(new Vector3(-0.02f + (2.7f * towerNumber), -1f, 0f));
     }
     public void EnemyCheck()
     {
