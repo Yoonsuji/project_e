@@ -88,7 +88,6 @@ public class TowerBox : MonoBehaviour
     }
     public void SpawnEnemy(float enemyType, int enemyPower)
     {
-        print("1");
         GameObject spawnedEnemy = Instantiate(EnemySample, this.transform.position, Quaternion.identity);
         if (Mathf.Approximately(enemyType, Mathf.Floor(enemyType)))
         {
@@ -118,7 +117,7 @@ public class TowerBox : MonoBehaviour
         }
         spawnedEnemy.GetComponent<EnemyPower>().enemyPower = enemyPower;
         spawnedEnemy.transform.parent = transform;
-        spawnedEnemy.transform.Translate(new Vector3(spacing, 0f, 0f));
+        spawnedEnemy.transform.Translate(new Vector3(spacing, -0.4f, 0f));
         EnemyList.Add(spawnedEnemy);
         enemyCount++;
         spacing += -0.5f;
@@ -150,9 +149,19 @@ public class TowerBox : MonoBehaviour
     {
         if (enemyCount > 0)
         {
-            if(EnemyList[enemyCount - 1].GetComponent<EnemyPower>().selectedType == EnemyPower.enemyType.nolmalEnemy || EnemyList[enemyCount - 1].GetComponent<EnemyPower>().selectedType == EnemyPower.enemyType.BossEnemy)
+            
+            if(EnemyList[enemyCount - 1].GetComponent<EnemyPower>().selectedType == EnemyPower.enemyType.item)
             {
-                if(player.playerPower<= EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower)
+                player.playerPower += EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower;
+                EnemyDieLoad();
+                if (player.playerPower <= 0)
+                {
+                    player.PlayerDie();
+                }
+            }
+            else if(EnemyList[enemyCount - 1].GetComponent<EnemyPower>().selectedType == EnemyPower.enemyType.BossEnemy)
+            {
+                if (player.playerPower <= EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower)
                 {
                     player.playerPower = 0;
                     player.PlayerDie();
@@ -163,31 +172,42 @@ public class TowerBox : MonoBehaviour
                     EnemyDieLoad();
                 }
             }
-            else if(EnemyList[enemyCount - 1].GetComponent<EnemyPower>().selectedType == EnemyPower.enemyType.item)
+            else
+            {
+                EnemyList[enemyCount - 1].GetComponent<EnemyPower>().ChangeAttackAnime();
+                Invoke("AnimeLoad", 3f);
+            }
+        }
+    }
+    private void AnimeLoad()
+    {
+        if (EnemyList[enemyCount - 1].GetComponent<EnemyPower>().selectedType == EnemyPower.enemyType.nolmalEnemy)
+        {
+            if (player.playerPower <= EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower)
+            {
+                player.playerPower = 0;
+                player.PlayerDie();
+            }
+            else
             {
                 player.playerPower += EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower;
                 EnemyDieLoad();
-                if (player.playerPower <= 0)
-                {
-                    player.PlayerDie();
-                }
-            }
-            else if(EnemyList[enemyCount - 1].GetComponent<EnemyPower>().selectedType == EnemyPower.enemyType.multiplicationEnemy)
-            {
-                player.playerPower = player.playerPower * EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower;
-                EnemyDieLoad();
-            }
-            else if (EnemyList[enemyCount - 1].GetComponent<EnemyPower>().selectedType == EnemyPower.enemyType.squareEnemy)
-            {
-                int originalPower = player.playerPower;
-                for(int i=0;i< EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower - 1; i++)
-                {
-                    player.playerPower = player.playerPower * originalPower;
-                }
-                EnemyDieLoad();
             }
         }
-
+        else if (EnemyList[enemyCount - 1].GetComponent<EnemyPower>().selectedType == EnemyPower.enemyType.multiplicationEnemy)
+        {
+            player.playerPower = player.playerPower * EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower;
+            EnemyDieLoad();
+        }
+        else if (EnemyList[enemyCount - 1].GetComponent<EnemyPower>().selectedType == EnemyPower.enemyType.squareEnemy)
+        {
+            int originalPower = player.playerPower;
+            for (int i = 0; i < EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower - 1; i++)
+            {
+                player.playerPower = player.playerPower * originalPower;
+            }
+            EnemyDieLoad();
+        }
     }
     private void EnemyDieLoad()
     {
@@ -196,6 +216,10 @@ public class TowerBox : MonoBehaviour
 
     private void OnMouseDown()
     {
-        player.Move(this);
+        //타워터치
+        if (MenuStatic.isMenuOpen == false)
+        {
+            player.Move(this);
+        }
     }
 }
