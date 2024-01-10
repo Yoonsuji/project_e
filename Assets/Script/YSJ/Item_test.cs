@@ -13,7 +13,14 @@ public class Item_test : MonoBehaviour, IPointerClickHandler
     public bool isMoving = false;
     public Button button1;
     public Button button2;
+    private Image imgButton;
+    
 
+    void Start()
+    {
+        imgButton = GetComponent<Image>();
+        imgButton.alphaHitTestMinimumThreshold = 0.1f;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         StartCoroutine(MoveToTarget());
@@ -41,5 +48,6 @@ public class Item_test : MonoBehaviour, IPointerClickHandler
         isMoving = false;
 
         button1.interactable = true;
+        imgButton.raycastTarget = !imgButton.raycastTarget;
     }
 }
