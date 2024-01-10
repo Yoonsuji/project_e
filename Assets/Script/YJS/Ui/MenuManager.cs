@@ -33,6 +33,11 @@ public class MenuManager : MonoBehaviour
         menuSet.SetActive(true);
     }
 
+    public void ReStart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void Resume()
     {
         menuBtn.SetActive(true);

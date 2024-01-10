@@ -10,7 +10,6 @@ public class PlayerScript : MonoBehaviour
     Vector3 mousePosition;
     private Vector3 initialPosition;
     public TowerBox nowBox;
-    public int nowTowerNumber;
     public CameraMove cameraMove;
     public int playerPower;
     public TMP_Text powerText;
@@ -48,7 +47,6 @@ public class PlayerScript : MonoBehaviour
         {
             canMove = true;
         }
-        nowTowerNumber = nowBox.towerNumber;
     }
     public void BossTurnMove()
     {

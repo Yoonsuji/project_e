@@ -8,6 +8,7 @@ public class EnemyPower : MonoBehaviour
 {
     public int enemyPower;
     public List<RuntimeAnimatorController> StopAnimations = new List<RuntimeAnimatorController>();
+    public List<RuntimeAnimatorController> AttackAnimations = new List<RuntimeAnimatorController>();
     public Sprite square;
     public Sprite Boss;
     public Sprite plus;
@@ -73,9 +74,20 @@ public class EnemyPower : MonoBehaviour
                 EnemyDie();
             }
         }
-        else
+    }
+    public void ChangeAttackAnime()
+    {
+        if (selectedType == enemyType.nolmalEnemy)
         {
-            
+            this.GetComponent<Animator>().runtimeAnimatorController = AttackAnimations[0];
+        }
+        else if (selectedType == enemyType.multiplicationEnemy)
+        {
+            this.GetComponent<Animator>().runtimeAnimatorController = AttackAnimations[1];
+        }
+        else if (selectedType == enemyType.squareEnemy)
+        {
+            this.GetComponent<Animator>().runtimeAnimatorController = AttackAnimations[2];
         }
     }
     public void EnemyDie()

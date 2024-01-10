@@ -78,7 +78,7 @@ public class TowerManager : MonoBehaviour
     }
     public void EnemyCheck()
     {
-        if (enemyCountList[player.nowTowerNumber] == 0)
+        if (enemyCountList[player.nowBox.towerNumber] == 0)
         {
             if (player.nowBox.towerNumber == excel.Count - 1)
             {
@@ -87,7 +87,7 @@ public class TowerManager : MonoBehaviour
             }
             else
             {
-                if (enemyCountList[player.nowTowerNumber + 1] == 1)
+                if (enemyCountList[player.nowBox.towerNumber + 1] == 1)
                 {
                     BossTower = FindObjectOfType<TowerBox>();
                     BossTower.isBossTurn();
