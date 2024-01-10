@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemNumber: 4
   itemName: banana
-  itemPrice: 400
-  itemSprite: {fileID: 0}
+  selectedPriceType: 1
+  itemPrice: 10
+  itemSprite: {fileID: 21300000, guid: 690e616ea809d5143ab402f9480dfe40, type: 3}
+  isItemTake: 0

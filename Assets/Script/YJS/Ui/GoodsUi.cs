@@ -8,10 +8,15 @@ public class GoodsUi : MonoBehaviour
 {
     public TMP_Text goldText;
     public TMP_Text diaText;
+    private ShopManager shopManager;
 
+    private void Start()
+    {
+        shopManager = FindObjectOfType<ShopManager>();
+    }
     private void Update()
     {
-        goldText.text = GoodsStatic.gold.ToString();
-        diaText.text = GoodsStatic.dia.ToString();
+        goldText.text = shopManager.goodsPrefab.gold.ToString();
+        diaText.text = shopManager.goodsPrefab.dia.ToString();
     }
 }

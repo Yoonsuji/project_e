@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemNumber: 2
   itemName: bird
+  selectedPriceType: 0
   itemPrice: 200
   itemSprite: {fileID: 21300000, guid: 15a7953257cfd224f968b532dddd41b5, type: 3}
+  isItemTake: 0

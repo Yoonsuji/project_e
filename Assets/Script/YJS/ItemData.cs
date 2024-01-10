@@ -6,6 +6,12 @@ public class ItemData : ScriptableObject
 {
     public int itemNumber;
     public string itemName;
+    public enum priceType
+    {
+        gold, dia
+    }
+    public priceType selectedPriceType;
     public int itemPrice;
     public Sprite itemSprite;
+    public bool isItemTake;
 }

@@ -88,23 +88,21 @@ public class TowerBox : MonoBehaviour
     }
     public void SpawnEnemy(float enemyType, int enemyPower)
     {
+        print("1");
         GameObject spawnedEnemy = Instantiate(EnemySample, this.transform.position, Quaternion.identity);
         if (Mathf.Approximately(enemyType, Mathf.Floor(enemyType)))
         {
             if (enemyType > 0f)
             {
                 spawnedEnemy.GetComponent<EnemyPower>().selectedType = EnemyPower.enemyType.nolmalEnemy;
-                spawnedEnemy.GetComponent<EnemyPower>().SpriteChange(nolmalEnemySprite[(int)enemyType-1]);
             }
             else if (enemyType < 0f)
             {
                 spawnedEnemy.GetComponent<EnemyPower>().selectedType = EnemyPower.enemyType.item;
-                spawnedEnemy.GetComponent<EnemyPower>().SpriteChange(ItemSprite[-(int)enemyType-1]);
             }
             else
             {
                 spawnedEnemy.GetComponent<EnemyPower>().selectedType = EnemyPower.enemyType.BossEnemy;
-                spawnedEnemy.GetComponent<EnemyPower>().SpriteChange(BossEnemySprite[0]);
             }
         }
         else
@@ -112,12 +110,10 @@ public class TowerBox : MonoBehaviour
             if (Mathf.FloorToInt(enemyType) == 0)//°ö
             {
                 spawnedEnemy.GetComponent<EnemyPower>().selectedType = EnemyPower.enemyType.multiplicationEnemy;
-                spawnedEnemy.GetComponent<EnemyPower>().SpriteChange(multiplicationEnemyEnemySprite[0]);
             }
             else if(Mathf.FloorToInt(enemyType) == 1)//Á¦°ö
             {
                 spawnedEnemy.GetComponent<EnemyPower>().selectedType = EnemyPower.enemyType.squareEnemy;
-                spawnedEnemy.GetComponent<EnemyPower>().SpriteChange(multiplicationEnemyEnemySprite[1]);
             }
         }
         spawnedEnemy.GetComponent<EnemyPower>().enemyPower = enemyPower;
