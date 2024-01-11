@@ -67,5 +67,10 @@ public class Enemy : MonoBehaviour
             GameManager.instance.StartCoroutine(GameManager.instance.FadeOut(gameObject, collisionTag));
             //gameObject.SetActive(false);
         }
+
+        else if(collision.gameObject.CompareTag("Player"))
+        {
+            rigid.bodyType = RigidbodyType2D.Kinematic;
+        }
     }
 }
