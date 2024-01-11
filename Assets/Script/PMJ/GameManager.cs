@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         stagePanel[stage].SetActive(true);
     }
 
-    public void OnRtry()
+    public void OnRetry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

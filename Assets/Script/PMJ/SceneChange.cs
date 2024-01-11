@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
+    public GameObject selectPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -12,9 +14,9 @@ public class SceneChange : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void GameStart()
     {
-        
+        selectPanel.SetActive(true);
     }
 
     public void EscapeRoom()
