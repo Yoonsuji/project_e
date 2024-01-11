@@ -16,8 +16,10 @@ public class PlayerScript : MonoBehaviour
     public int playerPower;
     public TMP_Text powerText;
     public bool canMove;
+    public GameObject DiePanel;
     private TowerBox exBox;
     private GameObject exBoom;
+    private TowerBox previousBox = null;
     private Color originalTextColor;
 
     private void Start()
@@ -31,16 +33,27 @@ public class PlayerScript : MonoBehaviour
     {
         if (cameraMove.isFirst != true)
         {
-            this.GetComponent<Animator>().runtimeAnimatorController = null;
-            Color currentColor = powerText.color;
-            currentColor.a = 0f;
-            powerText.color = currentColor;
-            GameObject spawnedBoom = Instantiate(MoveBoom, this.transform.position, Quaternion.identity);
-            spawnedBoom.transform.position = nowBox.transform.position + Vector3.down * 0.25f;
-            exBox = towerBox;
-            exBoom = spawnedBoom;
-            Invoke("Boom", 0.5f);
-            Invoke("DoMove", 2f);
+            if (previousBox == towerBox)
+            {
+                if (towerBox.enemyCount != 0)
+                {
+                    TransPotion(towerBox.EnemyList[towerBox.enemyCount - 1].gameObject);
+                }
+            }
+            else
+            {
+                this.GetComponent<Animator>().runtimeAnimatorController = null;
+                Color currentColor = powerText.color;
+                currentColor.a = 0f;
+                powerText.color = currentColor;
+                GameObject spawnedBoom = Instantiate(MoveBoom, this.transform.position, Quaternion.identity);
+                spawnedBoom.transform.position = this.transform.position;
+                spawnedBoom.transform.position = nowBox.transform.position + Vector3.down * 0.25f;
+                exBox = towerBox;
+                exBoom = spawnedBoom;
+                Invoke("Boom", 0.5f);
+                Invoke("DoMove", 2f);
+            }
         }
         else
         {
@@ -48,6 +61,28 @@ public class PlayerScript : MonoBehaviour
             DoMove();
         }
     }
+    void TransPotion(GameObject target)
+    {
+        // 현재 위치에서 목표 위치까지 부드럽게 이동
+        StartCoroutine(MoveObject(target.transform.position.x));
+    }
+    System.Collections.IEnumerator MoveObject(float targetX)
+    {
+        float elapsedTime = 0f;
+        float startingX = transform.position.x;
+        targetX -= 0.5f;
+
+        while (elapsedTime < 1f)
+        {
+            float newX = Mathf.Lerp(startingX, targetX, elapsedTime);
+            transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+
+            elapsedTime += Time.deltaTime * 0.6f;
+            yield return null;
+        }
+        nowBox.Attacked();
+    }
+
     private void Boom()
     {
         Destroy(exBoom.gameObject);
@@ -61,22 +96,20 @@ public class PlayerScript : MonoBehaviour
         {
             nowBox = exBox;
 
-            if (nowBox.enemyCount == 0)
+            this.transform.position = nowBox.transform.position;
+            if (nowBox.enemyCount != 0)
             {
-                this.transform.position = nowBox.transform.position;
+                this.transform.position = new Vector3(nowBox.EnemyList[nowBox.enemyCount - 1].transform.position.x - 0.6f, this.transform.position.y, this.transform.position.z);
             }
-            else
-            {
-                this.transform.position = nowBox.EnemyList[nowBox.enemyCount - 1].transform.position + Vector3.left * 1f;
-            }
-            this.transform.position = nowBox.transform.position + Vector3.down * 0.15f;
             if (cameraMove.isFirst != true)
             {
                 GameObject spawnedBoom = Instantiate(MoveBoom, this.transform.position, Quaternion.identity);
+                spawnedBoom.transform.position = this.transform.position;
                 spawnedBoom.transform.position = nowBox.transform.position + Vector3.down * 0.25f;
                 exBoom = spawnedBoom;
                 Invoke("Boom", 0.5f);
             }
+            previousBox = nowBox;
             nowBox.Attacked();
         }
     }
@@ -94,6 +127,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void PlayerDie()
     {
+        DiePanel.SetActive(true);
         print("플레이어 사망");
     }
 }
