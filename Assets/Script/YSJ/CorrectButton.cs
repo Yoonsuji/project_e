@@ -32,7 +32,7 @@ public class CorrectButton : MonoBehaviour
         Check.SetActive(true);
         if (Background != null)
         {
-            //StartCoroutine(MoveBackground());
+            StartCoroutine(MoveBackground());
 
             Button button = GetComponent<Button>();
 
