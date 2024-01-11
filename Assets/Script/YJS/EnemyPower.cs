@@ -15,6 +15,7 @@ public class EnemyPower : MonoBehaviour
     public bool type;
     public TMP_Text enemyPowerText;
     private SpriteRenderer spriteRenderer;
+    private PlayerScript player;
     public enum enemyType
     {
         nolmalEnemy, BossEnemy, item, multiplicationEnemy, squareEnemy
@@ -22,6 +23,7 @@ public class EnemyPower : MonoBehaviour
     public enemyType selectedType;
     void Start()
     {
+        player = PlayerScript.FindObjectOfType<PlayerScript>();
         if (enemyPower > 0)
         {
             type = false;
@@ -76,11 +78,12 @@ public class EnemyPower : MonoBehaviour
     }
     public void ChangeAttackAnime()
     {
+        player.AttackAnime(true);
         this.GetComponent<Animator>().SetBool("Attack", true);
     }
     public void EnemyDie()
     {
-
+        player.AttackAnime(false);
         Destroy(this.gameObject);
     }
     public void SpriteChange(Sprite sprite)

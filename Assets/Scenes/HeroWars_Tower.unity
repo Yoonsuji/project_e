@@ -364,7 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {fileID: 1373252389}
   player: {fileID: 25306129}
-  smoothTime: 1
+  smoothTime: 0.7
   towerManager: {fileID: 205328820}
   isActive: 0
   isFirst: 1
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerManager: {fileID: 205328820}
-  num: 2
+  num: 1
   stageData:
   - {fileID: 11400000, guid: 8dda6d9fe9443f24487daf4cc3b067e1, type: 2}
   - {fileID: 11400000, guid: ce01d342c1b293e4a96a23642eb62637, type: 2}

@@ -154,6 +154,7 @@ public class TowerBox : MonoBehaviour
             {
                 player.playerPower += EnemyList[enemyCount - 1].GetComponent<EnemyPower>().enemyPower;
                 EnemyDieLoad();
+                player.GetComponent<Animator>().SetBool("Drive", false);
                 if (player.playerPower <= 0)
                 {
                     player.PlayerDie();

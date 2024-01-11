@@ -66,6 +66,7 @@ public class PlayerScript : MonoBehaviour
     }
     System.Collections.IEnumerator MoveObject(float targetX)
     {
+        this.GetComponent<Animator>().SetBool("Drive", true);
         float elapsedTime = 0f;
         float startingX = transform.position.x;
         targetX -= 0.5f;
@@ -78,12 +79,24 @@ public class PlayerScript : MonoBehaviour
             elapsedTime += Time.deltaTime * 1f;
             yield return null;
         }
+        this.GetComponent<Animator>().SetBool("Drive", false);
         nowBox.Attacked();
     }
 
     private void BoomDestroy()
     {
         Destroy(exBoom.gameObject);
+    }
+    public void AttackAnime(bool startstop)
+    {
+        if (startstop == true)
+        {
+            this.GetComponent<Animator>().SetBool("Attack", true);
+        }
+        else
+        {
+            this.GetComponent<Animator>().SetBool("Attack", false);
+        }
     }
 
     public void DoMove()
