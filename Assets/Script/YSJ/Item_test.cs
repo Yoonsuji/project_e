@@ -14,6 +14,7 @@ public class Item_test : MonoBehaviour, IPointerClickHandler
     public Button button1;
     public Button button2;
     private Image imgButton;
+    public GameObject HideItem1;
     
 
     void Start()
@@ -39,13 +40,16 @@ public class Item_test : MonoBehaviour, IPointerClickHandler
         while (elapsedTime < 1f)
         {
             transform.position = Vector3.Lerp(startingPos, targetTransform.position, elapsedTime);
-            imgButton.rectTransform.sizeDelta = new Vector2(100, 100);
+            transform.Rotate(new Vector3(0, 0, 10));
+            imgButton.rectTransform.sizeDelta = new Vector2(62, 104);
             elapsedTime += Time.deltaTime * moveSpeed;
+            //HideItem1.SetActive(false);
 
             yield return null;
         }
 
         transform.position = targetTransform.position;
+        transform.rotation = Quaternion.Euler(0, 0, -24);
         isMoving = false;
 
         button1.interactable = true;
