@@ -7,7 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player_STG : MonoBehaviour
 {
-    Animator animator;
+    public Animator animator;
 
     public float moveSpeed = 1.0f;
     public float lerpTime = 0.5f;

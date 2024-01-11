@@ -10,6 +10,7 @@ public class SliderTimer : MonoBehaviour
     private bool isTimePaused = false;
     float fSliderBarTime;
     public GameObject GameOvercanvas;
+    public GameObject Clearcanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class SliderTimer : MonoBehaviour
             else
             {
                 GameOvercanvas.SetActive(true);
+                Clearcanvas.SetActive(false);
             }
         }
     }

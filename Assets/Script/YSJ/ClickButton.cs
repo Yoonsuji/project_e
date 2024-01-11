@@ -18,7 +18,7 @@ public class ClickButton : MonoBehaviour
     void Move()
     {
         Check.SetActive(true);
-        Invoke("ActivateCheck", 3f);
+        Invoke("ReplayClick", 3f);
     }
     void ReplayClick()
     {
