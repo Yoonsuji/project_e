@@ -70,11 +70,11 @@ public class TowerManager : MonoBehaviour
             }
             spawnedTower.towerNumber = towerNumber;
             spawnedTower.transform.parent = transform;
-            spawnedTower.transform.Translate(new Vector3(2.7f*(float)towerNumber, 1.77f*(float)i, 0f));
+            spawnedTower.transform.Translate(new Vector3(2.7f*(float)towerNumber, 1.97f*(float)i, 0f));
         }
-        GameObject towershadow = Instantiate(towerShadow, this.transform.position, Quaternion.identity);
+        /*GameObject towershadow = Instantiate(towerShadow, this.transform.position, Quaternion.identity);
         towershadow.transform.parent = transform;
-        towershadow.transform.Translate(new Vector3(-0.02f + (2.7f * towerNumber), -1f, 0f));
+        towershadow.transform.Translate(new Vector3(-0.02f + (2.7f * towerNumber), -1f, 0f));*/
     }
     public void EnemyCheck()
     {
