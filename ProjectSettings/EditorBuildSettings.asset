@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 2572712a2a057b8458b7ca8a3a3e0553
+  - enabled: 1
     path: Assets/Scenes/Hero_Rescue.unity
     guid: 340413d2daaec0b4f8053912e8609f3c
   m_configObjects: {}

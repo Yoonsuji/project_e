@@ -19,9 +19,14 @@ public class SceneChange : MonoBehaviour
         selectPanel.SetActive(true);
     }
 
+    public void Exit()
+    {
+        selectPanel.SetActive(false);
+    }
+
     public void EscapeRoom()
     {
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
     }
     public void RingGame()
     {
