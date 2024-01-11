@@ -47,11 +47,10 @@ public class PlayerScript : MonoBehaviour
                 currentColor.a = 0f;
                 powerText.color = currentColor;
                 GameObject spawnedBoom = Instantiate(MoveBoom, this.transform.position, Quaternion.identity);
-                spawnedBoom.transform.position = this.transform.position;
-                spawnedBoom.transform.position = nowBox.transform.position + Vector3.down * 0.25f;
+                spawnedBoom.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.25f, 0f);
                 exBox = towerBox;
                 exBoom = spawnedBoom;
-                Invoke("Boom", 0.5f);
+                Invoke("BoomDestroy", 0.3f);
                 Invoke("DoMove", 2f);
             }
         }
@@ -63,7 +62,6 @@ public class PlayerScript : MonoBehaviour
     }
     void TransPotion(GameObject target)
     {
-        // 현재 위치에서 목표 위치까지 부드럽게 이동
         StartCoroutine(MoveObject(target.transform.position.x));
     }
     System.Collections.IEnumerator MoveObject(float targetX)
@@ -77,13 +75,13 @@ public class PlayerScript : MonoBehaviour
             float newX = Mathf.Lerp(startingX, targetX, elapsedTime);
             transform.position = new Vector3(newX, transform.position.y, transform.position.z);
 
-            elapsedTime += Time.deltaTime * 0.6f;
+            elapsedTime += Time.deltaTime * 1f;
             yield return null;
         }
         nowBox.Attacked();
     }
 
-    private void Boom()
+    private void BoomDestroy()
     {
         Destroy(exBoom.gameObject);
     }
@@ -96,7 +94,7 @@ public class PlayerScript : MonoBehaviour
         {
             nowBox = exBox;
 
-            this.transform.position = nowBox.transform.position;
+            this.transform.position = new Vector3(nowBox.transform.position.x, nowBox.transform.position.y - 0.17f, 0f);
             if (nowBox.enemyCount != 0)
             {
                 this.transform.position = new Vector3(nowBox.EnemyList[nowBox.enemyCount - 1].transform.position.x - 0.6f, this.transform.position.y, this.transform.position.z);
@@ -104,10 +102,9 @@ public class PlayerScript : MonoBehaviour
             if (cameraMove.isFirst != true)
             {
                 GameObject spawnedBoom = Instantiate(MoveBoom, this.transform.position, Quaternion.identity);
-                spawnedBoom.transform.position = this.transform.position;
-                spawnedBoom.transform.position = nowBox.transform.position + Vector3.down * 0.25f;
+                spawnedBoom.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.25f, 0f);
                 exBoom = spawnedBoom;
-                Invoke("Boom", 0.5f);
+                Invoke("BoomDestroy", 0.3f);
             }
             previousBox = nowBox;
             nowBox.Attacked();

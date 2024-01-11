@@ -117,7 +117,7 @@ public class TowerBox : MonoBehaviour
         }
         spawnedEnemy.GetComponent<EnemyPower>().enemyPower = enemyPower;
         spawnedEnemy.transform.parent = transform;
-        spawnedEnemy.transform.Translate(new Vector3(spacing, -0.4f, 0f));
+        spawnedEnemy.transform.Translate(new Vector3(spacing, -0.2f, 0f));
         EnemyList.Add(spawnedEnemy);
         enemyCount++;
         spacing += -0.5f;

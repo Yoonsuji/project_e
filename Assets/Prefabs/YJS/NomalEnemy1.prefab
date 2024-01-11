@@ -100,20 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPower: 0
-  StopAnimations:
-  - {fileID: 9100000, guid: dbcb663789f11ea4c89fd282de0bbb52, type: 2}
-  - {fileID: 9100000, guid: 37aa58082de39c54d94507f33b79bbd8, type: 2}
-  - {fileID: 9100000, guid: b518bdffe1d0be44e9ca2bf5ab50c566, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  AttackAnimations:
-  - {fileID: 9100000, guid: 037d784cfc4631543a587ca7a00888cc, type: 2}
-  - {fileID: 9100000, guid: a7cf86fff0c65434bb2ac5590eeed052, type: 2}
-  - {fileID: 9100000, guid: 05cc22bad2c20bf40b28a4dc8cc8901d, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  EnemyAnimations:
+  - {fileID: 9100000, guid: c1dd9dbeef930914c9ee74b8f1885ef0, type: 2}
+  - {fileID: 9100000, guid: ce8c94a8cd9b8f94797459d851cef17a, type: 2}
+  - {fileID: 9100000, guid: 2c594981d54b23a4f9ecf5b8c203fa06, type: 2}
   square: {fileID: 21300000, guid: 99db14fae3546044e986e70056945f51, type: 3}
   Boss: {fileID: 21300000, guid: 462d5e06c5c02d54188139af5d237e73, type: 3}
   plus: {fileID: 21300000, guid: e2a9f98890971f04fb0db544bcb3c120, type: 3}
@@ -393,5 +383,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObject: {fileID: 4539520378647860119}
   camera: {fileID: 0}
-  offset: {x: 0, y: 0.5, z: 0}
+  offset: {x: 0, y: 0.75, z: 0}
   me: {fileID: 0}
