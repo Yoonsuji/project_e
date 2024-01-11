@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3448947403567138940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3448947403947657513}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 896b28e6a4012ad469be0a6edf0c7bf4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 004546ce774e5f04fb168ac984dfebe6, type: 3}
   m_Color: {r: 0.9019608, g: 0.88235295, b: 0.78431374, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyList: []
   EnemySample: {fileID: 4539520378647860113, guid: 80d8fda01b43bba41b625663baa3c23e, type: 3}
-  topBoxSprite: {fileID: 21300000, guid: 7591ac43c4e4ead4f851c3f75193840d, type: 3}
+  topBoxSprite: {fileID: 21300000, guid: 5156261c416b8cb4386e9745cafa6bcd, type: 3}
   cameraMove: {fileID: 0}
   nolmalEnemySprite: []
   multiplicationEnemyEnemySprite: []
@@ -222,5 +222,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2, y: 1.7}
+  m_Size: {x: 2.35, y: 1.8}
   m_EdgeRadius: 0

@@ -12,7 +12,7 @@ public class StageManager : MonoBehaviour
     void Start()
     {
         cameraMove = FindObjectOfType<CameraMove>();
-        //StageStatic.nowStageNum = num;
+        StageStatic.nowStageNum = num;
         for (int i = 0; i < stageData[StageStatic.nowStageNum-1].excel.Count ;i++)
         {
             towerManager.enemyCountList.Add(0);

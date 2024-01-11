@@ -57,7 +57,7 @@ public class TowerBox : MonoBehaviour
             if (isTopBox == true)
             {
                 BackObject.GetComponent<SpriteRenderer>().sprite = topBoxSprite;
-                BackObject.transform.Translate(new Vector3(0f, 0.28f, 0f));
+                BackObject.transform.Translate(new Vector3(0f, 0.348f, 0f));
             }
         }
     }
