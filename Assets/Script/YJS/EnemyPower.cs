@@ -77,18 +77,7 @@ public class EnemyPower : MonoBehaviour
     }
     public void ChangeAttackAnime()
     {
-        if (selectedType == enemyType.nolmalEnemy)
-        {
-            this.GetComponent<Animator>().runtimeAnimatorController = AttackAnimations[0];
-        }
-        else if (selectedType == enemyType.multiplicationEnemy)
-        {
-            this.GetComponent<Animator>().runtimeAnimatorController = AttackAnimations[1];
-        }
-        else if (selectedType == enemyType.squareEnemy)
-        {
-            this.GetComponent<Animator>().runtimeAnimatorController = AttackAnimations[2];
-        }
+        this.GetComponent<Animator>().SetBool("Attack", true);
     }
     public void EnemyDie()
     {

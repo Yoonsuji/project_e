@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
@@ -13,10 +13,12 @@ public class Player : MonoBehaviour
     SpriteRenderer renderer;
     CapsuleCollider2D capsule;
 
+    public bool die;
     public bool isDie;
     public bool isRingOut;
     public bool isClear;
     public bool istransform;
+    public bool isGround;
 
     public float speed;
     public float clearCount;
@@ -35,15 +37,37 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-        
+        Debug.Log("Log");
     }
     // Update is called once per frame
     void Update()
     {
         //isGround = IsGrounded();
         Move();
+        Fall();
     }
 
+    private void FixedUpdate()
+    {
+        if (rigid.velocity.y < 0)
+        {
+            Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
+
+            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
+
+            if (rayHit.collider != null)
+            {
+                if (rayHit.distance < 0.5f)
+                {
+
+                    anim.SetBool("isDown", false);
+                    Debug.Log(rayHit.collider.name);
+                }
+
+            }
+            else anim.SetBool("isDown", true);
+        }
+    }
     private void Move()
     {
         /*if (!isDie && isRingOut)
@@ -60,7 +84,7 @@ public class Player : MonoBehaviour
                 rigid.velocity = new Vector2(speed, 0);
             }
         }*/
-        if (isRingOut && !istransform)
+        if (isRingOut && !istransform && !isDie)
         {
             anim.SetBool("isWalk", true);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, speed * Time.deltaTime);
@@ -69,26 +93,45 @@ public class Player : MonoBehaviour
         /*
          * if (!hasArrived && isRingOut)
         {
-            // ÇöÀç À§Ä¡¿Í ¸ñÇ¥ À§Ä¡ °£ÀÇ °Å¸® °è»ê
+            // í˜„ì¬ ìœ„ì¹˜ì™€ ëª©í‘œ ìœ„ì¹˜ ê°„ì˜ ê±°ë¦¬ ê³„ì‚°
             float distance = Vector3.Distance(transform.position, targetPosition.position);
 
-            // ¸ñÇ¥ ÁöÁ¡¿¡ µµÂøÇÏÁö ¾Ê¾Ò´Ù¸é °è¼Ó ÀÌµ¿
+            // ëª©í‘œ ì§€ì ì— ë„ì°©í•˜ì§€ ì•Šì•˜ë‹¤ë©´ ê³„ì† ì´ë™
             if (distance > arrivalDistance)
             {
-                // Å¸°Ù À§Ä¡ ¹æÇâÀ¸·Î ÇÃ·¹ÀÌ¾î¸¦ ºÎµå·´°Ô ÀÌµ¿
+                // íƒ€ê²Ÿ ìœ„ì¹˜ ë°©í–¥ìœ¼ë¡œ í”Œë ˆì´ì–´ë¥¼ ë¶€ë“œëŸ½ê²Œ ì´ë™
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, moveSpeed * Time.deltaTime);
-                anim.SetBool("isWalk", true); // ÀÌµ¿ Áß ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
+                anim.SetBool("isWalk", true); // ì´ë™ ì¤‘ ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
             }
             else
             {
                 hasArrived = true;
-                anim.SetBool("isWalk", false); // ÀÌµ¿ Áß ¾Ö´Ï¸ŞÀÌ¼Ç ¸ØÃã
-                // ¸ñÇ¥ ÁöÁ¡¿¡ µµÂøÇßÀ» ¶§ ¿òÁ÷ÀÓ ¸ØÃã
-                // Optional: ¿©±â¿¡ ¿òÁ÷ÀÓÀ» ¸ØÃßµµ·Ï Ãß°¡ ÄÚµå¸¦ ÀÛ¼ºÇÒ ¼ö ÀÖ½À´Ï´Ù.
-                // ¿¹¸¦ µé¾î, ¾Ö´Ï¸ŞÀÌ¼ÇÀ» ¸ØÃß°Å³ª ´Ù¸¥ µ¿ÀÛÀ» Ãß°¡ÇÒ ¼ö ÀÖ½À´Ï´Ù.
+                anim.SetBool("isWalk", false); // ì´ë™ ì¤‘ ì• ë‹ˆë©”ì´ì…˜ ë©ˆì¶¤
+                // ëª©í‘œ ì§€ì ì— ë„ì°©í–ˆì„ ë•Œ ì›€ì§ì„ ë©ˆì¶¤
+                // Optional: ì—¬ê¸°ì— ì›€ì§ì„ì„ ë©ˆì¶”ë„ë¡ ì¶”ê°€ ì½”ë“œë¥¼ ì‘ì„±í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.
+                // ì˜ˆë¥¼ ë“¤ì–´, ì• ë‹ˆë©”ì´ì…˜ì„ ë©ˆì¶”ê±°ë‚˜ ë‹¤ë¥¸ ë™ì‘ì„ ì¶”ê°€í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.
             }
         }
         */
+    }
+    public void Fall()
+    {
+        //if (!isGround) anim.SetBool("isDown", true);
+        //else anim.SetBool("isDown", false);
+    }
+
+    IEnumerator Die()
+    {
+        if (!die)
+        {
+            //capsule.isTrigger = true;
+            //rigid.bodyType = RigidbodyType2D.Kinematic;
+            die = true;
+            anim.SetTrigger("Die");
+            yield return new WaitForSeconds(1f);
+            gameObject.SetActive(false);
+            GameManager.instance.diePanel.SetActive(true);
+        }
     }
     IEnumerator Clear()
     {
@@ -117,8 +160,7 @@ public class Player : MonoBehaviour
 
         else if(collision.gameObject.CompareTag("Enemy"))
         {
-            gameObject.SetActive(false);
-            GameManager.instance.diePanel.SetActive(true);
+            StartCoroutine(Die());
         }
     }
 
@@ -137,18 +179,18 @@ public class Player : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        // ÇÃ·¹ÀÌ¾î ¾Æ·¡ÀÇ Raycast¸¦ ½î¾Æ ¹Ù´Ú°ú Ãæµ¹ÇÏ´ÂÁö ¿©ºÎ È®ÀÎ
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
-
-        if (hit.collider != null)
+        if (collision.gameObject.CompareTag("Ring"))
         {
-            return true; // ¹Ù´Ú¿¡ ´ê¾ÒÀ½
+            anim.SetBool("isDown", false);
         }
-        else
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ring"))
         {
-            return false; // ¹Ù´Ú¿¡ ´êÁö ¾Ê¾ÒÀ½
+            isGround = false;
         }
     }
 }

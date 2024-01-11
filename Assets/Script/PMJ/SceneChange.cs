@@ -26,7 +26,7 @@ public class SceneChange : MonoBehaviour
 
     public void EscapeRoom()
     {
-        //SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
     public void RingGame()
     {

@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
                 click.SetActive(true);
                 tutorialPanel.SetActive(false);
             }
-            if (hit.collider != null && hit.collider.gameObject.CompareTag("Ring"))
+            if (hit.collider != null && hit.collider.gameObject.CompareTag("Ring") && !tutorialPanel.activeSelf)
             {
                 ring = hit.collider.gameObject.GetComponent<Ring>();
                 ring.able = true;
@@ -116,12 +116,11 @@ public class GameManager : MonoBehaviour
     public void Home()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
 
     public IEnumerator FadeOut(GameObject gameObject, string collisionTag)
     {
-        gameObject.SetActive(false);
         //if (collision.gameObject.CompareTag("Metaball_liquid")) syrup = GameObject.FindGameObjectsWithTag("Metaball_liquid");
         //else if (collision.gameObject.CompareTag("Metaball_liquid2")) syrup = GameObject.FindGameObjectsWithTag("Metaball_liquid2");
         syrup = GameObject.FindGameObjectsWithTag(collisionTag);
@@ -157,6 +156,10 @@ public class GameManager : MonoBehaviour
 
             isCoroutine = false;
         }
+
+        if (gameObject.name == "Boss") yield return new WaitForSeconds(2.3f);
+        else if (gameObject.name == "Enemy") yield return new WaitForSeconds(0.1f);
+        gameObject.SetActive(false);
         //System.Array.Clear(syrup, 0, syrup.Length);
     }
 }
