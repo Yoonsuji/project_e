@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
         }
         clearPanel.SetActive(false);
         stagePanel[stage].SetActive(false);
+        if (stage == 2) SceneManager.LoadScene(0);
         stage++;
         stagePanel[stage].SetActive(true);
     }
@@ -157,8 +158,9 @@ public class GameManager : MonoBehaviour
             isCoroutine = false;
         }
 
-        if (gameObject.name == "Boss") yield return new WaitForSeconds(2.3f);
-        else if (gameObject.name == "Enemy") yield return new WaitForSeconds(0.1f);
+        //if (gameObject.name == "Boss") yield return new WaitForSeconds(2.3f);
+        //else if (gameObject.name == "Enemy") yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(2.3f);
         gameObject.SetActive(false);
         //System.Array.Clear(syrup, 0, syrup.Length);
     }

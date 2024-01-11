@@ -27,7 +27,7 @@ public class Fruit : MonoBehaviour
             //GameManager.instance.FadeOut(gameObject, collision);
             string collisionTag = collision.gameObject.tag;
             GameManager.instance.StartCoroutine(GameManager.instance.FadeOut(gameObject, collisionTag));
-            //gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 
@@ -40,7 +40,7 @@ public class Fruit : MonoBehaviour
             //GameManager.instance.FadeOut(gameObject, collision);
             string collisionTag = collision.gameObject.tag;
             GameManager.instance.StartCoroutine(GameManager.instance.FadeOut(gameObject, collisionTag));
-            //gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
 
     }

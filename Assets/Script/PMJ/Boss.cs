@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Boss : Enemy
 {
-    public bool die;
-    public GameObject ghost;
-    Animator anim;
+    //public bool die;
+    //public GameObject ghost;
+    //Animator anim;
     // Start is called before the first frame update
     protected override void Awake()
     {
@@ -30,6 +30,7 @@ public class Boss : Enemy
         //transform.Translate(Vector3.right * speed * Time.deltaTime);
         if (!isDie) rigid.velocity = new Vector2(speed, 0);
     }
+    /*
     private IEnumerator Die()
     {
         if (!die)
@@ -41,7 +42,7 @@ public class Boss : Enemy
             yield return new WaitForSeconds(1f);
             ghost.SetActive(false);
         }
-    }
+    }*/
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
