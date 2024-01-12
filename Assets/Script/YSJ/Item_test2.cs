@@ -35,6 +35,7 @@ public class Item_test2 : MonoBehaviour, IPointerClickHandler
         while (elapsedTime<1f)
         {
             transform.position = Vector3.Lerp(startingPos, targetTransform.position, elapsedTime);
+            imgButton.rectTransform.sizeDelta = new Vector2(135, 37);
             transform.Rotate(new Vector3(0, 0, 10));
             elapsedTime += Time.deltaTime * moveSpeed;
 
