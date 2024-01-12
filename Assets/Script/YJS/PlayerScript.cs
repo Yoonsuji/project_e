@@ -32,7 +32,6 @@ public class PlayerScript : MonoBehaviour
         changeColor.b = originalTextColor.b;
 
         this.GetComponent<Animator>().runtimeAnimatorController = capibaraAnime[0];
-        canMove = true;
     }
 
     public void Move(TowerBox towerBox)
