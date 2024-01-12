@@ -35,12 +35,14 @@ public class Item_test2 : MonoBehaviour, IPointerClickHandler
         while (elapsedTime<1f)
         {
             transform.position = Vector3.Lerp(startingPos, targetTransform.position, elapsedTime);
+            transform.Rotate(new Vector3(0, 0, 10));
             elapsedTime += Time.deltaTime * moveSpeed;
 
             yield return null;
         }
 
         transform.position = targetTransform.position;
+        transform.rotation = Quaternion.Euler(0, 0, -24);
         isMoving = false;
 
         button2.interactable = true;
