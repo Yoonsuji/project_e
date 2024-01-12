@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
-using TreeEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour
