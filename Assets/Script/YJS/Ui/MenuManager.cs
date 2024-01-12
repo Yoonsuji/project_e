@@ -46,12 +46,10 @@ public class MenuManager : MonoBehaviour
     }
     public void GoHome()
     {
-        //홈으로 이동
-        print("GOHOME");
+        SceneManager.LoadScene(0);
     }
     public void GameEnd()
     {
-        //게임종료
-        print("GameExit");
+        Application.Quit();
     }
 }
