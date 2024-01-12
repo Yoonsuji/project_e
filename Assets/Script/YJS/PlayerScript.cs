@@ -18,7 +18,6 @@ public class PlayerScript : MonoBehaviour
     public bool canMove;
     public GameObject DiePanel;
     private TowerBox exBox;
-    private GameObject exBoom;
     private TowerBox previousBox = null;
     private Color originalTextColor;
 
@@ -49,9 +48,7 @@ public class PlayerScript : MonoBehaviour
                 GameObject spawnedBoom = Instantiate(MoveBoom, this.transform.position, Quaternion.identity);
                 spawnedBoom.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.25f, 0f);
                 exBox = towerBox;
-                exBoom = spawnedBoom;
-                Invoke("BoomDestroy", 0.3f);
-                Invoke("DoMove", 2f);
+                Invoke("DoMove", 1f);
             }
         }
         else
@@ -82,11 +79,6 @@ public class PlayerScript : MonoBehaviour
         this.GetComponent<Animator>().SetBool("Drive", false);
         nowBox.Attacked();
     }
-
-    private void BoomDestroy()
-    {
-        Destroy(exBoom.gameObject);
-    }
     public void AttackAnime(bool startstop)
     {
         if (startstop == true)
@@ -116,8 +108,6 @@ public class PlayerScript : MonoBehaviour
             {
                 GameObject spawnedBoom = Instantiate(MoveBoom, this.transform.position, Quaternion.identity);
                 spawnedBoom.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.25f, 0f);
-                exBoom = spawnedBoom;
-                Invoke("BoomDestroy", 0.3f);
             }
             previousBox = nowBox;
             nowBox.Attacked();

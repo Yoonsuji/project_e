@@ -34,6 +34,7 @@ public class SceneChange : MonoBehaviour
     }
     public void TowerGame()
     {
+        StageStatic.nowStageNum = 1;
         SceneManager.LoadScene(3);
     }
 }

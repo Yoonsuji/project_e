@@ -13,7 +13,7 @@ public class UiMove : MonoBehaviour
     {
         if (targetObject != null)
         {
-            Vector3 targetPosition = targetObject.position + offset;
+            Vector3 targetPosition = targetObject.transform.position + offset;
             transform.position = Camera.main.WorldToScreenPoint(targetPosition);
         }
     }
