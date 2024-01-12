@@ -32,7 +32,7 @@ public class ShopManager : MonoBehaviour
             goldItemPrefabs.Add(spawnedPrefab);
             spawnedPrefab.transform.SetParent(transform);
             spawnedPrefab.itemData = goldShopData[i];
-            spawnedPrefab.transform.Translate(new Vector3(-420f + (i % 3) * 420f, 420f - (i / 3) * 420f, 0f));
+            spawnedPrefab.transform.Translate(new Vector3(-210f + (i % 3) * 210f, 210f - (i / 3) * 210f, 0f));
         }
         for(int i = 0; i < diaShopData.Count; i++)
         {
@@ -40,7 +40,7 @@ public class ShopManager : MonoBehaviour
             diaItemPrefabs.Add(spawnedPrefab);
             spawnedPrefab.transform.SetParent(transform);
             spawnedPrefab.itemData = diaShopData[i];
-            spawnedPrefab.transform.Translate(new Vector3(-420f + (i % 3) * 420f, 420f - (i / 3) * 420f, 0f));
+            spawnedPrefab.transform.Translate(new Vector3(-210f + (i % 3) * 210f, 210f - (i / 3) * 210f, 0f));
         }
         GoldShop();
     }

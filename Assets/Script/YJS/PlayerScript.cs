@@ -20,12 +20,18 @@ public class PlayerScript : MonoBehaviour
     private TowerBox exBox;
     private TowerBox previousBox = null;
     private Color originalTextColor;
+    private Color changeColor;
 
     private void Start()
     {
-        originalTextColor = powerText.color;
+        originalTextColor = new Color(255f, 255f, 255f, 255f);
+        changeColor = originalTextColor;
+        changeColor.a = 0f;
+        changeColor.r = originalTextColor.r;
+        changeColor.g = originalTextColor.g;
+        changeColor.b = originalTextColor.b;
+
         this.GetComponent<Animator>().runtimeAnimatorController = capibaraAnime[0];
-        canMove = true;
     }
 
     public void Move(TowerBox towerBox)
@@ -42,9 +48,10 @@ public class PlayerScript : MonoBehaviour
             else
             {
                 this.GetComponent<Animator>().runtimeAnimatorController = null;
-                Color currentColor = powerText.color;
+                powerText.color = changeColor;
+                /*Color currentColor = powerText.color;
                 currentColor.a = 0f;
-                powerText.color = currentColor;
+                powerText.color = currentColor;*/
                 GameObject spawnedBoom = Instantiate(MoveBoom, this.transform.position, Quaternion.identity);
                 spawnedBoom.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.25f, 0f);
                 exBox = towerBox;
@@ -66,7 +73,7 @@ public class PlayerScript : MonoBehaviour
         this.GetComponent<Animator>().SetBool("Drive", true);
         float elapsedTime = 0f;
         float startingX = transform.position.x;
-        targetX -= 0.5f;
+        targetX -= 0.9f;
 
         while (elapsedTime < 1f)
         {
@@ -102,7 +109,7 @@ public class PlayerScript : MonoBehaviour
             this.transform.position = new Vector3(nowBox.transform.position.x, nowBox.transform.position.y - 0.17f, 0f);
             if (nowBox.enemyCount != 0)
             {
-                this.transform.position = new Vector3(nowBox.EnemyList[nowBox.enemyCount - 1].transform.position.x - 0.6f, this.transform.position.y, this.transform.position.z);
+                this.transform.position = new Vector3(nowBox.EnemyList[nowBox.enemyCount - 1].transform.position.x - 0.9f, this.transform.position.y, this.transform.position.z);
             }
             if (cameraMove.isFirst != true)
             {
