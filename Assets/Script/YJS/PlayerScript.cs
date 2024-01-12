@@ -74,7 +74,7 @@ public class PlayerScript : MonoBehaviour
         this.GetComponent<Animator>().SetBool("Drive", true);
         float elapsedTime = 0f;
         float startingX = transform.position.x;
-        targetX -= 0.5f;
+        targetX -= 0.9f;
 
         while (elapsedTime < 1f)
         {
@@ -110,7 +110,7 @@ public class PlayerScript : MonoBehaviour
             this.transform.position = new Vector3(nowBox.transform.position.x, nowBox.transform.position.y - 0.17f, 0f);
             if (nowBox.enemyCount != 0)
             {
-                this.transform.position = new Vector3(nowBox.EnemyList[nowBox.enemyCount - 1].transform.position.x - 0.6f, this.transform.position.y, this.transform.position.z);
+                this.transform.position = new Vector3(nowBox.EnemyList[nowBox.enemyCount - 1].transform.position.x - 0.9f, this.transform.position.y, this.transform.position.z);
             }
             if (cameraMove.isFirst != true)
             {
