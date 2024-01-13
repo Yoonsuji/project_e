@@ -384,4 +384,4 @@ MonoBehaviour:
   targetObject: {fileID: 4539520378647860119}
   camera: {fileID: 0}
   offset: {x: 0, y: 0.75, z: 0}
-  me: {fileID: 0}
+  squareText: {fileID: 676776675918112219, guid: d094a46765bcf1f44bc836bfcdf7feca, type: 3}

@@ -23,6 +23,11 @@ public class EnemyPower : MonoBehaviour
     public enemyType selectedType;
     void Start()
     {
+        if (selectedType == enemyType.multiplicationEnemy)
+        {
+            enemyPowerText.text = enemyPower.ToString();
+        }
+        enemyPowerText.text = enemyPower.ToString();
         player = PlayerScript.FindObjectOfType<PlayerScript>();
         if (enemyPower > 0)
         {
@@ -63,11 +68,6 @@ public class EnemyPower : MonoBehaviour
 
     void Update()
     {
-        if (selectedType == enemyType.multiplicationEnemy)
-        {
-            enemyPowerText.text = enemyPower.ToString();
-        }
-        enemyPowerText.text = enemyPower.ToString();
         if (type == false)
         {
             if (enemyPower <= 0)

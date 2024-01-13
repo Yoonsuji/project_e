@@ -93,26 +93,26 @@ public class TowerBox : MonoBehaviour
         {
             if (enemyType > 0f)
             {
-                spawnedEnemy.GetComponent<EnemyPower>().selectedType = EnemyPower.enemyType.nolmalEnemy;
+                TypeSelect(spawnedEnemy, EnemyPower.enemyType.nolmalEnemy);
             }
             else if (enemyType < 0f)
             {
-                spawnedEnemy.GetComponent<EnemyPower>().selectedType = EnemyPower.enemyType.item;
+                TypeSelect(spawnedEnemy, EnemyPower.enemyType.item);
             }
             else
             {
-                spawnedEnemy.GetComponent<EnemyPower>().selectedType = EnemyPower.enemyType.BossEnemy;
+                TypeSelect(spawnedEnemy, EnemyPower.enemyType.BossEnemy);
             }
         }
         else
         {
             if (Mathf.FloorToInt(enemyType) == 0)//°ö
             {
-                spawnedEnemy.GetComponent<EnemyPower>().selectedType = EnemyPower.enemyType.multiplicationEnemy;
+                TypeSelect(spawnedEnemy, EnemyPower.enemyType.multiplicationEnemy);
             }
             else if(Mathf.FloorToInt(enemyType) == 1)//Á¦°ö
             {
-                spawnedEnemy.GetComponent<EnemyPower>().selectedType = EnemyPower.enemyType.squareEnemy;
+                TypeSelect(spawnedEnemy, EnemyPower.enemyType.squareEnemy);
             }
         }
         spawnedEnemy.GetComponent<EnemyPower>().enemyPower = enemyPower;
@@ -121,6 +121,10 @@ public class TowerBox : MonoBehaviour
         EnemyList.Add(spawnedEnemy);
         enemyCount++;
         spacing += -0.5f;
+    }
+    private void TypeSelect(GameObject spawnedEnemy, EnemyPower.enemyType type)
+    {
+        spawnedEnemy.GetComponent<EnemyPower>().selectedType = type;
     }
     public void LastBossAttack()
     {

@@ -49,9 +49,6 @@ public class PlayerScript : MonoBehaviour
             {
                 this.GetComponent<Animator>().runtimeAnimatorController = null;
                 powerText.color = changeColor;
-                /*Color currentColor = powerText.color;
-                currentColor.a = 0f;
-                powerText.color = currentColor;*/
                 GameObject spawnedBoom = Instantiate(MoveBoom, this.transform.position, Quaternion.identity);
                 spawnedBoom.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.25f, 0f);
                 exBox = towerBox;
