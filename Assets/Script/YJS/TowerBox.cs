@@ -84,6 +84,7 @@ public class TowerBox : MonoBehaviour
     public void isBossTurn()
     {
         player.nowBox = this;
+        EnemyList[0].GetComponent<EnemyPower>().ChangeAttackAnime();
         player.BossTurnMove();
     }
     public void SpawnEnemy(float enemyType, int enemyPower)
@@ -135,9 +136,13 @@ public class TowerBox : MonoBehaviour
         }
         else
         {
-            print("플레이어가 이김");
-            towerManager.Win();
+            EnemyList[0].GetComponent<Animator>().SetBool("Die", true);
+            Invoke("DieAnime", 2f);
         }
+    }
+    private void DieAnime()
+    {
+        towerManager.Win();
     }
     private void OnMouseEnter()
     {

@@ -123,7 +123,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void BossTurnMove()
     {
-        Invoke("LastAttack", 3f);
+        Invoke("LastAttack", 7f);
     }
     private void LastAttack()
     {

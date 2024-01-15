@@ -51,7 +51,8 @@ public class EnemyPower : MonoBehaviour
         }
         else if (selectedType == enemyType.BossEnemy)
         {
-            SpriteChange(Boss);
+            this.GetComponent<Animator>().runtimeAnimatorController = EnemyAnimations[3];
+            this.transform.position = new Vector3(this.transform.position.x, -1.1f, 0f);
         }
         else if (selectedType == enemyType.item)
         {
