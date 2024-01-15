@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f;
 
     public Transform targetPosition;
+    bool win;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -168,6 +169,11 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Fruit"))
         {
             isClear = true;
+            if (!win)
+            {
+                win = true;
+                anim.SetTrigger("Win");
+            }
             StartCoroutine(Clear());
         }
 

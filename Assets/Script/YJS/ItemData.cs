@@ -6,6 +6,10 @@ public class ItemData : ScriptableObject
 {
     public int itemNumber;
     public string itemName;
+    public enum itemType
+    {
+        cloth, furniture, background, pet
+    }
     public enum priceType
     {
         gold, dia

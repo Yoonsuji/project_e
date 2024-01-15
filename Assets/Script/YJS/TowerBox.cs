@@ -131,14 +131,18 @@ public class TowerBox : MonoBehaviour
     {
         if (EnemyList[0].GetComponent<EnemyPower>().enemyPower >= player.playerPower)
         {
-            print("∫∏Ω∫∞° ¿Ã±Ë");
-            player.PlayerDie();
+            EnemyList[0].GetComponent<Animator>().SetBool("Attack", true);
+            Invoke("PlayerDie", 2f);
         }
         else
         {
             EnemyList[0].GetComponent<Animator>().SetBool("Die", true);
             Invoke("DieAnime", 2f);
         }
+    }
+    private void PlayerDie()
+    {
+        player.PlayerDie();
     }
     private void DieAnime()
     {

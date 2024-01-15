@@ -2,16 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneChange : MonoBehaviour
 {
     public GameObject selectPanel;
     public GameObject sceneChangePanel;
+
     public int gameNumber;
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    private void Update()
+    {
+
     }
 
     // Update is called once per frame
@@ -31,14 +38,4 @@ public class SceneChange : MonoBehaviour
         //gameNumber = game;
         SceneManager.LoadScene(game);
     }
-    public void RingGame()
-    {
-        SceneManager.LoadScene(1);
-    }
-    public void TowerGame()
-    {
-        StageStatic.nowStageNum = 1;
-        SceneManager.LoadScene(3);
-    }
-
 }
