@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public StagePrefab stagePrefab;
     public GameObject[] fruits;
     public GameObject[] stagePanel;
     public GameObject[] syrup;
@@ -22,12 +23,15 @@ public class GameManager : MonoBehaviour
 
     public Transform fruit;
     public int fCount;
+    public static int maxStage;
     public static int stage;
     public bool isCoroutine;
     Ring ring;
 
     private void Awake()
     {
+        maxStage = stagePanel.Length;
+        stage = stagePrefab.currentStage -1;
         //DontDestroyOnLoad(gameObject);
     }
 
@@ -61,6 +65,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        stagePrefab.currentStage = stage + 1;
         stageTxt.text = "STAGE:"+ (stage+1).ToString();
         if (Input.GetMouseButtonDown(0))
         {
