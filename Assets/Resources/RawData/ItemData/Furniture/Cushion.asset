@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a09c25713ffac79458b3d81f85426a92, type: 3}
-  m_Name: Item1
+  m_Name: Cushion
   m_EditorClassIdentifier: 
-  itemNumber: 1
-  itemName: tangerine
+  itemNumber: 2
+  itemName: Cushion
   selectedPriceType: 0
   itemPrice: 100
-  itemSprite: {fileID: 21300000, guid: 5bd01ab704c4cbf429d29436d38dc189, type: 3}
+  itemSprite: {fileID: 21300000, guid: 95587cd1a420415429e31897f49c752d, type: 3}
   isItemTake: 0

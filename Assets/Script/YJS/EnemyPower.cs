@@ -80,7 +80,10 @@ public class EnemyPower : MonoBehaviour
     public void ChangeAttackAnime()
     {
         player.AttackAnime(true);
-        this.GetComponent<Animator>().SetBool("Attack", true);
+        if (selectedType == enemyType.BossEnemy)
+        {
+            this.GetComponent<Animator>().SetBool("Attack", true);
+        }
     }
     public void EnemyDie()
     {

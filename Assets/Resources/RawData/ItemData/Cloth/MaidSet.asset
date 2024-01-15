@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09c25713ffac79458b3d81f85426a92, type: 3}
+  m_Name: MaidSet
+  m_EditorClassIdentifier: 
+  itemNumber: 1
+  itemName: MaidSet
+  selectedPriceType: 0
+  itemPrice: 300
+  itemSprite: {fileID: 21300000, guid: 690e616ea809d5143ab402f9480dfe40, type: 3}
+  isItemTake: 0

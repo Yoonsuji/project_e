@@ -11,11 +11,11 @@ public class ItemPrefab : MonoBehaviour
     public ItemData itemData;
     public TMP_Text priceUi;
     private SpriteRenderer spriteRenderer;
-    private ShopManager shopManager;
+    private ShopPrefabSpawn shopManager;
     private void Start()
     {
         ItemSpriteObject.sprite = itemData.itemSprite;
-        shopManager = FindObjectOfType<ShopManager>();
+        shopManager = FindObjectOfType<ShopPrefabSpawn>();
         if (itemData.selectedPriceType == ItemData.priceType.gold)
         {
             priceUi.text = itemData.itemPrice + "gold";
