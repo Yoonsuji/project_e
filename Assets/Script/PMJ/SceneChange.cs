@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
     public GameObject selectPanel;
-
+    public GameObject sceneChangePanel;
+    public int gameNumber;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +25,11 @@ public class SceneChange : MonoBehaviour
         selectPanel.SetActive(false);
     }
 
-    public void EscapeRoom()
+    public void GameType(int game)
     {
-        SceneManager.LoadScene(2);
+        //sceneChangePanel.SetActive(true);
+        //gameNumber = game;
+        SceneManager.LoadScene(game);
     }
     public void RingGame()
     {
@@ -37,4 +40,5 @@ public class SceneChange : MonoBehaviour
         StageStatic.nowStageNum = 1;
         SceneManager.LoadScene(3);
     }
+
 }
