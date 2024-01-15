@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WallClock
   m_EditorClassIdentifier: 
   itemNumber: 2
-  itemName: WallClock
+  itemName: "\uBCBD \uC2DC\uACC4"
   selectedPriceType: 0
   itemPrice: 100
   itemSprite: {fileID: 21300000, guid: 95587cd1a420415429e31897f49c752d, type: 3}

@@ -9,145 +9,83 @@ public class ShopManager : MonoBehaviour
     public ItemData selectItemData;
     public Image ChrPanel;
     public GoodsPrefab goodsPrefab;
-    public List<ItemData> clothShopData = new List<ItemData>();
-    public List<ItemData> furnitureShopData = new List<ItemData>();
-    public List<ItemData> backgroundShopData = new List<ItemData>();
-    public List<ItemData> petShopData = new List<ItemData>();
-    private List<ItemPrefab> clothItemPrefabs = new List<ItemPrefab>();
-    private List<ItemPrefab> furnitureItemPrefabs = new List<ItemPrefab>();
-    private List<ItemPrefab> backgroundItemPrefabs = new List<ItemPrefab>();
-    private List<ItemPrefab> petItemPrefabs = new List<ItemPrefab>();
-    public ItemPrefab itemPrefab;
-    public enum nowShopType
-    {
-        gold, dia
-    }
+    public ShopPrefabSpawn shopPrefabSpawn;
+    public GameObject BuyPanel;
+    public GameObject BuyBtn;
+    public TMP_Text BuyText;
+    public TMP_Text backText;
+    public Image ItemPanel;
     private void Start()
     {
         selectItemData = null;
-        for(int i = 0; i < clothShopData.Count; i++)
-        {
-            ItemPrefab spawnedPrefab = Instantiate(itemPrefab, this.transform.position, Quaternion.identity);
-            clothItemPrefabs.Add(spawnedPrefab);
-            spawnedPrefab.transform.SetParent(transform);
-            spawnedPrefab.itemData = clothShopData[i];
-            //spawnedPrefab.transform.Translate(new Vector3(-210f + (i % 3) * 210f, 190f - (i / 3) * 210f, 0f));
-        }
-        for(int i = 0; i < furnitureShopData.Count; i++)
-        {
-            ItemPrefab spawnedPrefab = Instantiate(itemPrefab, this.transform.position, Quaternion.identity);
-            furnitureItemPrefabs.Add(spawnedPrefab);
-            spawnedPrefab.transform.SetParent(transform);
-            spawnedPrefab.itemData = furnitureShopData[i];
-            //spawnedPrefab.transform.Translate(new Vector3(-210f + (i % 3) * 210f, 190f - (i / 3) * 210f, 0f));
-        }/*
-        for (int i = 0; i < backgroundShopData.Count; i++)
-        {
-            ItemPrefab spawnedPrefab = Instantiate(itemPrefab, this.transform.position, Quaternion.identity);
-            backgroundItemPrefabs.Add(spawnedPrefab);
-            spawnedPrefab.transform.SetParent(transform);
-            spawnedPrefab.itemData = backgroundShopData[i];
-            spawnedPrefab.transform.Translate(new Vector3(-210f + (i % 3) * 210f, 190f - (i / 3) * 210f, 0f));
-        }
-        for (int i = 0; i < petShopData.Count; i++)
-        {
-            ItemPrefab spawnedPrefab = Instantiate(itemPrefab, this.transform.position, Quaternion.identity);
-            petItemPrefabs.Add(spawnedPrefab);
-            spawnedPrefab.transform.SetParent(transform);
-            spawnedPrefab.itemData = petShopData[i];
-            spawnedPrefab.transform.Translate(new Vector3(-210f + (i % 3) * 210f, 190f - (i / 3) * 210f, 0f));
-        }*/
-        ClothShop();
     }
     private void Update()
     {
+        selectItemData = shopPrefabSpawn.selectItemData;
         if (selectItemData != null)
         {
-            ChrPanel.sprite = selectItemData.itemSprite;
-        }
-    }
-    public void BuyBtn()
-    {
-        Buying(selectItemData.selectedPriceType, selectItemData.itemPrice);
-    }
-    private void Buying(ItemData.priceType type , int price)
-    {
-        if (type == ItemData.priceType.gold)
-        {
-            if (goodsPrefab.gold >= price)
+            BuyPanel.SetActive(true);
+            ItemPanel.sprite = selectItemData.itemSprite;
+            if (selectItemData.isItemTake == true)
             {
-                SuccessBuy(price);
+                BuyText.text = "구매하였습니다.";
+                backText.text = "나가기";
+                BuyBtn.SetActive(false);
+            }
+            else
+            {
+                BuyText.text = selectItemData.itemName + "를 \n구매하시겠습니까?";
+                backText.text = "아니오";
+                BuyBtn.SetActive(true);
             }
         }
-        else if (type == ItemData.priceType.dia)
+        else
         {
-            if (goodsPrefab.dia >= price)
-            {
-                SuccessBuy(price);
-            }
-        }
-    }
-    private void SuccessBuy(int price)
-    {
-        print(selectItemData.itemName + "구매완료!!");
-        goodsPrefab.gold -= price;
-        selectItemData.isItemTake = true;
-        selectItemData = null;
-    }
-    public void ClothShop()
-    {
-        for (int i = 0; i < clothItemPrefabs.Count; i++)
-        {
-            clothItemPrefabs[i].gameObject.SetActive(true);
-        }
-        for(int i = 0; i < furnitureItemPrefabs.Count; i++)
-        {
-            furnitureItemPrefabs[i].gameObject.SetActive(false);
-        }
-    }
-    public void FurnitureShop()
-    {
-        for (int i = 0; i < clothItemPrefabs.Count; i++)
-        {
-            clothItemPrefabs[i].gameObject.SetActive(false);
-        }
-        for (int i = 0; i < furnitureItemPrefabs.Count; i++)
-        {
-            furnitureItemPrefabs[i].gameObject.SetActive(true);
-        }
-    }
-    public void BackgroundShop()
-    {
-        for (int i = 0; i < clothItemPrefabs.Count; i++)
-        {
-            clothItemPrefabs[i].gameObject.SetActive(false);
-        }
-        for (int i = 0; i < furnitureItemPrefabs.Count; i++)
-        {
-            furnitureItemPrefabs[i].gameObject.SetActive(true);
-        }
-    }
-    public void PetShop()
-    {
-        for (int i = 0; i < clothItemPrefabs.Count; i++)
-        {
-            clothItemPrefabs[i].gameObject.SetActive(false);
-        }
-        for (int i = 0; i < furnitureItemPrefabs.Count; i++)
-        {
-            furnitureItemPrefabs[i].gameObject.SetActive(true);
+            BuyPanel.SetActive(false);
         }
     }
     public void ResetBtn()
     {
-        for(int i = 0; i < clothShopData.Count; i++)
+        for(int i = 0; i < shopPrefabSpawn.items.Count; i++)
         {
-            clothShopData[i].isItemTake = false;
+            shopPrefabSpawn.items[i].itemData.isItemTake = false;
         }
         goodsPrefab.gold = 0;
     }
     public void PlusBtn()
     {
         goodsPrefab.gold += 100;
+    }
+    public void BuyYes()
+    {
+        if (selectItemData.selectedPriceType == ItemData.priceType.gold)
+        {
+            if (goodsPrefab.gold >= selectItemData.itemPrice)
+            {
+                selectItemData.isItemTake = true;
+                goodsPrefab.gold -= selectItemData.itemPrice;
+            }
+            else
+            {
+                print("재화가 부족합니다.");
+            }
+        }
+        else
+        {
+            if (goodsPrefab.dia >= selectItemData.itemPrice)
+            {
+                selectItemData.isItemTake = true;
+                goodsPrefab.gold -= selectItemData.itemPrice;
+            }
+            else
+            {
+                print("재화가 부족합니다.");
+            }
+        }
+    }
+    public void BuyNo()
+    {
+        shopPrefabSpawn.selectItemData = null;
+        selectItemData = null;
     }
 }

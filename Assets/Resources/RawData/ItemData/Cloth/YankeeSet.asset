@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: YankeeSet
   m_EditorClassIdentifier: 
   itemNumber: 1
-  itemName: YankeeSet
+  itemName: "\uC591\uD0A4 \uC138\uD2B8"
   selectedPriceType: 0
   itemPrice: 300
   itemSprite: {fileID: 21300000, guid: 690e616ea809d5143ab402f9480dfe40, type: 3}

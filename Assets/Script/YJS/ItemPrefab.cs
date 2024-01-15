@@ -11,11 +11,13 @@ public class ItemPrefab : MonoBehaviour
     public ItemData itemData;
     public TMP_Text priceUi;
     private SpriteRenderer spriteRenderer;
-    private ShopPrefabSpawn shopManager;
+    private ShopPrefabSpawn shopPrefabSpawn;
+    private ShopManager shopManager;
     private void Start()
     {
         ItemSpriteObject.sprite = itemData.itemSprite;
-        shopManager = FindObjectOfType<ShopPrefabSpawn>();
+        shopPrefabSpawn = FindObjectOfType<ShopPrefabSpawn>();
+        shopManager = FindObjectOfType<ShopManager>();
         if (itemData.selectedPriceType == ItemData.priceType.gold)
         {
             priceUi.text = itemData.itemPrice + "gold";
@@ -34,13 +36,6 @@ public class ItemPrefab : MonoBehaviour
     }
     public void ItemClick()
     {
-        if (itemData.isItemTake == false)
-        {
-            shopManager.selectItemData = itemData;
-        }
-        else
-        {
-            print("이미구매완료");
-        }
+        shopPrefabSpawn.selectItemData = itemData;
     }
 }

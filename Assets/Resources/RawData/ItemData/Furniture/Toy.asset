@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Toy
   m_EditorClassIdentifier: 
   itemNumber: 2
-  itemName: Toy
+  itemName: "\uC7A5\uB09C\uAC10"
   selectedPriceType: 0
   itemPrice: 300
   itemSprite: {fileID: 21300000, guid: 95587cd1a420415429e31897f49c752d, type: 3}

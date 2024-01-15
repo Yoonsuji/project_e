@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Table
   m_EditorClassIdentifier: 
   itemNumber: 2
-  itemName: Table
+  itemName: "\uD14C\uC774\uBE14"
   selectedPriceType: 0
   itemPrice: 200
   itemSprite: {fileID: 21300000, guid: 95587cd1a420415429e31897f49c752d, type: 3}

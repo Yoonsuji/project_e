@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Doll
   m_EditorClassIdentifier: 
   itemNumber: 2
-  itemName: Doll
+  itemName: "\uC778\uD615"
   selectedPriceType: 0
   itemPrice: 300
   itemSprite: {fileID: 21300000, guid: 95587cd1a420415429e31897f49c752d, type: 3}
