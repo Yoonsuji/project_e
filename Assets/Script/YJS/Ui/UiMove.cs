@@ -32,6 +32,11 @@ public class UiMove : MonoBehaviour
                     text.transform.SetParent(transform, false);
                     text.transform.localPosition = new Vector3(-25f, -25f, 0f);
                 }
+                else if(targetObject.gameObject.GetComponent<EnemyPower>().selectedType == EnemyPower.enemyType.BossEnemy)
+                {
+                    offset = new Vector3(0f, 2f, 0f);
+                    this.GetComponent<TMP_Text>().fontSize = 75f;
+                }
             }
         }
     }

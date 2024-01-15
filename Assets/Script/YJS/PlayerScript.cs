@@ -17,10 +17,13 @@ public class PlayerScript : MonoBehaviour
     public TMP_Text powerText;
     public bool canMove;
     public GameObject DiePanel;
+    public GameObject BossGunEffect;
+    public GameObject NormalGunEffect;
     private TowerBox exBox;
     private TowerBox previousBox = null;
     private Color originalTextColor;
     private Color changeColor;
+    private GameObject effect;
 
     private void Start()
     {
@@ -88,10 +91,18 @@ public class PlayerScript : MonoBehaviour
         if (startstop == true)
         {
             this.GetComponent<Animator>().SetBool("Attack", true);
+            GameObject spawnedEffect = Instantiate(NormalGunEffect, this.transform.position, Quaternion.identity);
+            spawnedEffect.transform.parent = transform;
+            spawnedEffect.transform.Translate(new Vector3(-0.17f, 0f, 0f));
+            effect = spawnedEffect;
         }
         else
         {
             this.GetComponent<Animator>().SetBool("Attack", false);
+            if (effect != null)
+            {
+                Destroy(effect.gameObject);
+            }
         }
     }
 
@@ -123,6 +134,8 @@ public class PlayerScript : MonoBehaviour
     }
     public void BossTurnMove()
     {
+        GameObject spawnedGun = Instantiate(BossGunEffect, this.transform.position, Quaternion.identity);
+        spawnedGun.transform.position = new Vector3(6f, -0.6f, 0f);
         Invoke("LastAttack", 7f);
     }
     private void LastAttack()
@@ -130,6 +143,11 @@ public class PlayerScript : MonoBehaviour
         nowBox.LastBossAttack();
     }
     public void PlayerDie()
+    {
+        this.GetComponent<Animator>().SetBool("Die", true);
+        Invoke("Die", 1.8f);
+    }
+    private void Die()
     {
         DiePanel.SetActive(true);
         print("플레이어 사망");

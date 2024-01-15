@@ -18,20 +18,24 @@ public class ItemPrefab : MonoBehaviour
         ItemSpriteObject.sprite = itemData.itemSprite;
         shopPrefabSpawn = FindObjectOfType<ShopPrefabSpawn>();
         shopManager = FindObjectOfType<ShopManager>();
-        if (itemData.selectedPriceType == ItemData.priceType.gold)
-        {
-            priceUi.text = itemData.itemPrice + "gold";
-        }
-        else if (itemData.selectedPriceType == ItemData.priceType.dia)
-        {
-            priceUi.text = itemData.itemPrice + "dia";
-        }
     }
     private void Update()
     {
         if (itemData.isItemTake == true)
         {
-            ItemSpriteObject.color = new Color(1f,1f,1f,.5f);
+            ItemSpriteObject.color = new Color(1f, 1f, 1f, .5f);
+            priceUi.text = "구매완료";
+        }
+        else
+        {
+            if (itemData.selectedPriceType == ItemData.priceType.gold)
+            {
+                priceUi.text = itemData.itemPrice + "gold";
+            }
+            else if (itemData.selectedPriceType == ItemData.priceType.dia)
+            {
+                priceUi.text = itemData.itemPrice + "dia";
+            }
         }
     }
     public void ItemClick()
