@@ -12,6 +12,7 @@ TagManager:
   - Fruit
   - Metaball_liquid2
   - Transform
+  - TimeNo
   layers:
   - Default
   - TransparentFX

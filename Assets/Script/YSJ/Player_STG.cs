@@ -13,12 +13,15 @@ public class Player_STG : MonoBehaviour
     public float lerpTime = 0.5f;
 
     public Button button1;
+    public Button button2;
     public Transform PlayerTarget;
     public Canvas ClearCanvas;
     public Canvas GameCanvas;
+    public GameObject TimeNo;
     void Start()
     {
         button1.onClick.AddListener(OnButtonClick);
+        button2.onClick.AddListener(OnButtonClick2);
         animator = gameObject.GetComponentInChildren<Animator>();
     }
 
@@ -30,8 +33,17 @@ public class Player_STG : MonoBehaviour
             ClearCanvas.gameObject.SetActive(true);
             GameCanvas.gameObject.SetActive(false);
         }
+        if (collision.gameObject.CompareTag("TimeNo"))
+        {
+            Debug.Log("TimeNo");
+            TimeNo.gameObject.SetActive(false);
+        }
     }
     void OnButtonClick()
+    {
+        StartCoroutine(Move());
+    }
+    void OnButtonClick2()
     {
         StartCoroutine(Move());
     }
