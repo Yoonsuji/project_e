@@ -8,6 +8,11 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject menuSet;
     public GameObject menuBtn;
+    private PlayerScript player;
+    private void Start()
+    {
+        player = FindObjectOfType<PlayerScript>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -24,7 +29,7 @@ public class MenuManager : MonoBehaviour
         if (menuSet.activeSelf == true)
         {
             menuBtn.SetActive(false);
-            MenuStatic.isMenuOpen = true;
+            player.canMove = false;
             //게임정지
         }
     }
@@ -42,10 +47,11 @@ public class MenuManager : MonoBehaviour
     {
         menuBtn.SetActive(true);
         menuSet.SetActive(false);
-        MenuStatic.isMenuOpen = false;
+        player.canMove = true;
     }
     public void GoHome()
     {
+        player.canMove = true;
         SceneManager.LoadScene(0);
     }
     public void GameEnd()
