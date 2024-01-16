@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HeroWars_Tower.unity
     guid: 52d9c319197d43147ace576bca953342
+  - enabled: 1
+    path: Assets/Scenes/ShopScene.unity
+    guid: b2e8bc4f169ecc540a5d2e93baf12734
   m_configObjects: {}

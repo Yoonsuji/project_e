@@ -149,6 +149,7 @@ public class PlayerScript : MonoBehaviour
     }
     private void Die()
     {
+        canMove = false;
         DiePanel.SetActive(true);
         print("플레이어 사망");
     }
