@@ -800,13 +800,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectItemData: {fileID: 0}
+  selectCurrentCloth: {fileID: 0}
   ChrPanel: {fileID: 0}
   goodsPrefab: {fileID: 11400000, guid: f908aba86ee54fa44a8f081128bd47f7, type: 2}
   shopPrefabSpawn: {fileID: 204394514}
   BuyPanel: {fileID: 1393716723}
-  BuyBtn: {fileID: 470347976}
   BuyText: {fileID: 108172622}
-  backText: {fileID: 1041538693}
+  buyBtnText: {fileID: 1191091034}
+  backBtnText: {fileID: 1041538693}
   ItemPanel: {fileID: 40729189}
 --- !u!1 &433697032
 GameObject:
