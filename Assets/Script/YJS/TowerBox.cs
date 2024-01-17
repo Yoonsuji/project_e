@@ -232,9 +232,13 @@ public class TowerBox : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (player.canMove == true)
+        //타워터치
+        if (MenuStatic.isMenuOpen == false)
         {
-            player.Move(this);
+            if (player.canMove == true)
+            {
+                player.Move(this);
+            }
         }
     }
 }
