@@ -18,7 +18,6 @@ public class Player_STG : MonoBehaviour
     public Canvas ClearCanvas;
     public Canvas GameCanvas;
     public GameObject TimeNo;
-    public GameObject Paint;
     void Start()
     {
         button1.onClick.AddListener(OnButtonClick);
@@ -38,7 +37,6 @@ public class Player_STG : MonoBehaviour
         {
             Debug.Log("TimeNo");
             TimeNo.gameObject.SetActive(false);
-            Paint.gameObject.SetActive(false);
         }
     }
     void OnButtonClick()

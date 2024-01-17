@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Poo : MonoBehaviour
 {
-    public float fallSpeed = 5f;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(this.gameObject);
@@ -12,11 +17,6 @@ public class Poo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.down * fallSpeed * Time.deltaTime);
-
-        if(transform.position.y < -5f)
-        {
-            Destroy(gameObject);
-        }
+        
     }
 }

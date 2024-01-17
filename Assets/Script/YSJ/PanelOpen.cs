@@ -5,7 +5,6 @@ using UnityEngine;
 public class PanelOpen : MonoBehaviour
 {
     public GameObject Option;
-    public GameObject CutScene;
 
     public void ClickPanel()
     {
@@ -14,11 +13,5 @@ public class PanelOpen : MonoBehaviour
     public void ClickGame()
     {
         Option.SetActive(false);
-    }
-
-    public void ClickPanel2()
-    {
-        Option.SetActive(true);
-        CutScene.SetActive(false);
     }
 }
