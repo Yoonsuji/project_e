@@ -801,6 +801,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectItemData: {fileID: 0}
   selectCurrentCloth: {fileID: 0}
+  selectCurrentBackGround: {fileID: 0}
+  selectCurrentPet: {fileID: 0}
+  capybaraCurrentItem: {fileID: 11400000, guid: 77a645230d36e304e8769f39fe8a53b7, type: 2}
   ChrPanel: {fileID: 0}
   goodsPrefab: {fileID: 11400000, guid: f908aba86ee54fa44a8f081128bd47f7, type: 2}
   shopPrefabSpawn: {fileID: 204394514}
