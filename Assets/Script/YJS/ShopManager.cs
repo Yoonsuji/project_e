@@ -8,6 +8,9 @@ public class ShopManager : MonoBehaviour
 {
     public ItemData selectItemData;
     public ItemData selectCurrentCloth;
+    public ItemData selectCurrentBackGround;
+    public ItemData selectCurrentPet;
+    public CapybaraCurrentItem capybaraCurrentItem;
     public Image ChrPanel;
     public GoodsPrefab goodsPrefab;
     public ShopPrefabSpawn shopPrefabSpawn;
@@ -18,6 +21,9 @@ public class ShopManager : MonoBehaviour
     public Image ItemPanel;
     private void Start()
     {
+        capybaraCurrentItem.currentCloth = selectCurrentCloth;
+        capybaraCurrentItem.currentBack = selectCurrentBackGround;
+        capybaraCurrentItem.currentPet = selectCurrentPet;
         selectItemData = null;
     }
     private void Update()
@@ -29,11 +35,18 @@ public class ShopManager : MonoBehaviour
             ItemPanel.sprite = selectItemData.itemSprite;
             if (selectItemData.isItemTake == true)
             {
-                BuyText.text = "구매하였습니다.";
+                BuyText.text = selectItemData.itemName + "를\n구매하였습니다.";
                 backBtnText.text = "나가기";
                 if (selectItemData.itemNumber != 2)
                 {
-                    buyBtnText.text = "장착하기";
+                    if (selectItemData == capybaraCurrentItem.currentCloth || selectItemData == capybaraCurrentItem.currentBack || selectItemData == capybaraCurrentItem.currentPet)
+                    {
+                        buyBtnText.text = "해체하기";
+                    }
+                    else
+                    {
+                        buyBtnText.text = "장착하기";
+                    }
                 }
                 else
                 {
@@ -81,6 +94,25 @@ public class ShopManager : MonoBehaviour
                 if (goodsPrefab.gold >= selectItemData.itemPrice)
                 {
                     selectItemData.isItemTake = true;
+                    if (selectItemData.selectedItemType == ItemData.itemType.furniture)
+                    {
+                        selectItemData.Activation = true;
+                    }
+                    else
+                    {
+                        if (selectItemData.selectedItemType == ItemData.itemType.cloth)
+                        {
+                            capybaraCurrentItem.currentCloth = selectItemData;
+                        }
+                        else if(selectItemData.selectedItemType == ItemData.itemType.background)
+                        {
+                            capybaraCurrentItem.currentBack = selectItemData;
+                        }
+                        else if (selectItemData.selectedItemType == ItemData.itemType.pet)
+                        {
+                            capybaraCurrentItem.currentPet = selectItemData;
+                        }
+                    }
                     goodsPrefab.gold -= selectItemData.itemPrice;
                 }
                 else
@@ -114,10 +146,57 @@ public class ShopManager : MonoBehaviour
                     selectItemData.Activation = true;
                 }
             }
-            else
+            else if(selectItemData.selectedItemType == ItemData.itemType.cloth)
             {
-                selectCurrentCloth = selectItemData;
+                if (selectItemData == capybaraCurrentItem.currentCloth)
+                {
+                    capybaraCurrentItem.currentCloth = null;
+                }
+                else
+                {
+                    Select(ItemData.itemType.cloth);
+                }
             }
+            else if(selectItemData.selectedItemType == ItemData.itemType.background)
+            {
+                if (selectItemData == capybaraCurrentItem.currentBack)
+                {
+                    capybaraCurrentItem.currentBack = null;
+                }
+                else
+                {
+                    Select(ItemData.itemType.background);
+                }
+            }
+            else if(selectItemData.selectedItemType == ItemData.itemType.pet)
+            {
+                if (selectItemData == capybaraCurrentItem.currentPet)
+                {
+                    capybaraCurrentItem.currentPet = null;
+                }
+                else
+                {
+                    Select(ItemData.itemType.pet);
+                }
+            }
+        }
+    }
+    private void Select(ItemData.itemType type)
+    {
+        if (type == ItemData.itemType.cloth)
+        {
+            selectCurrentCloth = selectItemData;
+            capybaraCurrentItem.currentCloth = selectCurrentCloth;
+        }
+        else if(type == ItemData.itemType.background)
+        {
+            selectCurrentBackGround = selectItemData;
+            capybaraCurrentItem.currentBack = selectCurrentBackGround;
+        }
+        else if (type == ItemData.itemType.pet)
+        {
+            selectCurrentPet = selectItemData;
+            capybaraCurrentItem.currentPet = selectCurrentPet;
         }
     }
     public void BuyNo()

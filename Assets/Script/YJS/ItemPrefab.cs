@@ -10,6 +10,7 @@ public class ItemPrefab : MonoBehaviour
     public Image ItemSpriteObject;
     public ItemData itemData;
     public TMP_Text priceUi;
+    public CapybaraCurrentItem capybaraCurrentItem;
     private SpriteRenderer spriteRenderer;
     private ShopPrefabSpawn shopPrefabSpawn;
     private ShopManager shopManager;
@@ -23,7 +24,28 @@ public class ItemPrefab : MonoBehaviour
     {
         if (itemData.isItemTake == true)
         {
-            ItemSpriteObject.color = new Color(1f, 1f, 1f, .5f);
+            if (itemData.selectedItemType != ItemData.itemType.furniture)
+            {
+                if (itemData == capybaraCurrentItem.currentBack || itemData == capybaraCurrentItem.currentCloth || itemData == capybaraCurrentItem.currentPet)
+                {
+                    ItemSpriteObject.color = new Color(1f, 1f, 1f, .5f);
+                }
+                else
+                {
+                    ItemSpriteObject.color = new Color(1f, 1f, 1f, 1f);
+                }
+            }
+            else
+            {
+                if (itemData.Activation == true)
+                {
+                    ItemSpriteObject.color = new Color(1f, 1f, 1f, .5f);
+                }
+                else
+                {
+                    ItemSpriteObject.color = new Color(1f, 1f, 1f, 1f);
+                }
+            }
             priceUi.text = "구매완료";
         }
         else
