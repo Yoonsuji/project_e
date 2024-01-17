@@ -11,6 +11,11 @@ public class ShopPrefabSpawn : MonoBehaviour
     public List<ItemData> petShopData = new List<ItemData>();
     public List<ItemPrefab> items = new List<ItemPrefab>();
     public ItemPrefab itemPrefab;
+    public enum shopType
+    {
+        cloth, furniture, background, pet
+    }
+    public shopType selectShop;
     private void Start()
     {
         selectItemData = null;
@@ -46,6 +51,7 @@ public class ShopPrefabSpawn : MonoBehaviour
     }
     public void ClothShop()
     {
+        selectShop = shopType.cloth;
         for (int i = 0; i < items.Count; i++)
         {
             if (items[i].itemData.itemNumber == 1)
@@ -60,6 +66,7 @@ public class ShopPrefabSpawn : MonoBehaviour
     }
     public void FurnitureShop()
     {
+        selectShop = shopType.furniture;
         for (int i = 0; i < items.Count; i++)
         {
             if (items[i].itemData.itemNumber == 2)
@@ -74,6 +81,7 @@ public class ShopPrefabSpawn : MonoBehaviour
     }
     public void BackgroundShop()
     {
+        selectShop = shopType.background;
         for (int i = 0; i < items.Count; i++)
         {
             if (items[i].itemData.itemNumber == 3)
@@ -88,6 +96,7 @@ public class ShopPrefabSpawn : MonoBehaviour
     }
     public void PetShop()
     {
+        selectShop = shopType.pet;
         for (int i = 0; i < items.Count; i++)
         {
             if (items[i].itemData.itemNumber == 4)

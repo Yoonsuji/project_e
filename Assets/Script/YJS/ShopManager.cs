@@ -35,7 +35,7 @@ public class ShopManager : MonoBehaviour
             ItemPanel.sprite = selectItemData.itemSprite;
             if (selectItemData.isItemTake == true)
             {
-                BuyText.text = "구매하였습니다.";
+                BuyText.text = selectItemData.itemName + "를\n구매하였습니다.";
                 backBtnText.text = "나가기";
                 if (selectItemData.itemNumber != 2)
                 {
@@ -94,6 +94,25 @@ public class ShopManager : MonoBehaviour
                 if (goodsPrefab.gold >= selectItemData.itemPrice)
                 {
                     selectItemData.isItemTake = true;
+                    if (selectItemData.selectedItemType == ItemData.itemType.furniture)
+                    {
+                        selectItemData.Activation = true;
+                    }
+                    else
+                    {
+                        if (selectItemData.selectedItemType == ItemData.itemType.cloth)
+                        {
+                            capybaraCurrentItem.currentCloth = selectItemData;
+                        }
+                        else if(selectItemData.selectedItemType == ItemData.itemType.background)
+                        {
+                            capybaraCurrentItem.currentBack = selectItemData;
+                        }
+                        else if (selectItemData.selectedItemType == ItemData.itemType.pet)
+                        {
+                            capybaraCurrentItem.currentPet = selectItemData;
+                        }
+                    }
                     goodsPrefab.gold -= selectItemData.itemPrice;
                 }
                 else

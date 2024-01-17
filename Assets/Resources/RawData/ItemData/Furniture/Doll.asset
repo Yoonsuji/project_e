@@ -17,6 +17,6 @@ MonoBehaviour:
   selectedItemType: 1
   selectedPriceType: 0
   itemPrice: 300
-  itemSprite: {fileID: 21300000, guid: 95587cd1a420415429e31897f49c752d, type: 3}
+  itemSprite: {fileID: 21300000, guid: bd659e4b7ff966c498b9a3158a24d1f1, type: 3}
   isItemTake: 0
   Activation: 0
