@@ -7,14 +7,13 @@ using TMPro;
 public class ShopManager : MonoBehaviour
 {
     public ItemData selectItemData;
-    public ItemData selectCurrentCloth;
     public Image ChrPanel;
     public GoodsPrefab goodsPrefab;
     public ShopPrefabSpawn shopPrefabSpawn;
     public GameObject BuyPanel;
+    public GameObject BuyBtn;
     public TMP_Text BuyText;
-    public TMP_Text buyBtnText;
-    public TMP_Text backBtnText;
+    public TMP_Text backText;
     public Image ItemPanel;
     private void Start()
     {
@@ -30,28 +29,14 @@ public class ShopManager : MonoBehaviour
             if (selectItemData.isItemTake == true)
             {
                 BuyText.text = "구매하였습니다.";
-                backBtnText.text = "나가기";
-                if (selectItemData.itemNumber != 2)
-                {
-                    buyBtnText.text = "장착하기";
-                }
-                else
-                {
-                    if (selectItemData.Activation == true)
-                    {
-                        buyBtnText.text = "비활성화";
-                    }
-                    else
-                    {
-                        buyBtnText.text = "활성화";
-                    }
-                }
+                backText.text = "나가기";
+                BuyBtn.SetActive(false);
             }
             else
             {
                 BuyText.text = selectItemData.itemName + "를 \n구매하시겠습니까?";
-                buyBtnText.text = "예";
-                backBtnText.text = "아니오";
+                backText.text = "아니오";
+                BuyBtn.SetActive(true);
             }
         }
         else
@@ -64,7 +49,6 @@ public class ShopManager : MonoBehaviour
         for(int i = 0; i < shopPrefabSpawn.items.Count; i++)
         {
             shopPrefabSpawn.items[i].itemData.isItemTake = false;
-            shopPrefabSpawn.items[i].itemData.Activation = false;
         }
         goodsPrefab.gold = 0;
     }
@@ -74,49 +58,28 @@ public class ShopManager : MonoBehaviour
     }
     public void BuyYes()
     {
-        if (selectItemData.isItemTake != true)
+        if (selectItemData.selectedPriceType == ItemData.priceType.gold)
         {
-            if (selectItemData.selectedPriceType == ItemData.priceType.gold)
+            if (goodsPrefab.gold >= selectItemData.itemPrice)
             {
-                if (goodsPrefab.gold >= selectItemData.itemPrice)
-                {
-                    selectItemData.isItemTake = true;
-                    goodsPrefab.gold -= selectItemData.itemPrice;
-                }
-                else
-                {
-                    print("재화가 부족합니다.");
-                }
+                selectItemData.isItemTake = true;
+                goodsPrefab.gold -= selectItemData.itemPrice;
             }
             else
             {
-                if (goodsPrefab.dia >= selectItemData.itemPrice)
-                {
-                    selectItemData.isItemTake = true;
-                    goodsPrefab.gold -= selectItemData.itemPrice;
-                }
-                else
-                {
-                    print("재화가 부족합니다.");
-                }
+                print("재화가 부족합니다.");
             }
         }
         else
         {
-            if (selectItemData.selectedItemType == ItemData.itemType.furniture)
+            if (goodsPrefab.dia >= selectItemData.itemPrice)
             {
-                if (selectItemData.Activation == true)
-                {
-                    selectItemData.Activation = false;
-                }
-                else
-                {
-                    selectItemData.Activation = true;
-                }
+                selectItemData.isItemTake = true;
+                goodsPrefab.gold -= selectItemData.itemPrice;
             }
             else
             {
-                selectCurrentCloth = selectItemData;
+                print("재화가 부족합니다.");
             }
         }
     }
