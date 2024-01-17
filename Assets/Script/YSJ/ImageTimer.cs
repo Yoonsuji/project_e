@@ -11,7 +11,7 @@ public class ImageTimer : MonoBehaviour
     public GameObject GameOvercanvas;
     public GameObject Clearcanvas;
 
-    private float time = 10.0f;
+    private float time = 20.0f;
     private float timeSpeed = 1.0f;
     private float curTime;
     public bool isEnd;

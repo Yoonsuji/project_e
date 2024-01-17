@@ -8,6 +8,8 @@ public class ClickButton : MonoBehaviour
     public GameObject gameOverCanvas;
     public GameObject gameCanvas;
     public GameObject Check;
+    public GameObject Paint;
+    public Button button1;
     public float smoothTime = 0.5f;
     public float shrinkSpeed = 1.5f;
 
@@ -17,6 +19,8 @@ public class ClickButton : MonoBehaviour
     }
     void Move()
     {
+        Paint.gameObject.SetActive(false);
+        button1.interactable = false;
         Check.SetActive(true);
         Invoke("ReplayClick", 3f);
     }
@@ -24,6 +28,5 @@ public class ClickButton : MonoBehaviour
     {
         gameOverCanvas.SetActive(true);
         gameCanvas.SetActive(false);
-
     }
 }

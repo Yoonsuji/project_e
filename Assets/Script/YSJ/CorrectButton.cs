@@ -11,10 +11,9 @@ public class CorrectButton : MonoBehaviour
     public float HandMoveSpeed = 1.0f;
     public float smoothTime = 0.5f;
     public GameObject Check;
-    public GameObject Hand;
-    public Slider timeSlider;
-    public Transform HandTransform;
-    public HandController handController;
+    public Button button2;
+    
+    
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +28,7 @@ public class CorrectButton : MonoBehaviour
     public void CorrectClick()
     {
         Check.SetActive(true);
+        button2.interactable = false;
         if (Background != null)
         {
             StartCoroutine(MoveBackground());
@@ -40,10 +40,6 @@ public class CorrectButton : MonoBehaviour
                 button.onClick.RemoveAllListeners();
             }
 
-        }
-        if (handController != null)
-        {
-            handController.StartHandMove();
         }
 
     }

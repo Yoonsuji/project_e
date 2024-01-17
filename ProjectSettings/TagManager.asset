@@ -13,6 +13,7 @@ TagManager:
   - Metaball_liquid2
   - Transform
   - TimeNo
+  - ChocoClean
   layers:
   - Default
   - TransparentFX
