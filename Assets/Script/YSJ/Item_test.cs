@@ -14,6 +14,7 @@ public class Item_test : MonoBehaviour, IPointerClickHandler
     public Button button2;
     private Image imgButton;
     public GameObject HideItem1;
+    public GameObject HideILight;
     
 
     void Start()
@@ -24,6 +25,7 @@ public class Item_test : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         StartCoroutine(MoveToTarget());
+        HideILight.SetActive(false);
     }
 
     public IEnumerator MoveToTarget()

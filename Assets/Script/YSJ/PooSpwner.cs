@@ -3,55 +3,20 @@ using UnityEngine;
 
 public class PooSpwner : MonoBehaviour
 {
-    const float CREATE_INTERVAL = 0.18f;
-    float NextCreateInterval = CREATE_INTERVAL;
-
-    int Phase = 1;
-
-    public GameObject Poo;
-    float CreatTime = 0;
-    float TotalTime = 0;
-
-    // Start is called before the first frame update
-    void Start()
+    public GameObject PooPrefab;
+    public float spawnProbability = 0.5f;
+    public float spawnInterval = 1f;
+    private void Start()
     {
-
+        InvokeRepeating("SpawnObject", 0f, spawnInterval);
     }
 
-    // Update is called once per frame
-    void Update()
+    void SpawnObject()
     {
-        TotalTime += Time.deltaTime;
-        CreatTime = Time.time;
-        if (CreatTime > NextCreateInterval)
+        if(Random.value < spawnProbability)
         {
-            CreatTime = 0;
-            NextCreateInterval = CREATE_INTERVAL - (0.005f * TotalTime);
-            if (NextCreateInterval < 0.005f)
-            {
-                NextCreateInterval = 0.005f;
-            }
-
-            for (int i = 0; i < Phase; i++)
-            {
-                CreatPoo(8f + i * 0.2f);
-            }
+            Vector2 spawnPosition = new Vector2(Random.Range(-3f, 3f), 7f);
+            Instantiate(PooPrefab, spawnPosition, Quaternion.identity);
         }
-        if (TotalTime >= 10f)
-        {
-            TotalTime = 0;
-            Phase++;
-        }
-    }
-
-    private void CreatPoo(float y)
-    {
-        float x = Random.Range(-4f, 4f);
-        CreateObject(Poo, new Vector3(x, y, 0), Quaternion.identity);
-    }
-
-    private GameObject CreateObject(GameObject original, Vector3 position, Quaternion rotation)
-    {
-        return Instantiate(original, position, rotation);
     }
 }
