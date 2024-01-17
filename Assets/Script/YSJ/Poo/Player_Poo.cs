@@ -16,7 +16,15 @@ public class Player_Poo : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Coin"))
+        {
+            
+        }
 
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -35,5 +43,5 @@ public class Player_Poo : MonoBehaviour
             transform.position += moveVelocity * moveSpeed * Time.deltaTime;
         }
     }
-
+    
 }
