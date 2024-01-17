@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         stagePrefab.currentStage = stage + 1;
         stageTxt.text = "STAGE:"+ (stage+1).ToString();
         if (Input.GetMouseButtonDown(0))

@@ -22,7 +22,7 @@ public class StageDataSet : MonoBehaviour
             if (stageData[i].currentStage > stageData[i].maxStage) stageData[i].currentStage = stageData[i].maxStage;
             stageTxt[i].text = "스테이지 : " + stageData[i].currentStage.ToString() + "/" + stageData[i].maxStage.ToString();
             stageSlider[i].maxValue = stageData[i].maxStage;
-            stageSlider[i].value = stageData[i].currentStage;
+            stageSlider[i].value = stageData[i].currentStage - 1;
         }
     }
 }

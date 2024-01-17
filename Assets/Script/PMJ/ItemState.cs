@@ -15,7 +15,21 @@ public class ItemState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (itemData.Activation) image.enabled = true;
-        else image.enabled = false;
+        if (itemData != null)
+        {
+            switch (itemData.selectedItemType)
+            {
+                case ItemData.itemType.background:
+                    if (itemData.Activation) gameObject.SetActive(true);
+                    else gameObject.SetActive(false);
+                    break;
+
+                case ItemData.itemType.furniture:
+                    if (itemData.Activation) image.enabled = true;
+                    else image.enabled = false;
+                    break;
+            }
+        }
+
     }
 }
