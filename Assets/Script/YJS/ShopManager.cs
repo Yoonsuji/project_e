@@ -21,9 +21,9 @@ public class ShopManager : MonoBehaviour
     public Image ItemPanel;
     private void Start()
     {
-        capybaraCurrentItem.currentCloth = selectCurrentCloth;
-        capybaraCurrentItem.currentBack = selectCurrentBackGround;
-        capybaraCurrentItem.currentPet = selectCurrentPet;
+        selectCurrentCloth = capybaraCurrentItem.currentCloth;
+        selectCurrentBackGround = capybaraCurrentItem.currentBack;
+        selectCurrentPet = capybaraCurrentItem.currentPet;
         selectItemData = null;
     }
     private void Update()

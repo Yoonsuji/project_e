@@ -12,14 +12,18 @@ public class Item_test2 : MonoBehaviour, IPointerClickHandler
     public Button button1;
     public Button button2;
     private Image imgButton;
+    public AudioClip audioClip;
+    private AudioSource audioSource;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         imgButton = GetComponent<Image>();
         imgButton.alphaHitTestMinimumThreshold = 0.1f;
     }
     public void OnPointerClick(PointerEventData eventData)
     {
         StartCoroutine(MoveToTarget());
+        StartCoroutine(PlayAudioAfterDelay(1f));
     }
 
     IEnumerator MoveToTarget()
@@ -48,5 +52,11 @@ public class Item_test2 : MonoBehaviour, IPointerClickHandler
 
         button2.interactable = true;
         imgButton.raycastTarget = !imgButton.raycastTarget;
+    }
+    public IEnumerator PlayAudioAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        audioSource.clip = audioClip;
+        audioSource.Play();
     }
 }

@@ -10,6 +10,8 @@ public class ItemPrefab : MonoBehaviour
     public Image ItemSpriteObject;
     public ItemData itemData;
     public TMP_Text priceUi;
+    public GameObject goodIcon;
+    public TMP_Text newText;
     public CapybaraCurrentItem capybaraCurrentItem;
     public GameObject GoodsIcon;
     public Sprite gold;
@@ -50,6 +52,9 @@ public class ItemPrefab : MonoBehaviour
                 }
             }
             priceUi.text = "구매완료";
+            priceUi.gameObject.SetActive(false);
+            goodIcon.SetActive(false);
+            newText.gameObject.SetActive(true);
         }
         else
         {
