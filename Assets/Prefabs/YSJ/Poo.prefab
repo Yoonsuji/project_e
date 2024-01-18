@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5508806908563832618}
   - component: {fileID: 5508806908563832619}
   - component: {fileID: 7877517618450139544}
-  - component: {fileID: 1645780163108447308}
+  - component: {fileID: 8848675752125955793}
+  - component: {fileID: 2441447438908485501}
   m_Layer: 0
   m_Name: Poo
   m_TagString: Untagged
@@ -27,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5508806908563832596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.035, y: 5.993, z: 0}
-  m_LocalScale: {x: 0.062865004, y: 0.062865004, z: 0.20954998}
+  m_LocalPosition: {x: -0.6157, y: 0.6157, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d80272601ef63404eb251577dc32e0be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bab94eb6d95847a41b142df2571e0a74, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930630337ef9b0c4291eae64dfbb8658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 5
---- !u!58 &1645780163108447308
+  fallSpeed: 3
+--- !u!58 &8848675752125955793
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,6 +113,27 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.09048452, y: -0.840214}
   serializedVersion: 2
-  m_Radius: 4.5
+  m_Radius: 2.5346498
+--- !u!95 &2441447438908485501
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5508806908563832596}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6c50db9f6f59e7a42b8cb3c9da3f1197, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

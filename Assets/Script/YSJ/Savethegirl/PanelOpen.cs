@@ -14,11 +14,17 @@ public class PanelOpen : MonoBehaviour
     public void ClickGame()
     {
         Option.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void ClickPanel2()
     {
         Cut.gameObject.SetActive(false);
         Option.SetActive(true);
+    }
+    public void StopPanel()
+    {
+        Option.SetActive(true);
+        Time.timeScale = 0;
     }
 }

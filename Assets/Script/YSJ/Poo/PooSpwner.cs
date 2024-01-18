@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PooSpwner : MonoBehaviour
 {
-    public GameObject PooPrefab;
+    public GameObject[] pooPrefabs;
     public float spawnProbability = 0.5f;
     public float spawnInterval = 1f;
     private void Start()
@@ -15,8 +15,9 @@ public class PooSpwner : MonoBehaviour
     {
         if(Random.value < spawnProbability)
         {
+            GameObject selectedPooPrefab = pooPrefabs[Random.Range(0, pooPrefabs.Length)];
             Vector2 spawnPosition = new Vector2(Random.Range(-3f, 3f), 7f);
-            Instantiate(PooPrefab, spawnPosition, Quaternion.identity);
+            Instantiate(selectedPooPrefab, spawnPosition, Quaternion.identity);
         }
     }
 }

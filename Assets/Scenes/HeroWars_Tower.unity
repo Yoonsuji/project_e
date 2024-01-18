@@ -432,6 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Option: {fileID: 606213524}
+  Cut: {fileID: 0}
 --- !u!114 &236200717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,7 +1376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 237766177940513153, guid: 64b4b50551e57ec499df50670cace5ec, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 237766177940513153, guid: 64b4b50551e57ec499df50670cace5ec, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2565,7 +2566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8104596933528110441, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8104596933528110441, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
       propertyPath: m_AnchorMax.x

@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class Heart : MonoBehaviour
 {
-    public int playerLife = 3;
-    public GameDirector gameDirector;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        this.gameDirector.Init(this.playerLife);
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+    public void PlayHeartAni()
     {
-        
+        animator.SetTrigger("HeartDelect");
     }
 }

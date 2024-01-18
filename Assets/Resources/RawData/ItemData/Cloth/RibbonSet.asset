@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemNumber: 1
   itemName: "\uB9AC\uBCF8 \uC138\uD2B8"
+  selectedItemType: 0
   selectedPriceType: 0
   itemPrice: 100
-  itemSprite: {fileID: 21300000, guid: 5bd01ab704c4cbf429d29436d38dc189, type: 3}
+  itemSprite: {fileID: 21300000, guid: 52b57b2557f5f2f48807d9df4c843d53, type: 3}
   isItemTake: 0
+  Activation: 0

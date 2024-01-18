@@ -7,7 +7,11 @@ public class Poo : MonoBehaviour
     public float fallSpeed = 5f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(this.gameObject);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(this.gameObject);
+            HeartSystem.hp -= 1;
+        }
     }
     // Update is called once per frame
     void Update()

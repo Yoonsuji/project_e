@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a09c25713ffac79458b3d81f85426a92, type: 3}
-  m_Name: HoneyBeeSet
+  m_Name: ChunriSet
   m_EditorClassIdentifier: 
   itemNumber: 1
-  itemName: "\uAFC0\uBC8C \uC138\uD2B8"
+  itemName: "\uCD98\uB9AC \uC138\uD2B8"
+  selectedItemType: 0
   selectedPriceType: 0
-  itemPrice: 200
-  itemSprite: {fileID: 21300000, guid: 690e616ea809d5143ab402f9480dfe40, type: 3}
+  itemPrice: 400
+  itemSprite: {fileID: 21300000, guid: 0ccc9b75be1456c47a1e76f1a1fb255b, type: 3}
   isItemTake: 0
+  Activation: 0
