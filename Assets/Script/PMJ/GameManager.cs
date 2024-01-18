@@ -16,10 +16,6 @@ public class GameManager : MonoBehaviour
     public GameObject click;
     public TextMeshProUGUI stageTxt;
 
-    public GameObject tutorialPanel;
-    public GameObject clearPanel;
-    public GameObject diePanel;
-    public GameObject menuPanel;
 
     public Transform fruit;
     public int fCount;
@@ -27,6 +23,19 @@ public class GameManager : MonoBehaviour
     public static int stage;
     public bool isCoroutine;
     Ring ring;
+
+    [Header ("Panel")]
+    public GameObject tutorialPanel;
+    public GameObject clearPanel;
+    public GameObject diePanel;
+    public GameObject menuPanel;
+
+    [Header("Sound")]
+    public AudioSource bgmPlayer;
+    public AudioSource[] sfxPlayer;
+    public AudioClip[] sfxClip;
+    public enum Sfx { Clear, Over, Walk, Down, PDie, EDie, PDDIe, };
+    int sfxCursor;
 
     private void Awake()
     {
@@ -84,6 +93,42 @@ public class GameManager : MonoBehaviour
             }
 
         }
+    }
+
+    public void SfxPlayer(Sfx type)
+    {
+        switch(type)
+        {
+            case Sfx.Walk:
+                sfxPlayer[sfxCursor].clip = sfxClip[0];
+                break;
+
+            case Sfx.Down:
+                sfxPlayer[sfxCursor].clip = sfxClip[1];
+                break;
+
+            case Sfx.PDie:
+                sfxPlayer[sfxCursor].clip = sfxClip[2];
+                break;
+
+            case Sfx.PDDIe:
+                sfxPlayer[sfxCursor].clip = sfxClip[3];
+                break;
+
+            case Sfx.EDie:
+                sfxPlayer[sfxCursor].clip = sfxClip[4];
+                break;
+
+            case Sfx.Clear:
+                sfxPlayer[sfxCursor].clip = sfxClip[5];
+               break;
+
+            case Sfx.Over:
+                sfxPlayer[sfxCursor].clip = sfxClip[6];
+                break;
+        }
+        sfxPlayer[sfxCursor].Play();
+        sfxCursor = (sfxCursor + 1) % sfxPlayer.Length;
     }
     public void Next()
     {
