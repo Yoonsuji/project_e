@@ -23,6 +23,8 @@ public class Player_STG : MonoBehaviour
     public GameObject Choco;
     public GameObject Item1;
     public GameObject Item2;
+    public AudioClip audioClip;
+    private AudioSource audioSource;
 
     private bool isCleaning = false;
 
@@ -31,6 +33,8 @@ public class Player_STG : MonoBehaviour
         button1.onClick.AddListener(OnButtonClick);
         button2.onClick.AddListener(OnButtonClick2);
         animator = gameObject.GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -66,20 +70,11 @@ public class Player_STG : MonoBehaviour
     {
         isCleaning = true;
         animator.SetBool("isCleaning", true);
-
-        // Add a delay of 2 seconds for the clean animation
         yield return new WaitForSeconds(0.5f);
-
-        // Complete the clean animation
         animator.SetBool("isCleaning", false);
-
-        // Pause the player for a short duration (adjust as needed)
         float pauseDuration = 0.5f;
         yield return new WaitForSeconds(pauseDuration);
-
-        // Start fading out after the clean animation and pause
         StartCoroutine(FadeOut());
-
         isCleaning = false;
     }
 
@@ -99,7 +94,10 @@ public class Player_STG : MonoBehaviour
     }
     private IEnumerator Move()
     {
+        audioSource.clip = audioClip;
+        
         yield return new WaitForSeconds(2f);
+        audioSource.Play();
         animator.SetBool("isWalk", true);
         Item1.gameObject.SetActive(false);
         while (Vector2.Distance(transform.position, PlayerTarget.position) > 0.1f)
@@ -107,6 +105,7 @@ public class Player_STG : MonoBehaviour
             transform.position = Vector2.Lerp(transform.position, PlayerTarget.position, lerpTime * Time.deltaTime);
             yield return null;
         }
+        moveSpeed = 0;
     }
 
     private IEnumerator FadeOut()

@@ -11,10 +11,12 @@ public class Paint : MonoBehaviour
     public float AttackMax = 3f;
     public Image image;
     private Coroutine fadeCoroutine;
+    public AudioClip audioClip;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
         image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
         StartCoroutine(AttackWithRandom());
     }
@@ -37,6 +39,8 @@ public class Paint : MonoBehaviour
             StopCoroutine(fadeCoroutine);
         }
         fadeCoroutine = StartCoroutine(FadeInAndOutImage());
+        audioSource.clip = audioClip;
+        audioSource.Play();
     }
 
     private IEnumerator FadeInAndOutImage()
