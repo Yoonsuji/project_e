@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Player_Poo : MonoBehaviour
 {
     Animator animator;
     public bool LeftMove = false;
     public bool RightMove = false;
+    public GoodsPrefab goodsPrefab;
+    public TextMeshProUGUI CoinText;
     Vector3 moveVelocity = Vector3.zero;
     private SpriteRenderer playerSpriteRenderer;
     public float moveSpeed = 10;
@@ -20,7 +24,9 @@ public class Player_Poo : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Coin"))
         {
-            
+            goodsPrefab.gold += 10;
+
+            CoinText.text = "" + goodsPrefab.gold;
         }
 
 
