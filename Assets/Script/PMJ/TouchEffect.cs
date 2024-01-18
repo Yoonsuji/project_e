@@ -16,6 +16,7 @@ public class TouchEffect : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            GameManager.instance.SfxPlayer(GameManager.Sfx.Click);
             Vector2 pos = Input.mousePosition;
             transform.position = pos;
             anim.SetTrigger("isTouch");

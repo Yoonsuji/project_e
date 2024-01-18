@@ -409,9 +409,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2103271152}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: Shop
+      - m_Target: {fileID: 44101884}
+        m_TargetAssemblyTypeName: SceneMove, Assembly-CSharp
+        m_MethodName: ClickScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5307,7 +5307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2103271152
 MonoBehaviour:
   m_ObjectHideFlags: 0

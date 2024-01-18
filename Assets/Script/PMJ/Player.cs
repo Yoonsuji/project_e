@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
 
     public Transform targetPosition;
     bool win;
+    private int moveCount;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -74,6 +76,7 @@ public class Player : MonoBehaviour
     }
     private void Move()
     {
+
         /*if (!isDie && isRingOut)
         {
             if (!isGround || isClear)
@@ -88,13 +91,24 @@ public class Player : MonoBehaviour
                 rigid.velocity = new Vector2(speed, 0);
             }
         }*/
+        
         if (isRingOut && !istransform && !isDie)
         {
+            if(moveCount == 0)
             GameManager.instance.SfxPlayer(GameManager.Sfx.Walk);
+
+            moveCount= 1;
+            //GameManager.instance.sfxPlayer[0];
 
             anim.SetBool("isWalk", true);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, speed * Time.deltaTime);
 
+        }
+        else
+        {
+
+            //GameManager.instance.sfxPlayer[0]
+            moveCount = 0;
         }
         /*
          * if (!hasArrived && isRingOut)
@@ -182,8 +196,9 @@ public class Player : MonoBehaviour
             {
                 win = true;
                 anim.SetTrigger("Win");
+                StartCoroutine(Clear());
             }
-            StartCoroutine(Clear());
+            
         }
 
         else if(collision.gameObject.CompareTag("Transform"))

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public AudioSource bgmPlayer;
     public AudioSource[] sfxPlayer;
     public AudioClip[] sfxClip;
-    public enum Sfx { Clear, Over, Walk, Down, PDie, EDie, PDDIe, };
+    public enum Sfx { Clear, Over, Walk, Down, PDie, EDie, PDDIe, Click};
     int sfxCursor;
 
     private void Awake()
@@ -74,11 +74,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //if (Input.GetMouseButtonDown(0)) SfxPlayer(Sfx.Click);
         stagePrefab.currentStage = stage + 1;
         stageTxt.text = "STAGE:"+ (stage+1).ToString();
         if (Input.GetMouseButtonDown(0))
         {
+            SfxPlayer(Sfx.Click);
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
             if (tutorialPanel.activeSelf)
@@ -97,39 +98,68 @@ public class GameManager : MonoBehaviour
 
     public void SfxPlayer(Sfx type)
     {
-        switch(type)
+        int i = -1;
+        
+        switch (type)
         {
             case Sfx.Walk:
-                sfxPlayer[sfxCursor].clip = sfxClip[0];
+                sfxPlayer[0].clip = sfxClip[0];
+                i = 0;
                 break;
 
             case Sfx.Down:
-                sfxPlayer[sfxCursor].clip = sfxClip[1];
+                sfxPlayer[0].clip = sfxClip[1];
+                i = 0;
                 break;
 
             case Sfx.PDie:
-                sfxPlayer[sfxCursor].clip = sfxClip[2];
+                sfxPlayer[0].clip = sfxClip[2];
+                i = 0;
                 break;
 
             case Sfx.PDDIe:
-                sfxPlayer[sfxCursor].clip = sfxClip[3];
+                sfxPlayer[1].clip = sfxClip[3];
+                i = 1;
                 break;
 
             case Sfx.EDie:
-                sfxPlayer[sfxCursor].clip = sfxClip[4];
+                sfxPlayer[1].clip = sfxClip[4];
+                i = 1;
                 break;
 
             case Sfx.Clear:
-                sfxPlayer[sfxCursor].clip = sfxClip[5];
-               break;
+                
+                sfxPlayer[2].clip = sfxClip[5];
+                //sfxPlayer[2].PlayOneShot(sfxClip[5]);
+                //return;
+                i = 2;
+                break;
 
             case Sfx.Over:
-                sfxPlayer[sfxCursor].clip = sfxClip[6];
+                sfxPlayer[2].clip = sfxClip[6];
+                i = 2;
+                break;
+
+            case Sfx.Click:
+                sfxPlayer[3].clip = sfxClip[7];
+                i = 3;
                 break;
         }
-        sfxPlayer[sfxCursor].Play();
-        sfxCursor = (sfxCursor + 1) % sfxPlayer.Length;
+        // sfxPlayer[sfxCursor].PlayOneShot(sfxPlayer[sfxCursor].clip);
+        //Debug.Log("play"  + sfxCursor);
+        if (!sfxPlayer[i].isPlaying)
+        {
+            sfxPlayer[i].Play();
+        }
+        
+       // sfxCursor = (sfxCursor + 1) % sfxPlayer.Length;
+       // Debug.Log(sfxCursor);
     }
+  /*  IEnumerator PlaySfx(AudioClip audio)
+    {
+        yield return null;
+        sfxPlayer[sfxCursor];
+    }*/
     public void Next()
     {
         syrup = GameObject.FindGameObjectsWithTag("Metaball_liquid");

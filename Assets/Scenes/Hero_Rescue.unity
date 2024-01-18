@@ -2316,7 +2316,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709382011}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2425,7 +2425,7 @@ RectTransform:
   - {fileID: 945693207}
   - {fileID: 1227017631}
   m_Father: {fileID: 709382011}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6216,13 +6216,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 267684337}
   - {fileID: 1960532718}
   - {fileID: 5272651060246999436}
   - {fileID: 789013458}
   - {fileID: 2582645103018866926}
   - {fileID: 282762781}
   - {fileID: 1721222589}
-  - {fileID: 267684337}
   - {fileID: 1673875601523632134}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -7742,7 +7742,7 @@ RectTransform:
   - {fileID: 812109653}
   - {fileID: 1691540815}
   m_Father: {fileID: 709382011}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8943,6 +8943,134 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
+--- !u!1 &962410935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 962410937}
+  - component: {fileID: 962410936}
+  m_Layer: 0
+  m_Name: SFX Player 3 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &962410936
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962410935}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &962410937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962410935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 358.00656, y: 249.38243, z: -6.6488447}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &976706709
 GameObject:
   m_ObjectHideFlags: 0
@@ -15467,6 +15595,7 @@ MonoBehaviour:
   - {fileID: 1485587644}
   - {fileID: 1580784823}
   - {fileID: 1942093461}
+  - {fileID: 962410936}
   sfxClip:
   - {fileID: 8300000, guid: 5eb00fd9cda002f44ae39030d0a2228d, type: 3}
   - {fileID: 8300000, guid: ab495998d2e8f8447978484bb9702781, type: 3}
@@ -15475,6 +15604,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 869b6f3701b6e36409791cf3c4c6c56f, type: 3}
   - {fileID: 8300000, guid: a9dc1d71e80d0fa4e83bc4695eedebe5, type: 3}
   - {fileID: 8300000, guid: 48f078b392d585e48972805cc32a492b, type: 3}
+  - {fileID: 8300000, guid: f88d37d5d5ed8c64da30a305f4b6eb8e, type: 3}
 --- !u!4 &1605230854
 Transform:
   m_ObjectHideFlags: 0
@@ -18864,7 +18994,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709382011}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20942,7 +21072,7 @@ RectTransform:
   - {fileID: 2582645102599749921}
   - {fileID: 2582645104093287588}
   m_Father: {fileID: 709382011}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -21714,7 +21844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 237766177940513153, guid: 64b4b50551e57ec499df50670cace5ec, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 237766177940513153, guid: 64b4b50551e57ec499df50670cace5ec, type: 3}
       propertyPath: m_AnchorMax.x
@@ -21863,7 +21993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7297480627627883017, guid: d97adf0164c174e46b648f8df7e096b2, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7297480627627883017, guid: d97adf0164c174e46b648f8df7e096b2, type: 3}
       propertyPath: m_AnchorMax.x
