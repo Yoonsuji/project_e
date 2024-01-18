@@ -17,7 +17,7 @@ public class Coin : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            coinTextManager.UpdateCoinText(10);
+            coinTextManager.UpdateCoinText(1);
             Destroy(this.gameObject);
         }
     }

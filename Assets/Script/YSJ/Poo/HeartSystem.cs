@@ -37,7 +37,7 @@ public class HeartSystem : MonoBehaviour
             case 0:
                 heartController3.PlayHeartAni();
                 Invoke("Delect3", 0.25f);
-                Invoke("GameOver", 2);
+                Invoke("GameOver", 1);
                 break;
         }
 

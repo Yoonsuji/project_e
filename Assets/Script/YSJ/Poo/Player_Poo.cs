@@ -19,10 +19,17 @@ public class Player_Poo : MonoBehaviour
     {
         animator = gameObject.GetComponent<Animator>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
-        
+         
     }
     // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Wall"))
+        {
+            
+        }
+    }
+    void FixedUpdate()
     {
         if(LeftMove)
         {
