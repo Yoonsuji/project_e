@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -13,9 +14,9 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var soundManager = FindObjectsOfType<SoundManager>();
-        if(soundManager.Length == 1)  DontDestroyOnLoad(gameObject);
-        else Destroy(gameObject);
+        //var soundManager = FindObjectsOfType<SoundManager>();
+        //if(soundManager.Length == 1)  DontDestroyOnLoad(gameObject);
+        //else Destroy(gameObject);
     }
 
     // Update is called once per frame
@@ -28,5 +29,11 @@ public class SoundManager : MonoBehaviour
     {
         sfxPlayer[0].clip = sfxClip[0];
         sfxPlayer[0].Play();
+        Invoke("LoadShop", 0.4f);
+    }
+
+    public void LoadShop()
+    {
+        SceneManager.LoadScene("ShopScene");
     }
 }
