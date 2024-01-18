@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a09c25713ffac79458b3d81f85426a92, type: 3}
-  m_Name: YankeeSet
+  m_Name: GyaruSet
   m_EditorClassIdentifier: 
   itemNumber: 1
-  itemName: "\uC591\uD0A4 \uC138\uD2B8"
+  itemName: "\uAC38\uB8E8 \uC138\uD2B8"
   selectedItemType: 0
   selectedPriceType: 0
-  itemPrice: 300
-  itemSprite: {fileID: 21300000, guid: a657256839f8e924f826dd83adbb071d, type: 3}
+  itemPrice: 500
+  itemSprite: {fileID: 21300000, guid: 5567bb677553e1a47a4bd1cdc9e4e5ec, type: 3}
   isItemTake: 0
   Activation: 0
