@@ -65,7 +65,11 @@ public class Player : MonoBehaviour
                 }
 
             }
-            else anim.SetBool("isDown", true);
+            else
+            {
+                anim.SetBool("isDown", true);
+                GameManager.instance.SfxPlayer(GameManager.Sfx.Down);
+            }
         }
     }
     private void Move()
@@ -86,6 +90,8 @@ public class Player : MonoBehaviour
         }*/
         if (isRingOut && !istransform && !isDie)
         {
+            GameManager.instance.SfxPlayer(GameManager.Sfx.Walk);
+
             anim.SetBool("isWalk", true);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, speed * Time.deltaTime);
 
@@ -128,14 +134,17 @@ public class Player : MonoBehaviour
             //rigid.bodyType = RigidbodyType2D.Kinematic;
             die = true;
             anim.SetTrigger("Die");
+            GameManager.instance.SfxPlayer(GameManager.Sfx.PDie);
             yield return new WaitForSeconds(1f);
             gameObject.SetActive(false);
+            GameManager.instance.SfxPlayer(GameManager.Sfx.Over);
             GameManager.instance.diePanel.SetActive(true);
         }
     }
     IEnumerator Clear()
-    {
+    {   
         yield return new WaitForSeconds(clearCount);
+        GameManager.instance.SfxPlayer(GameManager.Sfx.Clear);
         GameManager.instance.clearPanel.SetActive(true);
     }
 

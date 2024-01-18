@@ -78,6 +78,8 @@ public class Enemy : MonoBehaviour
     {
         if (!die)
         {
+            if (gameObject.name == "Enemy") GameManager.instance.SfxPlayer(GameManager.Sfx.EDie);
+            else if (gameObject.name == "Boss") GameManager.instance.SfxPlayer(GameManager.Sfx.PDDIe);
             die = true;
             anim.SetTrigger("Die");
             yield return new WaitForSeconds(1f);
