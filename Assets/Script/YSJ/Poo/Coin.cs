@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class Poo : MonoBehaviour
+public class Coin : MonoBehaviour
 {
+    public GoodsPrefab goodsPrefab;
+    private CoinManager coinTextManager;
     public float fallSpeed = 5f;
+
+    void Start()
+    {
+        coinTextManager = FindObjectOfType<CoinManager>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            coinTextManager.UpdateCoinText(10);
             Destroy(this.gameObject);
-            HeartSystem.hp -= 1;
         }
     }
     // Update is called once per frame
@@ -18,7 +26,7 @@ public class Poo : MonoBehaviour
     {
         transform.Translate(Vector2.down * fallSpeed * Time.deltaTime);
 
-        if(transform.position.y < -5f)
+        if (transform.position.y < -5f)
         {
             Destroy(gameObject);
         }

@@ -19,17 +19,7 @@ public class Player_Poo : MonoBehaviour
     {
         animator = gameObject.GetComponent<Animator>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("Coin"))
-        {
-            goodsPrefab.gold += 10;
-
-            CoinText.text = "" + goodsPrefab.gold;
-        }
-
-
+        
     }
     // Update is called once per frame
     void Update()
