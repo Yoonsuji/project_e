@@ -11,6 +11,9 @@ public class ItemPrefab : MonoBehaviour
     public ItemData itemData;
     public TMP_Text priceUi;
     public CapybaraCurrentItem capybaraCurrentItem;
+    public GameObject GoodsIcon;
+    public Sprite gold;
+    public Sprite gam;
     private SpriteRenderer spriteRenderer;
     private ShopPrefabSpawn shopPrefabSpawn;
     private ShopManager shopManager;
@@ -52,11 +55,13 @@ public class ItemPrefab : MonoBehaviour
         {
             if (itemData.selectedPriceType == ItemData.priceType.gold)
             {
-                priceUi.text = itemData.itemPrice + "gold";
+                GoodsIcon.GetComponent<Image>().sprite = gold;
+                priceUi.text = itemData.itemPrice.ToString();
             }
             else if (itemData.selectedPriceType == ItemData.priceType.dia)
             {
-                priceUi.text = itemData.itemPrice + "dia";
+                GoodsIcon.GetComponent<Image>().sprite = gam;
+                priceUi.text = itemData.itemPrice.ToString();
             }
         }
     }
