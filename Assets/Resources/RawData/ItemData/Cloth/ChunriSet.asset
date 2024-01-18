@@ -20,3 +20,4 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 0ccc9b75be1456c47a1e76f1a1fb255b, type: 3}
   isItemTake: 0
   Activation: 0
+  ClothNum: 7

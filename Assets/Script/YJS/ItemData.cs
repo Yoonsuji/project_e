@@ -20,4 +20,5 @@ public class ItemData : ScriptableObject
     public Sprite itemSprite;//아이템 이미지
     public bool isItemTake;//아이템 구매함(true) or 구매안함(false)
     public bool Activation;//아이템 활성화(true) or 비활성화(false)
+    public int ClothNum;//cloth가 아니면 0
 }
