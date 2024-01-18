@@ -9,7 +9,10 @@ public class BuyBtnManager : MonoBehaviour
     public List<GameObject> shopTypeBtn = new List<GameObject>();
     public List<Sprite> changeSprite = new List<Sprite>();
     public List<Sprite> originalSprites = new List<Sprite>();
-    public float ff;
+    public float c1;
+    public float c2;
+    public float o1;
+    public float o2;
     private void Update()
     {
         if (shopPrefabSpawn.selectShop == ShopPrefabSpawn.shopType.cloth)
@@ -45,20 +48,20 @@ public class BuyBtnManager : MonoBehaviour
     {
         shopTypeBtn[BtnNum].GetComponent<Image>().sprite = changeSprite[BtnNum];
         Vector3 buttonPosition = shopTypeBtn[BtnNum].transform.position;
-        buttonPosition.y = 707f;
+        buttonPosition.y = c1;
         shopTypeBtn[BtnNum].transform.position = buttonPosition;
         Vector3 buttonScale = shopTypeBtn[BtnNum].transform.localScale;
-        buttonScale.y = 0.57f;
+        buttonScale.y = c2;
         shopTypeBtn[BtnNum].transform.localScale = buttonScale;
     }
     private void OriginalSprite(int BtnNum)
     {
         shopTypeBtn[BtnNum].GetComponent<Image>().sprite = originalSprites[BtnNum];
         Vector3 buttonPosition = shopTypeBtn[BtnNum].transform.position;
-        buttonPosition.y = 711f;
+        buttonPosition.y = o1;
         shopTypeBtn[BtnNum].transform.position = buttonPosition;
         Vector3 buttonScale = shopTypeBtn[BtnNum].transform.localScale;
-        buttonScale.y = 0.5f;
+        buttonScale.y = o2;
         shopTypeBtn[BtnNum].transform.localScale = buttonScale;
     }
 }
