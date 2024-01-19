@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930630337ef9b0c4291eae64dfbb8658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 41ab5c2bcf0f0424988bfcae7f6af78f, type: 3}
   fallSpeed: 3
 --- !u!58 &8848675752125955793
 CircleCollider2D:

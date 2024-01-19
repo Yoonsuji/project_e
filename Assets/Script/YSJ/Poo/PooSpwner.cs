@@ -16,7 +16,7 @@ public class PooSpwner : MonoBehaviour
         if(Random.value < spawnProbability)
         {
             GameObject selectedPooPrefab = pooPrefabs[Random.Range(0, pooPrefabs.Length)];
-            Vector2 spawnPosition = new Vector2(Random.Range(-2f, 2f), 7f);
+            Vector2 spawnPosition = new Vector2(Random.Range(-3f, 3f), 7f);
             Instantiate(selectedPooPrefab, spawnPosition, Quaternion.identity);
         }
     }

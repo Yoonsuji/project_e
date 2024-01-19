@@ -13,16 +13,13 @@ public class StockWatch : MonoBehaviour
     public float TotalSeconds;
     public TextMeshProUGUI text;
 
-    private void Start()
-    {
-        IsPlaying = true;
-    }
+
     void Update()
     {
-        /*if(Input.GetKeyDown(KcdPlay))
+        if(Input.GetKeyDown(KcdPlay))
         {
             IsPlaying = !IsPlaying;
-        }*/
+        }
         if(IsPlaying)
         {
             Timer = StockWatchTimer();

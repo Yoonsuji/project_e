@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class HeartSystem : MonoBehaviour
 {
-    public AudioClip audioClip;
-    private AudioSource audioSource;
     public Heart heartController1;
     public Heart heartController2;
     public Heart heartController3;
@@ -18,7 +16,6 @@ public class HeartSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         life1.GetComponent<Image>().enabled = true;
         life2.GetComponent<Image>().enabled = true;
         life3.GetComponent<Image>().enabled = true;
@@ -30,7 +27,6 @@ public class HeartSystem : MonoBehaviour
         switch(hp)
         {
             case 2:
-                audioSource.Play();
                 heartController1.PlayHeartAni();
                 Invoke("Delect", 0.25f);
                 break;
@@ -41,7 +37,7 @@ public class HeartSystem : MonoBehaviour
             case 0:
                 heartController3.PlayHeartAni();
                 Invoke("Delect3", 0.25f);
-                Invoke("GameOver", 1f);
+                Invoke("GameOver", 1);
                 break;
         }
 
