@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject DiePanel;
     public GameObject BossGunEffect;
     public GameObject NormalGunEffect;
+    public AudioSource walkSound;
     private TowerBox exBox;
     private TowerBox previousBox = null;
     private Color originalTextColor;
@@ -71,6 +72,7 @@ public class PlayerScript : MonoBehaviour
     System.Collections.IEnumerator MoveObject(float targetX)
     {
         this.GetComponent<Animator>().SetBool("Drive", true);
+        walkSound.Play();
         float elapsedTime = 0f;
         float startingX = transform.position.x;
         targetX -= 0.9f;
@@ -84,6 +86,7 @@ public class PlayerScript : MonoBehaviour
             yield return null;
         }
         this.GetComponent<Animator>().SetBool("Drive", false);
+        walkSound.Stop();
         nowBox.Attacked();
     }
     public void AttackAnime(bool startstop)

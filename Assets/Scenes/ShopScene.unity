@@ -292,7 +292,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\"\uBCBD\uC2DC\uACC4\"\uB97C \n\uAD6C\uB9E4\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 473bf5002a7f69b46b10bba1b4f27d26, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 70873698a83836b488db3729f159fa3b, type: 2}
   m_sharedMaterial: {fileID: 7500880552029365185, guid: 473bf5002a7f69b46b10bba1b4f27d26, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &108172623
@@ -695,6 +695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectItemData: {fileID: 0}
+  capybaraCurrentItem: {fileID: 11400000, guid: 77a645230d36e304e8769f39fe8a53b7, type: 2}
   clothShopData:
   - {fileID: 11400000, guid: ec244f570e69edf49ba978dd6f7bfebb, type: 2}
   - {fileID: 11400000, guid: c31f13560f1b0b9439f29a6a599d51e1, type: 2}
@@ -2131,7 +2132,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC544\uB2C8\uC694"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 473bf5002a7f69b46b10bba1b4f27d26, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 70873698a83836b488db3729f159fa3b, type: 2}
   m_sharedMaterial: {fileID: 7500880552029365185, guid: 473bf5002a7f69b46b10bba1b4f27d26, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2195,7 +2196,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1041538694
@@ -2534,7 +2535,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC608"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 473bf5002a7f69b46b10bba1b4f27d26, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 70873698a83836b488db3729f159fa3b, type: 2}
   m_sharedMaterial: {fileID: 7500880552029365185, guid: 473bf5002a7f69b46b10bba1b4f27d26, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2598,7 +2599,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1191091035

@@ -9,9 +9,9 @@ public class ItemPrefab : MonoBehaviour
 {
     public Image ItemSpriteObject;
     public ItemData itemData;
-    public TMP_Text priceUi;
+    public GameObject priceUi;
     public GameObject goodIcon;
-    public TMP_Text newText;
+    public GameObject newText;
     public CapybaraCurrentItem capybaraCurrentItem;
     public GameObject GoodsIcon;
     public Sprite gold;
@@ -51,7 +51,6 @@ public class ItemPrefab : MonoBehaviour
                     ItemSpriteObject.color = new Color(1f, 1f, 1f, 1f);
                 }
             }
-            priceUi.text = "구매완료";
             priceUi.gameObject.SetActive(false);
             goodIcon.SetActive(false);
             newText.gameObject.SetActive(true);
@@ -61,12 +60,10 @@ public class ItemPrefab : MonoBehaviour
             if (itemData.selectedPriceType == ItemData.priceType.gold)
             {
                 GoodsIcon.GetComponent<Image>().sprite = gold;
-                priceUi.text = itemData.itemPrice.ToString();
             }
             else if (itemData.selectedPriceType == ItemData.priceType.dia)
             {
                 GoodsIcon.GetComponent<Image>().sprite = gam;
-                priceUi.text = itemData.itemPrice.ToString();
             }
         }
     }
