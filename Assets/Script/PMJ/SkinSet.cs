@@ -16,7 +16,7 @@ public class SkinSet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SkinCheck();
+        //SkinCheck();
     }
 
     public void SkinCheck()
