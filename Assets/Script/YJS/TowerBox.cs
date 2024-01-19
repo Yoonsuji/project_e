@@ -28,6 +28,8 @@ public class TowerBox : MonoBehaviour
     private Camera mainCamera;
     public bool isTopBox = false;
     public bool isBossBox = false;
+    public AudioSource powerUpdate;
+    public AudioSource EnemyDieSound;
     string[,] dataTable;
 
     void Start()
@@ -123,6 +125,11 @@ public class TowerBox : MonoBehaviour
         enemyCount++;
         spacing += -0.5f;
     }
+    private void UpdateSound()
+    {
+        powerUpdate.Play();
+        EnemyDieSound.Play();
+    }
     private void TypeSelect(GameObject spawnedEnemy, EnemyPower.enemyType type)
     {
         spawnedEnemy.GetComponent<EnemyPower>().selectedType = type;
@@ -189,7 +196,7 @@ public class TowerBox : MonoBehaviour
             {
                 EnemyList[enemyCount - 1].GetComponent<EnemyPower>().ChangeAttackAnime();
                 player.canMove = false;
-                Invoke("AnimeLoad", 3f);
+                Invoke("AnimeLoad", 2.5f);
             }
         }
     }
@@ -223,7 +230,7 @@ public class TowerBox : MonoBehaviour
             }
             EnemyDieLoad();
         }
-
+        UpdateSound();
     }
     private void EnemyDieLoad()
     {
