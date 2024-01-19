@@ -16,6 +16,7 @@ public class Player_Poo : MonoBehaviour
     public float moveSpeed = 10;
     public AudioClip audioClip;
     private AudioSource audioSource;
+    public PooPaint pooPaint;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +29,12 @@ public class Player_Poo : MonoBehaviour
     // Update is called once per frame
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Wall"))
+        // Check if the collision is with an object having the "Player" tag
+        if (collision.gameObject.CompareTag("Poo"))
         {
-            
+            Debug.Log("paint");
+            // Assuming that Attack should be called when the "Player" tagged object and "Poo" object collide
+            pooPaint.Attack();
         }
     }
     void FixedUpdate()
