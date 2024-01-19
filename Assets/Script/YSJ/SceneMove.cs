@@ -15,6 +15,7 @@ public class SceneMove : MonoBehaviour
     // Update is called once per frame
     public void ClickScene()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneName);
     }
 }
