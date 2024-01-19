@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShopPrefabSpawn : MonoBehaviour
 {
     public ItemData selectItemData;
+    public CapybaraCurrentItem capybaraCurrentItem;
     public List<ItemData> clothShopData = new List<ItemData>();
     public List<ItemData> furnitureShopData = new List<ItemData>();
     public List<ItemData> backgroundShopData = new List<ItemData>();
@@ -48,6 +49,42 @@ public class ShopPrefabSpawn : MonoBehaviour
             spawnedPrefab.itemData = petShopData[i];
         }
         ClothShop();
+    }
+    private void Update()
+    {
+        for (int i = 0; i < clothShopData.Count; i++)
+        {
+            if(capybaraCurrentItem.currentCloth == clothShopData[i])
+            {
+                clothShopData[i].Activation = true;
+            }
+            else
+            {
+                clothShopData[i].Activation = false;
+            }
+        }
+        for (int i = 0; i < backgroundShopData.Count; i++)
+        {
+            if (capybaraCurrentItem.currentBack == backgroundShopData[i])
+            {
+                backgroundShopData[i].Activation = true;
+            }
+            else
+            {
+                backgroundShopData[i].Activation = false;
+            }
+        }
+        for (int i = 0; i < petShopData.Count; i++)
+        {
+            if (capybaraCurrentItem.currentPet == petShopData[i])
+            {
+                petShopData[i].Activation = true;
+            }
+            else
+            {
+                petShopData[i].Activation = false;
+            }
+        }
     }
     public void ClothShop()
     {

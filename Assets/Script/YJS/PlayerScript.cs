@@ -19,6 +19,9 @@ public class PlayerScript : MonoBehaviour
     public GameObject DiePanel;
     public GameObject BossGunEffect;
     public GameObject NormalGunEffect;
+    public AudioSource walkSound;
+    public AudioSource dieSound;
+    public AudioSource GunSound;
     private TowerBox exBox;
     private TowerBox previousBox = null;
     private Color originalTextColor;
@@ -71,6 +74,7 @@ public class PlayerScript : MonoBehaviour
     System.Collections.IEnumerator MoveObject(float targetX)
     {
         this.GetComponent<Animator>().SetBool("Drive", true);
+        walkSound.Play();
         float elapsedTime = 0f;
         float startingX = transform.position.x;
         targetX -= 0.9f;
@@ -84,6 +88,7 @@ public class PlayerScript : MonoBehaviour
             yield return null;
         }
         this.GetComponent<Animator>().SetBool("Drive", false);
+        walkSound.Stop();
         nowBox.Attacked();
     }
     public void AttackAnime(bool startstop)
@@ -91,6 +96,7 @@ public class PlayerScript : MonoBehaviour
         if (startstop == true)
         {
             this.GetComponent<Animator>().SetBool("Attack", true);
+            GunSound.Play();
             GameObject spawnedEffect = Instantiate(NormalGunEffect, this.transform.position, Quaternion.identity);
             spawnedEffect.transform.parent = transform;
             spawnedEffect.transform.Translate(new Vector3(-0.17f, 0f, 0f));
@@ -99,6 +105,7 @@ public class PlayerScript : MonoBehaviour
         else
         {
             this.GetComponent<Animator>().SetBool("Attack", false);
+            GunSound.Stop();
             if (effect != null)
             {
                 Destroy(effect.gameObject);
@@ -145,6 +152,7 @@ public class PlayerScript : MonoBehaviour
     public void PlayerDie()
     {
         this.GetComponent<Animator>().SetBool("Die", true);
+        dieSound.Play();
         Invoke("Die", 1.8f);
     }
     private void Die()

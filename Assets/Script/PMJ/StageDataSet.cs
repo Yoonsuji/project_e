@@ -8,6 +8,7 @@ public class StageDataSet : MonoBehaviour
     public TextMeshProUGUI[] stageTxt;
     public StagePrefab[] stageData;
     public Slider[] stageSlider;
+
     // Start is called before the first frame update
     void Start()
     {
