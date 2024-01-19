@@ -16,7 +16,6 @@ public class SkinSet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //SkinCheck();
     }
 
@@ -29,9 +28,5 @@ public class SkinSet : MonoBehaviour
                  anim.SetInteger("Skin", i);
             }
         }
-    }
-    public void Touch()
-    {
-        anim.SetTrigger("isTouch");
     }
 }
