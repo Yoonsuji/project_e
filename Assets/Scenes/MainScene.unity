@@ -4794,6 +4794,7 @@ GameObject:
   - component: {fileID: 1984043952}
   - component: {fileID: 1984043953}
   - component: {fileID: 1984043954}
+  - component: {fileID: 1984043955}
   m_Layer: 5
   m_Name: Player
   m_TagString: Player
@@ -4939,7 +4940,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984043946}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 787ad7a50fda3ed4187712964497f55b, type: 3}
   m_Name: 
@@ -5016,6 +5017,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1984043955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984043946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d626abd40b99a8b4c85566d427263afc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CapybaraCurrentItem: {fileID: 11400000, guid: 77a645230d36e304e8769f39fe8a53b7, type: 2}
 --- !u!1 &2026552680
 GameObject:
   m_ObjectHideFlags: 0
