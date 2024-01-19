@@ -5,12 +5,19 @@ using UnityEngine;
 public class Poo : MonoBehaviour
 {
     public float fallSpeed = 5f;
+    public AudioClip audioClip;
+    private AudioSource audioSource;
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(this.gameObject);
-            HeartSystem.hp -= 1;
+            audioSource.clip = audioClip;
+            audioSource.Play();
+            Invoke("Next", 0.2f);
         }
     }
     // Update is called once per frame
@@ -21,5 +28,10 @@ public class Poo : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    void Next()
+    {
+        HeartSystem.hp -= 1;
+        Destroy(this.gameObject);
     }
 }
