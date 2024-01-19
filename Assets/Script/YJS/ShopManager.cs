@@ -76,6 +76,9 @@ public class ShopManager : MonoBehaviour
     {
         for(int i = 0; i < shopPrefabSpawn.items.Count; i++)
         {
+            capybaraCurrentItem.currentCloth = null;
+            capybaraCurrentItem.currentBack = null;
+            capybaraCurrentItem.currentPet = null;
             shopPrefabSpawn.items[i].itemData.isItemTake = false;
             shopPrefabSpawn.items[i].itemData.Activation = false;
         }
