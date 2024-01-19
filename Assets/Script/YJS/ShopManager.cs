@@ -83,6 +83,7 @@ public class ShopManager : MonoBehaviour
             shopPrefabSpawn.items[i].itemData.Activation = false;
         }
         goodsPrefab.gold = 0;
+        goodsPrefab.dia = 0;
     }
     public void PlusBtn()
     {
@@ -128,7 +129,7 @@ public class ShopManager : MonoBehaviour
                 if (goodsPrefab.dia >= selectItemData.itemPrice)
                 {
                     selectItemData.isItemTake = true;
-                    goodsPrefab.gold -= selectItemData.itemPrice;
+                    goodsPrefab.dia -= selectItemData.itemPrice;
                 }
                 else
                 {
