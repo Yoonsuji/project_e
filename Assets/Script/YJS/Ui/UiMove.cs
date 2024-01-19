@@ -9,8 +9,13 @@ public class UiMove : MonoBehaviour
     public Camera camera;
     public Vector3 offset = new Vector3(0f, 0.5f, 0f);
     public TMP_Text squareText;
+    private MenuManager menuManager;
+    private Color originalColor;
     private void Start()
     {
+
+        originalColor = this.GetComponent<TMP_Text>().color;
+        menuManager = FindObjectOfType<MenuManager>();
         if (targetObject != null && targetObject.gameObject.GetComponent<EnemyPower>() != null)
         {
             if (targetObject.gameObject.GetComponent<EnemyPower>() != null)
@@ -46,6 +51,17 @@ public class UiMove : MonoBehaviour
         {
             Vector3 targetPosition = targetObject.transform.position + offset;
             transform.position = Camera.main.WorldToScreenPoint(targetPosition);
+        }
+        if (menuManager != null)
+        {
+            if (menuManager.isMenuOpen == true)
+            {
+                this.GetComponent<TMP_Text>().color = new Color(0f, 0f, 0f, 0f);
+            }
+            else
+            {
+                this.GetComponent<TMP_Text>().color = originalColor;
+            }
         }
     }
 }

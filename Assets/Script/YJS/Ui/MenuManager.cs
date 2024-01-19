@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     public GameObject menuSet;
     public GameObject menuBtn;
     private PlayerScript player;
+    public bool isMenuOpen;
     private void Start()
     {
         player = FindObjectOfType<PlayerScript>();
@@ -28,9 +29,14 @@ public class MenuManager : MonoBehaviour
         }
         if (menuSet.activeSelf == true)
         {
+            isMenuOpen = true;
             menuBtn.SetActive(false);
             player.canMove = false;
             //게임정지
+        }
+        else
+        {
+            isMenuOpen = false;
         }
     }
     public void MenuOpen()

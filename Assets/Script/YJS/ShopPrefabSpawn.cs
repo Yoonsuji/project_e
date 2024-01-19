@@ -88,6 +88,7 @@ public class ShopPrefabSpawn : MonoBehaviour
     }
     public void ClothShop()
     {
+        this.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,1184f);
         selectShop = shopType.cloth;
         for (int i = 0; i < items.Count; i++)
         {
@@ -103,6 +104,7 @@ public class ShopPrefabSpawn : MonoBehaviour
     }
     public void FurnitureShop()
     {
+        this.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 700f);
         selectShop = shopType.furniture;
         for (int i = 0; i < items.Count; i++)
         {
@@ -118,6 +120,7 @@ public class ShopPrefabSpawn : MonoBehaviour
     }
     public void BackgroundShop()
     {
+        this.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 700f);
         selectShop = shopType.background;
         for (int i = 0; i < items.Count; i++)
         {
@@ -133,6 +136,7 @@ public class ShopPrefabSpawn : MonoBehaviour
     }
     public void PetShop()
     {
+        this.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 700f);
         selectShop = shopType.pet;
         for (int i = 0; i < items.Count; i++)
         {

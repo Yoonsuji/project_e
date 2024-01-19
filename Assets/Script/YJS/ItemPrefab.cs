@@ -21,6 +21,7 @@ public class ItemPrefab : MonoBehaviour
     private ShopManager shopManager;
     private void Start()
     {
+        this.GetComponent<RectTransform>().localScale = new Vector3(0.9f, 0.9f, 1f);
         ItemSpriteObject.sprite = itemData.itemSprite;
         shopPrefabSpawn = FindObjectOfType<ShopPrefabSpawn>();
         shopManager = FindObjectOfType<ShopManager>();
