@@ -15,6 +15,8 @@ TagManager:
   - TimeNo
   - ChocoClean
   - Coin
+  - Heart
+  - Poo
   layers:
   - Default
   - TransparentFX
