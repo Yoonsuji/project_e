@@ -24,7 +24,6 @@ public class Poo : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.down * fallSpeed * Time.deltaTime);
-
         if(transform.position.y < -5f)
         {
             Destroy(gameObject);
