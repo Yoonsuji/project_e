@@ -30,13 +30,6 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
-        originalTextColor = new Color(255f, 255f, 255f, 255f);
-        changeColor = originalTextColor;
-        changeColor.a = 0f;
-        changeColor.r = originalTextColor.r;
-        changeColor.g = originalTextColor.g;
-        changeColor.b = originalTextColor.b;
-
         this.GetComponent<Animator>().runtimeAnimatorController = capibaraAnime[0];
     }
 
@@ -53,8 +46,8 @@ public class PlayerScript : MonoBehaviour
             }
             else
             {
+                powerText.gameObject.SetActive(false);
                 this.GetComponent<Animator>().runtimeAnimatorController = null;
-                powerText.color = changeColor;
                 GameObject spawnedBoom = Instantiate(MoveBoom, this.transform.position, Quaternion.identity);
                 spawnedBoom.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.25f, 0f);
                 exBox = towerBox;
@@ -115,8 +108,8 @@ public class PlayerScript : MonoBehaviour
 
     public void DoMove()
     {
+        powerText.gameObject.SetActive(true);
         this.GetComponent<Animator>().runtimeAnimatorController = capibaraAnime[0];
-        powerText.color = originalTextColor;
         if (canMove == true)
         {
             nowBox = exBox;
