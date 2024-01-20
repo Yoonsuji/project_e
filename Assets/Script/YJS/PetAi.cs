@@ -1,8 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PetAi : MonoBehaviour
 {
+    public List<RuntimeAnimatorController> petAnimeCon = new List<RuntimeAnimatorController>();
+    public CapybaraCurrentItem capybaraCurrentItem;
     public PetTarget petTarget;
     public float speed;
     public float waitTime;
@@ -12,6 +15,21 @@ public class PetAi : MonoBehaviour
 
     private void Start()
     {
+        if (capybaraCurrentItem.currentPet != null)
+        {
+            if (capybaraCurrentItem.currentPet.name == "Kitten")
+            {
+                this.GetComponent<Animator>().runtimeAnimatorController = petAnimeCon[0];
+            }
+            else if (capybaraCurrentItem.currentPet.name == "Crocodile")
+            {
+                this.GetComponent<Animator>().runtimeAnimatorController = petAnimeCon[1];
+            }
+        }
+        else
+        {
+            this.gameObject.SetActive(false);
+        }
         petTarget.ChangeTransform();
     }
     void Update()
