@@ -5030,6 +5030,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CapybaraCurrentItem: {fileID: 11400000, guid: 77a645230d36e304e8769f39fe8a53b7, type: 2}
+  Animations:
+  - {fileID: 9100000, guid: eda211f0ca9fc6146b7cbc737ee8ef1f, type: 2}
+  - {fileID: 9100000, guid: 8722eb5406a5cfd47aafe1f868b8e7b4, type: 2}
+  - {fileID: 9100000, guid: cec1a9efa1ff87b4ca9b0000c37a69c5, type: 2}
+  - {fileID: 9100000, guid: 591ab0e0ec0bb6346abb37b9e284de7b, type: 2}
+  - {fileID: 9100000, guid: 3cb9400f6c0b3f7409b3b28271724c9e, type: 2}
+  - {fileID: 9100000, guid: c5961fc4293aa964aa20a3e170299486, type: 2}
+  - {fileID: 9100000, guid: 555a71aceb3281f42a5f63144ed30321, type: 2}
+  - {fileID: 9100000, guid: 30033d5c2e4147b4495f5c54485b49c3, type: 2}
+  - {fileID: 9100000, guid: 9ce0be567202673449228b2ddb264fed, type: 2}
+  - {fileID: 9100000, guid: 43f7890336939aa41b6afe5783d650e3, type: 2}
+  - {fileID: 9100000, guid: 409b57c1bd1a55f4590f274516532c4c, type: 2}
+  - {fileID: 9100000, guid: fa5951126e03b5b43af35ca273264e0c, type: 2}
+  - {fileID: 9100000, guid: ca1ef696fd66d794f9d2e22e60947ba1, type: 2}
+  - {fileID: 9100000, guid: 88cd074d9b21f2a4389f0d11d438846e, type: 2}
+  - {fileID: 9100000, guid: 9626034bf882ded4da9d3efe4a85e639, type: 2}
+  - {fileID: 9100000, guid: 2231228e8f5afd5488e382ff5202b65a, type: 2}
 --- !u!1 &2026552680
 GameObject:
   m_ObjectHideFlags: 0
