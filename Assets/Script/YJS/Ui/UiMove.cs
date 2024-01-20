@@ -13,7 +13,6 @@ public class UiMove : MonoBehaviour
     private Color originalColor;
     private void Start()
     {
-
         originalColor = this.GetComponent<TMP_Text>().color;
         menuManager = FindObjectOfType<MenuManager>();
         if (targetObject != null && targetObject.gameObject.GetComponent<EnemyPower>() != null)
