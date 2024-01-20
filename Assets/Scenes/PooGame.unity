@@ -581,7 +581,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeDuration: 2
-  showDuration: 2
   image: {fileID: 592304426}
 --- !u!114 &592304426
 MonoBehaviour:
@@ -769,7 +768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8104596933528110438, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8104596933528110441, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
       propertyPath: m_Pivot.x
@@ -860,16 +859,44 @@ PrefabInstance:
       value: 4280237894
       objectReference: {fileID: 0}
     - target: {fileID: 8104596934925892140, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104596934925892140, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104596934925892140, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 572619626}
+    - target: {fileID: 8104596934925892140, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 411141325}
+    - target: {fileID: 8104596934925892140, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8104596934925892140, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ClickScene
       objectReference: {fileID: 0}
     - target: {fileID: 8104596934925892140, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Restarthp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104596934925892140, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SceneMove, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104596934925892140, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: HeartSystem, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104596934925892140, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8104596935190902518, guid: 972f904e30e71324ca200b2e76836d99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3063,6 +3090,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 411141325}
+        m_TargetAssemblyTypeName: HeartSystem, Assembly-CSharp
+        m_MethodName: Restarthp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1528489041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3794,7 +3833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2018638520
 MonoBehaviour:
   m_ObjectHideFlags: 0

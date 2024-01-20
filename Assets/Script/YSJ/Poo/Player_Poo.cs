@@ -27,14 +27,16 @@ public class Player_Poo : MonoBehaviour
 
     }
     // Update is called once per frame
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the collision is with an object having the "Player" tag
-        if (collision.gameObject.CompareTag("Poo"))
+        if (other.CompareTag("Poo"))
         {
-            Debug.Log("paint");
-            // Assuming that Attack should be called when the "Player" tagged object and "Poo" object collide
-            pooPaint.Attack();
+            PooPaint pooPaint = other.GetComponent<PooPaint>();
+            if (pooPaint != null)
+            {
+                pooPaint.SetVisibility(true);
+                Debug.Log("paint");
+            }
         }
     }
     void FixedUpdate()

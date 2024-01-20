@@ -1,49 +1,42 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PooPaint : MonoBehaviour
 {
     public float fadeDuration;
-    public float showDuration;
     public Image image;
     private Coroutine fadeCoroutine;
-    private int activeHearts;
 
     // Start is called before the first frame update
     void Start()
     {
+        // 초기에 이미지를 숨김
         image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
-        StartCoroutine(AttackWithCheck());
     }
 
-    IEnumerator AttackWithCheck()
-    {
-        while (true)
-        {
-            yield return null;
-        }
-    }
-
-    public void Attack()
+    // SetVisibility 메서드 추가
+    public void SetVisibility(bool isVisible)
     {
         if (fadeCoroutine != null)
         {
             StopCoroutine(fadeCoroutine);
+            Debug.Log("Coroutine stopped");
         }
-        fadeCoroutine = StartCoroutine(FadeInAndOutImage());
+
+        if (isVisible)
+        {
+            // 이미지가 나타나도록 페이드인 실행
+            fadeCoroutine = StartCoroutine(FadeIn());
+        }
+        else
+        {
+            // 이미지가 사라지도록 페이드아웃 실행
+            fadeCoroutine = StartCoroutine(FadeOut());
+        }
     }
 
-    public IEnumerator FadeInAndOutImage()
-    {
-        yield return StartCoroutine(FadeIn());
-        yield return new WaitForSeconds(showDuration);
-        yield return StartCoroutine(FadeOut());
-        fadeCoroutine = null;
-    }
-
-    public IEnumerator FadeIn()
+    private IEnumerator FadeIn()
     {
         float elapsedTime = 0f;
         while (elapsedTime < fadeDuration)
@@ -53,10 +46,11 @@ public class PooPaint : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
         image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
     }
 
-    public IEnumerator FadeOut()
+    private IEnumerator FadeOut()
     {
         float elapsedTime = 0f;
         while (elapsedTime < fadeDuration)
@@ -66,6 +60,7 @@ public class PooPaint : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
         image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
     }
 }
