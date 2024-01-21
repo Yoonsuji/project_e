@@ -83,6 +83,10 @@ public class PetAi : MonoBehaviour
                 this.GetComponent<Animator>().SetBool("isMove", false);
             }
         }
+        else
+        {
+            this.GetComponent<Animator>().SetBool("isMove", false);
+        }
     }
     void TransLateTarget()
     {

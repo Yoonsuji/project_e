@@ -825,7 +825,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8ef122f50095ec54b8c45365e9af8cd5, type: 2}
   - {fileID: 11400000, guid: 271123c1531f23d4fa8db342e45111fa, type: 2}
   backgroundShopData:
-  - {fileID: 11400000, guid: 1463a40c41d9a5548bda87d6b1c3ba2e, type: 2}
   - {fileID: 11400000, guid: 4e4ef77cc96109f43a8ad178a010e601, type: 2}
   petShopData:
   - {fileID: 11400000, guid: 424f36e4672876444bcb7da8f85a420c, type: 2}
@@ -3564,7 +3563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1264195971
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3736,7 +3735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1333141685
 RectTransform:
   m_ObjectHideFlags: 0

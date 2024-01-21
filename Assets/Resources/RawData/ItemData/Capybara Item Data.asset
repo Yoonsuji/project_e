@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCloth: {fileID: 0}
   currentBack: {fileID: 0}
-  currentPet: {fileID: 11400000, guid: 424f36e4672876444bcb7da8f85a420c, type: 2}
+  currentPet: {fileID: 0}
