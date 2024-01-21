@@ -58,4 +58,12 @@ public class HeartSystem : MonoBehaviour
     {
         GameOverPannel.SetActive(true);
     }
+    public void Restarthp()
+    {
+        hp = 3;
+        life1.GetComponent<Image>().enabled = true;
+        life2.GetComponent<Image>().enabled = true;
+        life3.GetComponent<Image>().enabled = true;
+        GameOverPannel.SetActive(false);
+    }
 }

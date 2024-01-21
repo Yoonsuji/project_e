@@ -11,10 +11,12 @@ public class UiMove : MonoBehaviour
     public TMP_Text squareText;
     private MenuManager menuManager;
     private Color originalColor;
+    private PlayerScript player;
     private void Start()
     {
         originalColor = this.GetComponent<TMP_Text>().color;
         menuManager = FindObjectOfType<MenuManager>();
+        player = FindObjectOfType<PlayerScript>();
         if (targetObject != null && targetObject.gameObject.GetComponent<EnemyPower>() != null)
         {
             if (targetObject.gameObject.GetComponent<EnemyPower>() != null)
@@ -61,6 +63,10 @@ public class UiMove : MonoBehaviour
             {
                 this.GetComponent<TMP_Text>().color = originalColor;
             }
+        }
+        if (player.playerDie == true)
+        {
+            this.GetComponent<TMP_Text>().color = new Color(0f, 0f, 0f, 0f);
         }
     }
 }

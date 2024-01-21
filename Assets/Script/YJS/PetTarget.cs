@@ -8,6 +8,17 @@ public class PetTarget : MonoBehaviour
     public float maxX = 300f;
     public float minY = -580f;
     public float maxY = 580f;
+    public CapybaraCurrentItem capybaraCurrentItem;
+    private void Start()
+    {
+        if (capybaraCurrentItem.currentBack != null)
+        {
+            if (capybaraCurrentItem.currentBack.name == "HotSpring")
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
     public void ChangeTransform()
     {
         // 무작위 위치 생성

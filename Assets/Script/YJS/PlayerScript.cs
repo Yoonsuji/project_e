@@ -22,11 +22,13 @@ public class PlayerScript : MonoBehaviour
     public AudioSource walkSound;
     public AudioSource dieSound;
     public AudioSource GunSound;
+    public bool playerDie = false;
     private TowerBox exBox;
     private TowerBox previousBox = null;
     private Color originalTextColor;
     private Color changeColor;
     private GameObject effect;
+    private MenuManager menuManager;
 
     private void Start()
     {
@@ -151,6 +153,8 @@ public class PlayerScript : MonoBehaviour
     private void Die()
     {
         canMove = false;
+        playerDie = true;
+        powerText.gameObject.SetActive(false);
         DiePanel.SetActive(true);
         print("플레이어 사망");
     }

@@ -122,10 +122,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 3
-  image: {fileID: 7086115728735022010, guid: 89bac9700a8984d4c83c73dad6543b13, type: 3}
-  fadeDuration: 2
-  showDuration: 2
+  fallAcceleration: 0.1
   audioClip: {fileID: 8300000, guid: 41ab5c2bcf0f0424988bfcae7f6af78f, type: 3}
+  isFading: 0
+  paintSpriteRenderer: {fileID: 0}
+  fadeInTime: 0.5
+  fadeOutTime: 0.5
 --- !u!58 &4731107081806302602
 CircleCollider2D:
   m_ObjectHideFlags: 0

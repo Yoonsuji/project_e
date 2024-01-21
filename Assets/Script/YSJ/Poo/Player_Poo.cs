@@ -16,7 +16,9 @@ public class Player_Poo : MonoBehaviour
     public float moveSpeed = 10;
     public AudioClip audioClip;
     private AudioSource audioSource;
-    public PooPaint pooPaint;
+    public GameObject PooPaint;
+    public CanvasGroup pooPaintCanvasGroup;
+    public float fadeInDuration = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,17 +26,53 @@ public class Player_Poo : MonoBehaviour
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = audioClip;
+        PooPaint.SetActive(false);
+        pooPaintCanvasGroup = PooPaint.GetComponent<CanvasGroup>();
+        if (pooPaintCanvasGroup == null)
+        {
+            pooPaintCanvasGroup = PooPaint.AddComponent<CanvasGroup>();
+        }
+        StartCoroutine(FadeInPooPaint());
 
     }
-    // Update is called once per frame
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    IEnumerator FadeInPooPaint()
     {
-        // Check if the collision is with an object having the "Player" tag
-        if (collision.gameObject.CompareTag("Poo"))
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeInDuration)
         {
-            Debug.Log("paint");
-            // Assuming that Attack should be called when the "Player" tagged object and "Poo" object collide
-            pooPaint.Attack();
+            pooPaintCanvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsedTime / fadeInDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        StartCoroutine(FadeOutPooPaint());
+    }
+
+    IEnumerator FadeOutPooPaint()
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeInDuration)
+        {
+            pooPaintCanvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeInDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        PooPaint.SetActive(false);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Poo"))
+        {
+            PooPaint.SetActive(true);
+            pooPaintCanvasGroup.alpha = 0f;
+            StartCoroutine(FadeInPooPaint());
         }
     }
     void FixedUpdate()

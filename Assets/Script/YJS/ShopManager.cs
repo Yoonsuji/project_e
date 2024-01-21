@@ -19,6 +19,8 @@ public class ShopManager : MonoBehaviour
     public TMP_Text buyBtnText;
     public TMP_Text backBtnText;
     public Image ItemPanel;
+    public GameObject gameObject;
+    private ItemData backData = null;
     private void Start()
     {
         selectCurrentCloth = capybaraCurrentItem.currentCloth;
@@ -29,6 +31,11 @@ public class ShopManager : MonoBehaviour
     private void Update()
     {
         selectItemData = shopPrefabSpawn.selectItemData;
+        if (backData != selectItemData)
+        {
+            backData = selectItemData;
+            gameObject.SetActive(false);
+        }
         if (selectItemData != null)
         {
             BuyPanel.SetActive(true);
@@ -121,7 +128,7 @@ public class ShopManager : MonoBehaviour
                 }
                 else
                 {
-                    print("재화가 부족합니다.");
+                    gameObject.SetActive(true);
                 }
             }
             else
@@ -133,7 +140,7 @@ public class ShopManager : MonoBehaviour
                 }
                 else
                 {
-                    print("재화가 부족합니다.");
+                    gameObject.SetActive(true);
                 }
             }
         }

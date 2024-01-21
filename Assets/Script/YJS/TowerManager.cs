@@ -98,6 +98,7 @@ public class TowerManager : MonoBehaviour
     }
     public void Win()
     {
+        player.powerText.gameObject.SetActive(false);
         ClearPanel.SetActive(true);
         player.canMove = false;
     }

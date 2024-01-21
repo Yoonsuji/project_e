@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73aac6cb2cb86494cb4f62502a97c81f, type: 3}
   m_Name: Goods Data
   m_EditorClassIdentifier: 
-  gold: 0
-  dia: 0
+  gold: 1000
+  dia: 500

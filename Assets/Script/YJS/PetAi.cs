@@ -15,7 +15,26 @@ public class PetAi : MonoBehaviour
 
     private void Start()
     {
-        if (capybaraCurrentItem.currentPet != null)
+        if (targetImage != null)
+        {
+            if (capybaraCurrentItem.currentPet != null)
+            {
+                if (capybaraCurrentItem.currentPet.name == "Kitten")
+                {
+                    this.GetComponent<Animator>().runtimeAnimatorController = petAnimeCon[0];
+                }
+                else if (capybaraCurrentItem.currentPet.name == "Crocodile")
+                {
+                    this.GetComponent<Animator>().runtimeAnimatorController = petAnimeCon[1];
+                }
+            }
+            else
+            {
+                this.gameObject.SetActive(false);
+            }
+            petTarget.ChangeTransform();
+        }
+        else
         {
             if (capybaraCurrentItem.currentPet.name == "Kitten")
             {
@@ -26,40 +45,42 @@ public class PetAi : MonoBehaviour
                 this.GetComponent<Animator>().runtimeAnimatorController = petAnimeCon[1];
             }
         }
-        else
-        {
-            this.gameObject.SetActive(false);
-        }
-        petTarget.ChangeTransform();
     }
     void Update()
     {
-        if (isMove == true)
+        if (targetImage != null)
         {
-            this.GetComponent<Animator>().SetBool("isMove", true);
-            if (targetImage != null)
+            if (isMove == true)
             {
-                float step = speed * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(transform.position, targetImage.position, step);
-                if (this.transform.position == targetImage.position)
+                this.GetComponent<Animator>().SetBool("isMove", true);
+                if (targetImage != null)
                 {
-                    isMove = false;
-                    Invoke("TransLateTarget", waitTime);
+                    float step = speed * Time.deltaTime;
+                    transform.position = Vector3.MoveTowards(transform.position, targetImage.position, step);
+                    if (this.transform.position == targetImage.position)
+                    {
+                        isMove = false;
+                        Invoke("TransLateTarget", waitTime);
+                    }
+                    if (targetImage.position.x <= this.transform.position.x)
+                    {
+                        RectTransform rectTransform = GetComponent<RectTransform>();
+                        Vector3 currentScale = rectTransform.localScale;
+                        currentScale.x = -originalScale;
+                        rectTransform.localScale = currentScale;
+                    }
+                    else
+                    {
+                        RectTransform rectTransform = GetComponent<RectTransform>();
+                        Vector3 currentScale = rectTransform.localScale;
+                        currentScale.x = originalScale;
+                        rectTransform.localScale = currentScale;
+                    }
                 }
-                if (targetImage.position.x <= this.transform.position.x)
-                {
-                    RectTransform rectTransform = GetComponent<RectTransform>();
-                    Vector3 currentScale = rectTransform.localScale;
-                    currentScale.x = -originalScale;
-                    rectTransform.localScale = currentScale;
-                }
-                else
-                {
-                    RectTransform rectTransform = GetComponent<RectTransform>();
-                    Vector3 currentScale = rectTransform.localScale;
-                    currentScale.x = originalScale;
-                    rectTransform.localScale = currentScale;
-                }
+            }
+            else
+            {
+                this.GetComponent<Animator>().SetBool("isMove", false);
             }
         }
         else
