@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
 
             RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
 
-            if (rayHit.collider != null)
+            if (rayHit.collider != null && gameObject.name != "Boss") 
             {
                 if (rayHit.distance < 0.5f)
                 {
@@ -71,16 +71,17 @@ public class Enemy : MonoBehaviour
                 }
 
             }
-            else anim.SetBool("isDown", true);
+            else if(rayHit.collider == null && gameObject.name != "Boss") anim.SetBool("isDown", true);
         }
     }
     protected IEnumerator Die()
     {
         if (!die)
         {
-            if (gameObject.name == "Enemy") GameManager.instance.SfxPlayer(GameManager.Sfx.EDie);
+            if (gameObject.name == "Enemy" || gameObject.name == "MP") GameManager.instance.SfxPlayer(GameManager.Sfx.EDie);
             else if (gameObject.name == "Boss") GameManager.instance.SfxPlayer(GameManager.Sfx.PDDIe);
             die = true;
+            if(gameObject.name == "MP") renderer.enabled = false;
             anim.SetTrigger("Die");
             yield return new WaitForSeconds(1f);
             ghost.SetActive(true);
@@ -116,8 +117,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ring"))
         {
-            anim.SetBool("isDown", false);
-
+            if(gameObject.name != "Boss") anim.SetBool("isDown", false);
         }
     }
 }

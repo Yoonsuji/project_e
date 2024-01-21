@@ -202,6 +202,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FadeOut(GameObject gameObject, string collisionTag)
     {
+        //if (gameObject.name == "MP") gameObject.SetActive(false);
         //if (collision.gameObject.CompareTag("Metaball_liquid")) syrup = GameObject.FindGameObjectsWithTag("Metaball_liquid");
         //else if (collision.gameObject.CompareTag("Metaball_liquid2")) syrup = GameObject.FindGameObjectsWithTag("Metaball_liquid2");
         syrup = GameObject.FindGameObjectsWithTag(collisionTag);
